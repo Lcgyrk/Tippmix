@@ -1,12 +1,18 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "admin",
+      "email": "admin@email.com",
+      "password": "admin"
+    }
+  ],
   "bets": [
     {
       "id": 1,
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Chicago Bulls",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.13,
       "awayOdds": 2.16,
       "drawOdds": null
@@ -16,8 +22,6 @@
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Manchester United",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.47,
       "awayOdds": 2.54,
       "drawOdds": 3.59
@@ -27,8 +31,6 @@
       "sport": "American Football",
       "homeTeam": "New York Giants",
       "awayTeam": "Miami Dolphins",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.01,
       "awayOdds": 1.99,
       "drawOdds": null
@@ -38,8 +40,6 @@
       "sport": "American Football",
       "homeTeam": "Buffalo Bills",
       "awayTeam": "New York Giants",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.2,
       "awayOdds": 1.88,
       "drawOdds": null
@@ -49,8 +49,6 @@
       "sport": "Cricket",
       "homeTeam": "India",
       "awayTeam": "Pakistan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.12,
       "awayOdds": 2.25,
       "drawOdds": null
@@ -60,8 +58,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "Pakistan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.55,
       "awayOdds": 1.81,
       "drawOdds": null
@@ -71,8 +67,6 @@
       "sport": "Cricket",
       "homeTeam": "England",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.83,
       "awayOdds": 1.78,
       "drawOdds": null
@@ -82,8 +76,6 @@
       "sport": "Cricket",
       "homeTeam": "England",
       "awayTeam": "West Indies",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.98,
       "awayOdds": 2.9,
       "drawOdds": null
@@ -93,8 +85,6 @@
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "New York Giants",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.14,
       "awayOdds": 2.01,
       "drawOdds": null
@@ -113,8 +103,6 @@
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "Pakistan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.02,
       "awayOdds": 2.09,
       "drawOdds": null
@@ -124,8 +112,6 @@
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.92,
       "awayOdds": 2.21,
       "drawOdds": null
@@ -135,8 +121,6 @@
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "Manchester United",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.74,
       "awayOdds": 2.48,
       "drawOdds": 4.47
@@ -146,8 +130,6 @@
       "sport": "Soccer",
       "homeTeam": "AC Milan",
       "awayTeam": "Real Madrid",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.65,
       "awayOdds": 1.63,
       "drawOdds": 4.18
@@ -157,8 +139,6 @@
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "PSG",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.94,
       "awayOdds": 2.78,
       "drawOdds": 3.14
@@ -168,8 +148,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "South Africa",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.54,
       "awayOdds": 2.93,
       "drawOdds": null
@@ -188,8 +166,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.87,
       "awayOdds": 2.14,
       "drawOdds": null
@@ -208,8 +184,6 @@
       "sport": "Basketball",
       "homeTeam": "Los Angeles Lakers",
       "awayTeam": "Miami Heat",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.87,
       "awayOdds": 1.82,
       "drawOdds": null
@@ -219,8 +193,6 @@
       "sport": "Cricket",
       "homeTeam": "Sri Lanka",
       "awayTeam": "Pakistan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.51,
       "awayOdds": 2.6,
       "drawOdds": null
@@ -230,8 +202,6 @@
       "sport": "American Football",
       "homeTeam": "Dallas Cowboys",
       "awayTeam": "San Francisco 49ers",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.02,
       "awayOdds": 1.81,
       "drawOdds": null
@@ -241,8 +211,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.41,
       "awayOdds": 2.09,
       "drawOdds": null
@@ -270,8 +238,6 @@
       "sport": "Cricket",
       "homeTeam": "India",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.7,
       "awayOdds": 2.88,
       "drawOdds": null
@@ -290,8 +256,6 @@
       "sport": "Soccer",
       "homeTeam": "AC Milan",
       "awayTeam": "Liverpool",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.36,
       "awayOdds": 2.17,
       "drawOdds": 3.39
@@ -301,8 +265,6 @@
       "sport": "Soccer",
       "homeTeam": "Barcelona",
       "awayTeam": "Arsenal",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.83,
       "awayOdds": 1.85,
       "drawOdds": 3.97
@@ -321,8 +283,6 @@
       "sport": "American Football",
       "homeTeam": "Buffalo Bills",
       "awayTeam": "Dallas Cowboys",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.87,
       "awayOdds": 1.99,
       "drawOdds": null
@@ -341,8 +301,6 @@
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Kansas City Chiefs",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.91,
       "awayOdds": 2.11,
       "drawOdds": null
@@ -352,8 +310,6 @@
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Barcelona",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.63,
       "awayOdds": 1.92,
       "drawOdds": 2.99
@@ -363,8 +319,6 @@
       "sport": "Basketball",
       "homeTeam": "Miami Heat",
       "awayTeam": "Phoenix Suns",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.17,
       "awayOdds": 2.13,
       "drawOdds": null
@@ -374,8 +328,6 @@
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Golden State Warriors",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.9,
       "awayOdds": 2.08,
       "drawOdds": null
@@ -394,8 +346,6 @@
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Golden State Warriors",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.16,
       "awayOdds": 2.04,
       "drawOdds": null
@@ -405,8 +355,6 @@
       "sport": "American Football",
       "homeTeam": "Miami Dolphins",
       "awayTeam": "Buffalo Bills",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.09,
       "awayOdds": 1.85,
       "drawOdds": null
@@ -416,8 +364,6 @@
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "AC Milan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.77,
       "awayOdds": 1.76,
       "drawOdds": 4.28
@@ -427,8 +373,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "Pakistan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.79,
       "awayOdds": 2.0,
       "drawOdds": null
@@ -438,8 +382,6 @@
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "Real Madrid",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.59,
       "awayOdds": 2.76,
       "drawOdds": 3.16
@@ -449,8 +391,6 @@
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Barcelona",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.55,
       "awayOdds": 2.13,
       "drawOdds": 3.95
@@ -460,8 +400,6 @@
       "sport": "Soccer",
       "homeTeam": "AC Milan",
       "awayTeam": "Juventus",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.4,
       "awayOdds": 1.55,
       "drawOdds": 3.13
@@ -471,8 +409,6 @@
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.66,
       "awayOdds": 2.4,
       "drawOdds": null
@@ -482,8 +418,6 @@
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Manchester United",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.24,
       "awayOdds": 2.12,
       "drawOdds": 4.19
@@ -493,8 +427,6 @@
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Phoenix Suns",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.82,
       "awayOdds": 2.19,
       "drawOdds": null
@@ -504,8 +436,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "West Indies",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.88,
       "awayOdds": 2.43,
       "drawOdds": null
@@ -524,8 +454,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.79,
       "awayOdds": 1.54,
       "drawOdds": null
@@ -544,8 +472,6 @@
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Los Angeles Lakers",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.04,
       "awayOdds": 1.86,
       "drawOdds": null
@@ -555,8 +481,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Phoenix Suns",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.16,
       "awayOdds": 1.91,
       "drawOdds": null
@@ -566,8 +490,6 @@
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.19,
       "awayOdds": 2.26,
       "drawOdds": null
@@ -577,8 +499,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Miami Heat",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.14,
       "awayOdds": 2.12,
       "drawOdds": null
@@ -588,8 +508,6 @@
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "England",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.85,
       "awayOdds": 2.35,
       "drawOdds": null
@@ -599,8 +517,6 @@
       "sport": "American Football",
       "homeTeam": "Buffalo Bills",
       "awayTeam": "Cincinnati Bengals",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.03,
       "awayOdds": 1.9,
       "drawOdds": null
@@ -610,8 +526,6 @@
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Chicago Bulls",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.02,
       "awayOdds": 1.87,
       "drawOdds": null
@@ -621,8 +535,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Chicago Bulls",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.1,
       "awayOdds": 1.98,
       "drawOdds": null
@@ -632,8 +544,6 @@
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "Pakistan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.22,
       "awayOdds": 2.95,
       "drawOdds": null
@@ -643,8 +553,6 @@
       "sport": "Basketball",
       "homeTeam": "Milwaukee Bucks",
       "awayTeam": "Miami Heat",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.88,
       "awayOdds": 1.86,
       "drawOdds": null
@@ -654,8 +562,6 @@
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Golden State Warriors",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.82,
       "awayOdds": 2.03,
       "drawOdds": null
@@ -665,8 +571,6 @@
       "sport": "Cricket",
       "homeTeam": "India",
       "awayTeam": "West Indies",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.78,
       "awayOdds": 3.0,
       "drawOdds": null
@@ -676,8 +580,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Miami Heat",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.94,
       "awayOdds": 2.13,
       "drawOdds": null
@@ -705,8 +607,6 @@
       "sport": "Basketball",
       "homeTeam": "Milwaukee Bucks",
       "awayTeam": "Brooklyn Nets",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.0,
       "awayOdds": 1.85,
       "drawOdds": null
@@ -716,8 +616,6 @@
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "South Africa",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.74,
       "awayOdds": 2.91,
       "drawOdds": null
@@ -727,8 +625,6 @@
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Arsenal",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.08,
       "awayOdds": 1.51,
       "drawOdds": 4.11
@@ -738,8 +634,6 @@
       "sport": "Cricket",
       "homeTeam": "Sri Lanka",
       "awayTeam": "West Indies",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.85,
       "awayOdds": 1.71,
       "drawOdds": null
@@ -749,8 +643,6 @@
       "sport": "Cricket",
       "homeTeam": "Sri Lanka",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.69,
       "awayOdds": 2.07,
       "drawOdds": null
@@ -760,8 +652,6 @@
       "sport": "American Football",
       "homeTeam": "Dallas Cowboys",
       "awayTeam": "Buffalo Bills",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.84,
       "awayOdds": 1.92,
       "drawOdds": null
@@ -771,8 +661,6 @@
       "sport": "American Football",
       "homeTeam": "Philadelphia Eagles",
       "awayTeam": "Cincinnati Bengals",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.96,
       "awayOdds": 1.9,
       "drawOdds": null
@@ -782,8 +670,6 @@
       "sport": "Soccer",
       "homeTeam": "Barcelona",
       "awayTeam": "Chelsea",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.94,
       "awayOdds": 1.77,
       "drawOdds": 4.29
@@ -802,8 +688,6 @@
       "sport": "Soccer",
       "homeTeam": "Chelsea",
       "awayTeam": "Real Madrid",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.82,
       "awayOdds": 2.8,
       "drawOdds": 2.83
@@ -813,8 +697,6 @@
       "sport": "Soccer",
       "homeTeam": "Barcelona",
       "awayTeam": "PSG",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.27,
       "awayOdds": 1.85,
       "drawOdds": 2.54
@@ -824,8 +706,6 @@
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "Sri Lanka",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.43,
       "awayOdds": 2.18,
       "drawOdds": null
@@ -844,8 +724,6 @@
       "sport": "American Football",
       "homeTeam": "Philadelphia Eagles",
       "awayTeam": "Buffalo Bills",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.02,
       "awayOdds": 1.83,
       "drawOdds": null
@@ -855,8 +733,6 @@
       "sport": "Basketball",
       "homeTeam": "Milwaukee Bucks",
       "awayTeam": "Brooklyn Nets",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.92,
       "awayOdds": 1.88,
       "drawOdds": null
@@ -866,8 +742,6 @@
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Miami Dolphins",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.95,
       "awayOdds": 2.19,
       "drawOdds": null
@@ -877,8 +751,6 @@
       "sport": "Basketball",
       "homeTeam": "Los Angeles Lakers",
       "awayTeam": "Golden State Warriors",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.87,
       "awayOdds": 1.87,
       "drawOdds": null
@@ -888,8 +760,6 @@
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Bayern Munich",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.95,
       "awayOdds": 1.63,
       "drawOdds": 3.68
@@ -899,8 +769,6 @@
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "Chelsea",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.46,
       "awayOdds": 2.45,
       "drawOdds": 2.58
@@ -910,8 +778,6 @@
       "sport": "Basketball",
       "homeTeam": "Milwaukee Bucks",
       "awayTeam": "Boston Celtics",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.12,
       "awayOdds": 1.93,
       "drawOdds": null
@@ -921,8 +787,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "West Indies",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.86,
       "awayOdds": 1.66,
       "drawOdds": null
@@ -932,8 +796,6 @@
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Philadelphia Eagles",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.14,
       "awayOdds": 1.97,
       "drawOdds": null
@@ -943,8 +805,6 @@
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "New York Giants",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.82,
       "awayOdds": 1.97,
       "drawOdds": null
@@ -963,8 +823,6 @@
       "sport": "American Football",
       "homeTeam": "Miami Dolphins",
       "awayTeam": "Philadelphia Eagles",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.15,
       "awayOdds": 1.85,
       "drawOdds": null
@@ -974,8 +832,6 @@
       "sport": "Cricket",
       "homeTeam": "England",
       "awayTeam": "West Indies",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.68,
       "awayOdds": 2.0,
       "drawOdds": null
@@ -994,8 +850,6 @@
       "sport": "Basketball",
       "homeTeam": "Miami Heat",
       "awayTeam": "Chicago Bulls",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.2,
       "awayOdds": 2.02,
       "drawOdds": null
@@ -1014,8 +868,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "West Indies",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.33,
       "awayOdds": 1.6,
       "drawOdds": null
@@ -1025,8 +877,6 @@
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "Chelsea",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.54,
       "awayOdds": 1.63,
       "drawOdds": 4.16
@@ -1036,8 +886,6 @@
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Milwaukee Bucks",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.1,
       "awayOdds": 1.83,
       "drawOdds": null
@@ -1047,8 +895,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.96,
       "awayOdds": 2.66,
       "drawOdds": null
@@ -1058,8 +904,6 @@
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "San Francisco 49ers",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.19,
       "awayOdds": 2.17,
       "drawOdds": null
@@ -1069,8 +913,6 @@
       "sport": "Basketball",
       "homeTeam": "Los Angeles Lakers",
       "awayTeam": "Golden State Warriors",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.86,
       "awayOdds": 2.12,
       "drawOdds": null
@@ -1080,8 +922,6 @@
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "Chelsea",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.64,
       "awayOdds": 3.0,
       "drawOdds": 4.28
@@ -1100,8 +940,6 @@
       "sport": "Cricket",
       "homeTeam": "Sri Lanka",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.48,
       "awayOdds": 1.63,
       "drawOdds": null
@@ -1111,8 +949,6 @@
       "sport": "Soccer",
       "homeTeam": "Liverpool",
       "awayTeam": "Juventus",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.7,
       "awayOdds": 1.79,
       "drawOdds": 2.99
@@ -1122,8 +958,6 @@
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Philadelphia Eagles",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.08,
       "awayOdds": 2.0,
       "drawOdds": null
@@ -1133,8 +967,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.84,
       "awayOdds": 2.19,
       "drawOdds": null
@@ -1144,8 +976,6 @@
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Miami Heat",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.14,
       "awayOdds": 2.05,
       "drawOdds": null
@@ -1155,8 +985,6 @@
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Brooklyn Nets",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.85,
       "awayOdds": 2.17,
       "drawOdds": null
@@ -1175,8 +1003,6 @@
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Los Angeles Lakers",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.04,
       "awayOdds": 2.02,
       "drawOdds": null
@@ -1186,8 +1012,6 @@
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Barcelona",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.74,
       "awayOdds": 2.82,
       "drawOdds": 3.9
@@ -1197,8 +1021,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Phoenix Suns",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.85,
       "awayOdds": 1.93,
       "drawOdds": null
@@ -1208,8 +1030,6 @@
       "sport": "American Football",
       "homeTeam": "Kansas City Chiefs",
       "awayTeam": "San Francisco 49ers",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.82,
       "awayOdds": 2.08,
       "drawOdds": null
@@ -1219,8 +1039,6 @@
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Golden State Warriors",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.91,
       "awayOdds": 1.96,
       "drawOdds": null
@@ -1230,8 +1048,6 @@
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "Pakistan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.25,
       "awayOdds": 1.85,
       "drawOdds": null
@@ -1241,8 +1057,6 @@
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "AC Milan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.94,
       "awayOdds": 1.88,
       "drawOdds": 3.1
@@ -1252,8 +1066,6 @@
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Phoenix Suns",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.98,
       "awayOdds": 1.93,
       "drawOdds": null
@@ -1263,8 +1075,6 @@
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Phoenix Suns",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.99,
       "awayOdds": 2.13,
       "drawOdds": null
@@ -1283,8 +1093,6 @@
       "sport": "American Football",
       "homeTeam": "Buffalo Bills",
       "awayTeam": "Miami Dolphins",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.99,
       "awayOdds": 2.03,
       "drawOdds": null
@@ -1294,8 +1102,6 @@
       "sport": "Soccer",
       "homeTeam": "Real Madrid",
       "awayTeam": "AC Milan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.9,
       "awayOdds": 2.41,
       "drawOdds": 2.63
@@ -1305,8 +1111,6 @@
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Chicago Bulls",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.83,
       "awayOdds": 2.11,
       "drawOdds": null
@@ -1316,8 +1120,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Phoenix Suns",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.09,
       "awayOdds": 1.89,
       "drawOdds": null
@@ -1327,8 +1129,6 @@
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Miami Dolphins",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.81,
       "awayOdds": 2.2,
       "drawOdds": null
@@ -1338,8 +1138,6 @@
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "South Africa",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.52,
       "awayOdds": 2.12,
       "drawOdds": null
@@ -1349,8 +1147,6 @@
       "sport": "Soccer",
       "homeTeam": "Chelsea",
       "awayTeam": "Juventus",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.91,
       "awayOdds": 2.94,
       "drawOdds": 3.17
@@ -1360,8 +1156,6 @@
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Phoenix Suns",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.17,
       "awayOdds": 1.92,
       "drawOdds": null
@@ -1371,8 +1165,6 @@
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Milwaukee Bucks",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.84,
       "awayOdds": 1.81,
       "drawOdds": null
@@ -1391,8 +1183,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.93,
       "awayOdds": 1.94,
       "drawOdds": null
@@ -1402,8 +1192,6 @@
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Golden State Warriors",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.14,
       "awayOdds": 2.19,
       "drawOdds": null
@@ -1431,8 +1219,6 @@
       "sport": "Soccer",
       "homeTeam": "Real Madrid",
       "awayTeam": "Manchester United",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.61,
       "awayOdds": 2.51,
       "drawOdds": 2.79
@@ -1451,8 +1237,6 @@
       "sport": "Soccer",
       "homeTeam": "Real Madrid",
       "awayTeam": "Barcelona",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.72,
       "awayOdds": 1.92,
       "drawOdds": 4.35
@@ -1471,8 +1255,6 @@
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Miami Dolphins",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.11,
       "awayOdds": 2.15,
       "drawOdds": null
@@ -1482,8 +1264,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "Pakistan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.91,
       "awayOdds": 2.59,
       "drawOdds": null
@@ -1493,8 +1273,6 @@
       "sport": "Basketball",
       "homeTeam": "Miami Heat",
       "awayTeam": "Boston Celtics",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.09,
       "awayOdds": 2.18,
       "drawOdds": null
@@ -1504,8 +1282,6 @@
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Bayern Munich",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.45,
       "awayOdds": 2.55,
       "drawOdds": 4.11
@@ -1515,8 +1291,6 @@
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Miami Heat",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.9,
       "awayOdds": 1.84,
       "drawOdds": null
@@ -1526,8 +1300,6 @@
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "Bayern Munich",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.08,
       "awayOdds": 2.59,
       "drawOdds": 3.67
@@ -1537,8 +1309,6 @@
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "AC Milan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.93,
       "awayOdds": 2.03,
       "drawOdds": 3.14
@@ -1548,8 +1318,6 @@
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Los Angeles Lakers",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.14,
       "awayOdds": 2.13,
       "drawOdds": null
@@ -1568,8 +1336,6 @@
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Dallas Cowboys",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.13,
       "awayOdds": 1.9,
       "drawOdds": null
@@ -1579,8 +1345,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "Sri Lanka",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.74,
       "awayOdds": 2.53,
       "drawOdds": null
@@ -1590,8 +1354,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.23,
       "awayOdds": 1.82,
       "drawOdds": null
@@ -1601,8 +1363,6 @@
       "sport": "Cricket",
       "homeTeam": "India",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.84,
       "awayOdds": 2.57,
       "drawOdds": null
@@ -1612,8 +1372,6 @@
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Los Angeles Lakers",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.81,
       "awayOdds": 2.04,
       "drawOdds": null
@@ -1623,8 +1381,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Brooklyn Nets",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.14,
       "awayOdds": 2.1,
       "drawOdds": null
@@ -1634,8 +1390,6 @@
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "Real Madrid",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.84,
       "awayOdds": 1.77,
       "drawOdds": 4.22
@@ -1645,8 +1399,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.92,
       "awayOdds": 1.97,
       "drawOdds": null
@@ -1665,8 +1417,6 @@
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Kansas City Chiefs",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.14,
       "awayOdds": 1.94,
       "drawOdds": null
@@ -1676,8 +1426,6 @@
       "sport": "American Football",
       "homeTeam": "Dallas Cowboys",
       "awayTeam": "Kansas City Chiefs",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.87,
       "awayOdds": 2.14,
       "drawOdds": null
@@ -1687,8 +1435,6 @@
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "Arsenal",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.7,
       "awayOdds": 1.9,
       "drawOdds": 4.41
@@ -1698,8 +1444,6 @@
       "sport": "Soccer",
       "homeTeam": "Liverpool",
       "awayTeam": "Juventus",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.74,
       "awayOdds": 1.55,
       "drawOdds": 4.2
@@ -1709,8 +1453,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.24,
       "awayOdds": 2.43,
       "drawOdds": null
@@ -1720,8 +1462,6 @@
       "sport": "Basketball",
       "homeTeam": "Los Angeles Lakers",
       "awayTeam": "Milwaukee Bucks",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.91,
       "awayOdds": 1.87,
       "drawOdds": null
@@ -1749,8 +1489,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "Sri Lanka",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.96,
       "awayOdds": 2.83,
       "drawOdds": null
@@ -1760,8 +1498,6 @@
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.85,
       "awayOdds": 2.53,
       "drawOdds": null
@@ -1771,8 +1507,6 @@
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "Sri Lanka",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.03,
       "awayOdds": 2.1,
       "drawOdds": null
@@ -1782,8 +1516,6 @@
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Manchester United",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.91,
       "awayOdds": 2.42,
       "drawOdds": 3.3
@@ -1793,8 +1525,6 @@
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "AC Milan",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.05,
       "awayOdds": 2.0,
       "drawOdds": 2.69
@@ -1804,8 +1534,6 @@
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "Australia",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.95,
       "awayOdds": 2.28,
       "drawOdds": null
@@ -1815,8 +1543,6 @@
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "England",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.24,
       "awayOdds": 2.15,
       "drawOdds": null
@@ -1826,8 +1552,6 @@
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "Arsenal",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.61,
       "awayOdds": 2.36,
       "drawOdds": 4.13
@@ -1837,8 +1561,6 @@
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Chicago Bulls",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.1,
       "awayOdds": 2.12,
       "drawOdds": null
@@ -1848,8 +1570,6 @@
       "sport": "American Football",
       "homeTeam": "Philadelphia Eagles",
       "awayTeam": "New York Giants",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.1,
       "awayOdds": 2.04,
       "drawOdds": null
@@ -1868,8 +1588,6 @@
       "sport": "Soccer",
       "homeTeam": "AC Milan",
       "awayTeam": "Chelsea",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.35,
       "awayOdds": 1.86,
       "drawOdds": 4.43
@@ -1879,8 +1597,6 @@
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Buffalo Bills",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.05,
       "awayOdds": 2.15,
       "drawOdds": null
@@ -1899,8 +1615,6 @@
       "sport": "American Football",
       "homeTeam": "Miami Dolphins",
       "awayTeam": "Kansas City Chiefs",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.01,
       "awayOdds": 2.13,
       "drawOdds": null
@@ -1910,8 +1624,6 @@
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Cincinnati Bengals",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.94,
       "awayOdds": 2.02,
       "drawOdds": null
@@ -1921,8 +1633,6 @@
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Los Angeles Lakers",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.95,
       "awayOdds": 2.02,
       "drawOdds": null
@@ -1932,8 +1642,6 @@
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Liverpool",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.92,
       "awayOdds": 2.59,
       "drawOdds": 3.61
@@ -1943,8 +1651,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "India",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.02,
       "awayOdds": 2.8,
       "drawOdds": null
@@ -1954,8 +1660,6 @@
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "West Indies",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.61,
       "awayOdds": 2.86,
       "drawOdds": null
@@ -2001,8 +1705,6 @@
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "Real Madrid",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.48,
       "awayOdds": 2.81,
       "drawOdds": 2.67
@@ -2012,8 +1714,6 @@
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "Sri Lanka",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.47,
       "awayOdds": 2.58,
       "drawOdds": null
@@ -2023,8 +1723,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.96,
       "awayOdds": 2.07,
       "drawOdds": null
@@ -2034,8 +1732,6 @@
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "Juventus",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.8,
       "awayOdds": 2.41,
       "drawOdds": 3.26
@@ -2045,8 +1741,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.77,
       "awayOdds": 1.95,
       "drawOdds": null
@@ -2056,8 +1750,6 @@
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "England",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.68,
       "awayOdds": 1.8,
       "drawOdds": null
@@ -2067,8 +1759,6 @@
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Kansas City Chiefs",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.13,
       "awayOdds": 1.89,
       "drawOdds": null
@@ -2078,8 +1768,6 @@
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "Sri Lanka",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.68,
       "awayOdds": 2.91,
       "drawOdds": null
@@ -2089,8 +1777,6 @@
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "Juventus",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.88,
       "awayOdds": 2.08,
       "drawOdds": 3.65
@@ -2100,8 +1786,6 @@
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 1.95,
       "awayOdds": 2.09,
       "drawOdds": null
@@ -2111,8 +1795,6 @@
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "New Zealand",
-      "homePlayer": null,
-      "awayPlayer": null,
       "homeOdds": 2.27,
       "awayOdds": 1.87,
       "drawOdds": null
