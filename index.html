@@ -54,36 +54,20 @@
                     <div class="card-header bg-primary text-white">
                         <h5 class="mb-0"><i class="fas fa-futbol"></i> Today's Matches</h5>
                     </div>
-                    <div class="card-body">
-                        <!-- Match Row -->
-                        <!-- <div class="match-row border-bottom p-3">
+                    <div class="card-body" id="matches-container">
+                        <!-- Dynamic Match Row Template -->
+                        <div class="match-row border-bottom p-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="teams">
-                                    <h6>Manchester United vs Liverpool</h6>
-                                    <small class="text-muted">Today 20:45</small>
+                                    <h6><span class="sport-type badge bg-info me-2"></span><span class="team-names"></span></h6>
                                 </div>
                                 <div class="odds d-flex gap-2">
-                                    <button class="btn btn-outline-primary">Home 2.10</button>
-                                    <button class="btn btn-outline-primary">Draw 3.40</button>
-                                    <button class="btn btn-outline-primary">Away 3.20</button>
+                                    <button class="btn btn-outline-primary home-odds"></button>
+                                    <button class="btn btn-outline-primary draw-odds"></button>
+                                    <button class="btn btn-outline-primary away-odds"></button>
                                 </div>
                             </div>
-                        </div> -->
-
-                        <!-- More Match Rows -->
-                        <!-- <div class="match-row border-bottom p-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="teams">
-                                    <h6>Real Madrid vs Barcelona</h6>
-                                    <small class="text-muted">Today 21:00</small>
-                                </div>
-                                <div class="odds d-flex gap-2">
-                                    <button class="btn btn-outline-primary">Home 1.90</button>
-                                    <button class="btn btn-outline-primary">Draw 3.50</button>
-                                    <button class="btn btn-outline-primary">Away 3.80</button>
-                                </div>
-                            </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
