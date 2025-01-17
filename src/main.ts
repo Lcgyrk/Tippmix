@@ -4,187 +4,170 @@ interface Bet {
     homeTeam: string;
     awayTeam: string;
     homeOdds: number;
-    awayOdds: number;
     drawOdds: number;
+    awayOdds: number;
 }
 
-interface BetSelection {
-    bet: Bet;
-    type: 'home' | 'draw' | 'away';
-    odds: number;
+interface ShopItem {
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    image: string;
 }
 
-class BettingUI {
-    private readonly matchesContainer: HTMLElement;
-    private readonly selectedBetsContainer: HTMLElement;
-    private readonly stakeInput: HTMLInputElement;
-    private readonly potentialWinElement: HTMLElement;
-    private selectedBets: Map<number, BetSelection> = new Map();
+interface CartItem extends ShopItem {
+    quantity: number;
+}
+
+class TippmixApp {
+    private bettingSection: HTMLElement;
+    private shopSection: HTMLElement;
+    private userCredits: number = 1000;
+    private cart: CartItem[] = [];
+    private selectedBets: Map<number, Bet> = new Map();
 
     constructor() {
-        this.matchesContainer = document.getElementById('matches-container') as HTMLElement;
-        this.selectedBetsContainer = document.getElementById('selected-bets') as HTMLElement;
-        this.stakeInput = document.querySelector('input[type="number"]') as HTMLInputElement;
-        this.potentialWinElement = document.getElementById('potential-win') as HTMLElement;
-        
-        if (!this.validateElements()) {
-            throw new Error('Required DOM elements not found');
-        }
-
-        this.initializeUI();
+        this.bettingSection = document.getElementById('bettingSection') as HTMLElement;
+        this.shopSection = document.getElementById('shopSection') as HTMLElement;
+        this.initializeApp();
     }
 
-    private validateElements(): boolean {
-        return !!(this.matchesContainer && 
-                 this.selectedBetsContainer && 
-                 this.stakeInput && 
-                 this.potentialWinElement);
-    }
-
-    private initializeUI(): void {
+    private initializeApp(): void {
+        this.setupNavigation();
+        this.loadBettingData();
+        this.loadShopItems();
         this.setupEventListeners();
-        this.loadBets();
+        this.updateCreditsDisplay();
     }
 
-    private async loadBets(): Promise<void> {
-        try {
-            const response = await fetch('/api/bets');
-            const bets: Bet[] = await response.json();
-            this.renderMatches(bets);
-        } catch (error) {
-            console.error('Failed to load bets:', error);
-        }
+    private setupNavigation(): void {
+        document.getElementById('bettingTab')?.addEventListener('click', () => this.showSection('betting'));
+        document.getElementById('shopTab')?.addEventListener('click', () => this.showSection('shop'));
     }
 
-    private renderMatches(bets: Bet[]): void {
-        this.matchesContainer.innerHTML = '';
-        bets.forEach(bet => {
-            const matchElement = this.createMatchElement(bet);
-            this.matchesContainer.appendChild(matchElement);
-        });
+    private showSection(section: 'betting' | 'shop'): void {
+        this.bettingSection.classList.toggle('d-none', section !== 'betting');
+        this.shopSection.classList.toggle('d-none', section !== 'shop');
     }
 
-    private createMatchElement(bet: Bet): HTMLElement {
-        const matchDiv = document.createElement('div');
-        matchDiv.className = 'match-row border-bottom p-3';
-        
-        const odds = {
-            home: this.formatOdds(bet.homeOdds),
-            draw: this.formatOdds(bet.drawOdds),
-            away: this.formatOdds(bet.awayOdds)
-        };
-        
-        matchDiv.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="teams">
-                    <h6>
-                        <span class="sport-type badge bg-info me-2">${this.escapeHtml(bet.sport)}</span>
-                        <span class="team-names">${this.escapeHtml(bet.homeTeam)} vs ${this.escapeHtml(bet.awayTeam)}</span>
-                    </h6>
-                </div>
-                <div class="odds d-flex gap-2">
-                    <button class="btn btn-outline-primary home-odds" data-bet-id="${bet.id}" data-type="home">${odds.home}</button>
-                    <button class="btn btn-outline-primary draw-odds" data-bet-id="${bet.id}" data-type="draw">${odds.draw}</button>
-                    <button class="btn btn-outline-primary away-odds" data-bet-id="${bet.id}" data-type="away">${odds.away}</button>
+    private async loadBettingData(): Promise<void> {
+        const mockBets: Bet[] = [
+            {
+                id: 1,
+                sport: "Football",
+                homeTeam: "Manchester United",
+                awayTeam: "Liverpool",
+                homeOdds: 2.1,
+                drawOdds: 3.4,
+                awayOdds: 3.2
+            },
+            // Add more mock bets
+        ];
+        this.renderBets(mockBets);
+    }
+
+    private async loadShopItems(): Promise<void> {
+        const mockItems: ShopItem[] = [
+            {
+                id: 1,
+                name: "Premium Betting Tips",
+                price: 50,
+                description: "Get exclusive betting tips from experts",
+                image: "tips.jpg"
+            },
+            // Add more mock items
+        ];
+        this.renderShopItems(mockItems);
+    }
+
+    private renderBets(bets: Bet[]): void {
+        const container = document.getElementById('matches-container');
+        if (!container) return;
+
+        container.innerHTML = bets.map(bet => `
+            <div class="match-row border-bottom p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="teams">
+                        <h6>
+                            <span class="sport-type badge bg-info me-2">${bet.sport}</span>
+                            <span>${bet.homeTeam} vs ${bet.awayTeam}</span>
+                        </h6>
+                    </div>
+                    <div class="odds d-flex gap-2">
+                        <button class="btn btn-outline-primary" data-bet-id="${bet.id}" data-type="home">${bet.homeOdds}</button>
+                        <button class="btn btn-outline-primary" data-bet-id="${bet.id}" data-type="draw">${bet.drawOdds}</button>
+                        <button class="btn btn-outline-primary" data-bet-id="${bet.id}" data-type="away">${bet.awayOdds}</button>
+                    </div>
                 </div>
             </div>
-        `;
+        `).join('');
+    }
 
-        return matchDiv;
+    private renderShopItems(items: ShopItem[]): void {
+        const container = document.getElementById('shopItemsContainer');
+        if (!container) return;
+
+        container.innerHTML = items.map(item => `
+            <div class="col">
+                <div class="card h-100">
+                    <img src="${item.image}" class="card-img-top" alt="${item.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.name}</h5>
+                        <p class="card-text">${item.description}</p>
+                        <p class="card-text"><strong>Price: ${item.price}</strong></p>
+                        <button class="btn btn-primary" data-item-id="${item.id}">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
     }
 
     private setupEventListeners(): void {
-        this.matchesContainer.addEventListener('click', this.handleBetClick.bind(this));
-        this.stakeInput.addEventListener('input', this.handleStakeChange.bind(this));
-    }
-
-    private handleBetClick(event: Event): void {
-        const target = event.target as HTMLElement;
-        if (!target.matches('button[data-bet-id]')) return;
-
-        const betId = Number(target.dataset.betId);
-        const betType = target.dataset.type as 'home' | 'draw' | 'away';
-        
-        this.toggleBetSelection(betId, betType, target);
-    }
-
-    private toggleBetSelection(betId: number, type: 'home' | 'draw' | 'away', button: HTMLElement): void {
-        if (this.selectedBets.has(betId)) {
-            this.selectedBets.delete(betId);
-            button.classList.remove('active');
-        } else {
-            // Add new selection
-            const bet = this.getBetById(betId);
-            if (bet) {
-                const odds = type === 'home' ? bet.homeOdds : type === 'draw' ? bet.drawOdds : bet.awayOdds;
-                this.selectedBets.set(betId, { bet, type, odds });
-                button.classList.add('active');
+        // Betting events
+        document.getElementById('matches-container')?.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            if (target.matches('button[data-bet-id]')) {
+                this.handleBetSelection(target);
             }
+        });
+
+        // Shop events
+        document.getElementById('shopItemsContainer')?.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            if (target.matches('button[data-item-id]')) {
+                this.handleAddToCart(target);
+            }
+        });
+
+        // Checkout event
+        document.getElementById('checkoutButton')?.addEventListener('click', () => this.handleCheckout());
+    }
+
+    private handleBetSelection(button: HTMLElement): void {
+        const betId = Number(button.dataset.betId);
+        const betType = button.dataset.type;
+        // Implement bet selection logic
+    }
+
+    private handleAddToCart(button: HTMLElement): void {
+        const itemId = Number(button.dataset.itemId);
+        // Implement add to cart logic
+    }
+
+    private handleCheckout(): void {
+        // Implement checkout logic
+    }
+
+    private updateCreditsDisplay(): void {
+        const creditsElement = document.getElementById('userCredits');
+        if (creditsElement) {
+            creditsElement.textContent = this.userCredits.toString();
         }
-
-        this.updateBettingSlip();
-    }
-
-    private getBetById(id: number): Bet | undefined {
-        // Implementation depends on how you store/access bets
-        return undefined; // Replace with actual implementation
-    }
-
-    private updateBettingSlip(): void {
-        this.selectedBetsContainer.innerHTML = '';
-        this.selectedBets.forEach(selection => {
-            const betElement = this.createBetSlipElement(selection);
-            this.selectedBetsContainer.appendChild(betElement);
-        });
-
-        this.calculatePotentialWin();
-    }
-
-    private createBetSlipElement(selection: BetSelection): HTMLElement {
-        const div = document.createElement('div');
-        div.className = 'selected-bet p-2 border-bottom';
-        div.innerHTML = `
-            <div class="d-flex justify-content-between">
-                <div>${this.escapeHtml(selection.bet.homeTeam)} vs ${this.escapeHtml(selection.bet.awayTeam)}</div>
-                <div>${this.formatOdds(selection.odds)}</div>
-            </div>
-            <div class="small text-muted">${selection.type.toUpperCase()}</div>
-        `;
-        return div;
-    }
-
-    private calculatePotentialWin(): void {
-        const stake = Number(this.stakeInput.value) || 0;
-        let totalOdds = 1;
-        
-        this.selectedBets.forEach(selection => {
-            totalOdds *= selection.odds;
-        });
-
-        const potentialWin = stake * totalOdds;
-        this.potentialWinElement.textContent = this.formatCurrency(potentialWin);
-    }
-
-    private handleStakeChange(): void {
-        this.calculatePotentialWin();
-    }
-
-    private formatOdds(odds: number): string {
-        return odds.toFixed(2);
-    }
-
-    private formatCurrency(amount: number): string {
-        return `${amount.toFixed(2)}`;
-    }
-
-    private escapeHtml(str: string): string {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
     }
 }
 
-// Initialize the betting UI when the DOM is loaded
+// Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
-    new BettingUI();
+    new TippmixApp();
 });
