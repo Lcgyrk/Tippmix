@@ -1,4 +1,4 @@
-import { Bet } from "types.ts";
+import { Bet } from "readFile.js";
 
 const matchesContainer = document.getElementById("matches-container") as HTMLElement;
 
