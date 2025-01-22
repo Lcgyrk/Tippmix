@@ -1,4 +1,4 @@
-import { User } from "types.ts";
+import { User } from "readFile.js";
 
 async function fetchUser(): Promise<User> {
     const response = await fetch("./data.json");

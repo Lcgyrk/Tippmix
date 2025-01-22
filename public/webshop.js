@@ -7,31 +7,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const matchesContainer = document.getElementById("matches-container");
-function fetchBets() {
+function fetchUser() {
     return __awaiter(this, void 0, void 0, function* () {
         const response = yield fetch("./data.json");
         const data = yield response.json();
-        return data.bets;
-    });
-}
-function displayBets(bets) {
-    matchesContainer.innerHTML = "";
-    bets.forEach((bet) => {
-        const matchDiv = document.createElement("div");
-        matchDiv.classList.add("match-card");
-        matchDiv.innerHTML = `
-            <h5>${bet.homeTeam} vs. ${bet.awayTeam}</h5>
-            <p>Odds: Home ${bet.homeOdds}, Away ${bet.awayOdds}, ${bet.drawOdds ? `Draw ${bet.drawOdds}` : ""}</p>
-            <button class="btn btn-primary" onclick="selectBet(${bet.id})">Select</button>
-        `;
-        matchesContainer.appendChild(matchDiv);
+        return data.users[0];
     });
 }
 function init() {
     return __awaiter(this, void 0, void 0, function* () {
-        const bets = yield fetchBets();
-        displayBets(bets);
+        var _a;
+        const user = yield fetchUser();
+        const balanceElement = document.getElementById("userBalance");
+        balanceElement.textContent = ((_a = user.credits) === null || _a === void 0 ? void 0 : _a.toString()) || "0";
     });
 }
 init();
