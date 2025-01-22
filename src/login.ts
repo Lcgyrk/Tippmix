@@ -7,6 +7,7 @@ interface user {
     name: string;
     email: string;
     password: string;
+    credits: number;
 }
 
 let users: user[] = [];
@@ -31,7 +32,7 @@ async function Registration(){
     let name = registrationName.value;
     let email = registrationEmail.value;
     let password = registrationPassword.value;
-
+    let credits = 100;
 
 
     if (users.find(user => user.name === name)) {
@@ -43,7 +44,8 @@ async function Registration(){
         id: id,
         name: name,
         email: email,
-        password: password
+        password: password,
+        credits: credits
     }
 
     users.push(user);
