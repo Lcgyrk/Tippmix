@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "admin",
       "email": "admin@email.com",
       "password": "admin"
@@ -9,7 +9,7 @@
   ],
   "bets": [
     {
-      "id": 1,
+      "id": "1",
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Chicago Bulls",
@@ -18,7 +18,7 @@
       "drawOdds": null
     },
     {
-      "id": 2,
+      "id": "2",
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Manchester United",
@@ -27,7 +27,7 @@
       "drawOdds": 3.59
     },
     {
-      "id": 3,
+      "id": "3",
       "sport": "American Football",
       "homeTeam": "New York Giants",
       "awayTeam": "Miami Dolphins",
@@ -36,7 +36,7 @@
       "drawOdds": null
     },
     {
-      "id": 4,
+      "id": "4",
       "sport": "American Football",
       "homeTeam": "Buffalo Bills",
       "awayTeam": "New York Giants",
@@ -45,7 +45,7 @@
       "drawOdds": null
     },
     {
-      "id": 5,
+      "id": "5",
       "sport": "Cricket",
       "homeTeam": "India",
       "awayTeam": "Pakistan",
@@ -54,7 +54,7 @@
       "drawOdds": null
     },
     {
-      "id": 6,
+      "id": "6",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "Pakistan",
@@ -63,7 +63,7 @@
       "drawOdds": null
     },
     {
-      "id": 7,
+      "id": "7",
       "sport": "Cricket",
       "homeTeam": "England",
       "awayTeam": "India",
@@ -72,7 +72,7 @@
       "drawOdds": null
     },
     {
-      "id": 8,
+      "id": "8",
       "sport": "Cricket",
       "homeTeam": "England",
       "awayTeam": "West Indies",
@@ -81,7 +81,7 @@
       "drawOdds": null
     },
     {
-      "id": 9,
+      "id": "9",
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "New York Giants",
@@ -90,7 +90,7 @@
       "drawOdds": null
     },
     {
-      "id": 10,
+      "id": "10",
       "sport": "Tennis",
       "homeTeam": "Elena Rybakina",
       "awayTeam": "Ons Jabeur",
@@ -99,7 +99,7 @@
       "drawOdds": null
     },
     {
-      "id": 11,
+      "id": "11",
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "Pakistan",
@@ -108,7 +108,7 @@
       "drawOdds": null
     },
     {
-      "id": 12,
+      "id": "12",
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "India",
@@ -117,7 +117,7 @@
       "drawOdds": null
     },
     {
-      "id": 13,
+      "id": "13",
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "Manchester United",
@@ -126,7 +126,7 @@
       "drawOdds": 4.47
     },
     {
-      "id": 14,
+      "id": "14",
       "sport": "Soccer",
       "homeTeam": "AC Milan",
       "awayTeam": "Real Madrid",
@@ -135,7 +135,7 @@
       "drawOdds": 4.18
     },
     {
-      "id": 15,
+      "id": "15",
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "PSG",
@@ -144,7 +144,7 @@
       "drawOdds": 3.14
     },
     {
-      "id": 16,
+      "id": "16",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "South Africa",
@@ -153,7 +153,7 @@
       "drawOdds": null
     },
     {
-      "id": 17,
+      "id": "17",
       "sport": "Tennis",
       "homeTeam": "Iga Swiatek",
       "awayTeam": "Carlos Alcaraz",
@@ -162,7 +162,7 @@
       "drawOdds": null
     },
     {
-      "id": 18,
+      "id": "18",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "New Zealand",
@@ -171,7 +171,7 @@
       "drawOdds": null
     },
     {
-      "id": 19,
+      "id": "19",
       "sport": "Tennis",
       "homeTeam": "Iga Swiatek",
       "awayTeam": "Aryna Sabalenka",
@@ -180,7 +180,7 @@
       "drawOdds": null
     },
     {
-      "id": 20,
+      "id": "20",
       "sport": "Basketball",
       "homeTeam": "Los Angeles Lakers",
       "awayTeam": "Miami Heat",
@@ -189,7 +189,7 @@
       "drawOdds": null
     },
     {
-      "id": 21,
+      "id": "21",
       "sport": "Cricket",
       "homeTeam": "Sri Lanka",
       "awayTeam": "Pakistan",
@@ -198,7 +198,7 @@
       "drawOdds": null
     },
     {
-      "id": 22,
+      "id": "22",
       "sport": "American Football",
       "homeTeam": "Dallas Cowboys",
       "awayTeam": "San Francisco 49ers",
@@ -207,7 +207,7 @@
       "drawOdds": null
     },
     {
-      "id": 23,
+      "id": "23",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "India",
@@ -216,7 +216,7 @@
       "drawOdds": null
     },
     {
-      "id": 24,
+      "id": "24",
       "sport": "Tennis",
       "homeTeam": "Rafael Nadal",
       "awayTeam": "Iga Swiatek",
@@ -225,7 +225,7 @@
       "drawOdds": null
     },
     {
-      "id": 25,
+      "id": "25",
       "sport": "Tennis",
       "homeTeam": "Aryna Sabalenka",
       "awayTeam": "Carlos Alcaraz",
@@ -234,7 +234,7 @@
       "drawOdds": null
     },
     {
-      "id": 26,
+      "id": "26",
       "sport": "Cricket",
       "homeTeam": "India",
       "awayTeam": "New Zealand",
@@ -243,7 +243,7 @@
       "drawOdds": null
     },
     {
-      "id": 27,
+      "id": "27",
       "sport": "Tennis",
       "homeTeam": "Aryna Sabalenka",
       "awayTeam": "Elena Rybakina",
@@ -252,7 +252,7 @@
       "drawOdds": null
     },
     {
-      "id": 28,
+      "id": "28",
       "sport": "Soccer",
       "homeTeam": "AC Milan",
       "awayTeam": "Liverpool",
@@ -261,7 +261,7 @@
       "drawOdds": 3.39
     },
     {
-      "id": 29,
+      "id": "29",
       "sport": "Soccer",
       "homeTeam": "Barcelona",
       "awayTeam": "Arsenal",
@@ -270,7 +270,7 @@
       "drawOdds": 3.97
     },
     {
-      "id": 30,
+      "id": "30",
       "sport": "Tennis",
       "homeTeam": "Carlos Alcaraz",
       "awayTeam": "Ons Jabeur",
@@ -279,7 +279,7 @@
       "drawOdds": null
     },
     {
-      "id": 31,
+      "id": "31",
       "sport": "American Football",
       "homeTeam": "Buffalo Bills",
       "awayTeam": "Dallas Cowboys",
@@ -288,7 +288,7 @@
       "drawOdds": null
     },
     {
-      "id": 32,
+      "id": "32",
       "sport": "Tennis",
       "homeTeam": "Carlos Alcaraz",
       "awayTeam": "Roger Federer",
@@ -297,7 +297,7 @@
       "drawOdds": null
     },
     {
-      "id": 33,
+      "id": "33",
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Kansas City Chiefs",
@@ -306,7 +306,7 @@
       "drawOdds": null
     },
     {
-      "id": 34,
+      "id": "34",
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Barcelona",
@@ -315,7 +315,7 @@
       "drawOdds": 2.99
     },
     {
-      "id": 35,
+      "id": "35",
       "sport": "Basketball",
       "homeTeam": "Miami Heat",
       "awayTeam": "Phoenix Suns",
@@ -324,7 +324,7 @@
       "drawOdds": null
     },
     {
-      "id": 36,
+      "id": "36",
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Golden State Warriors",
@@ -333,7 +333,7 @@
       "drawOdds": null
     },
     {
-      "id": 37,
+      "id": "37",
       "sport": "Tennis",
       "homeTeam": "Rafael Nadal",
       "awayTeam": "Novak Djokovic",
@@ -342,7 +342,7 @@
       "drawOdds": null
     },
     {
-      "id": 38,
+      "id": "38",
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Golden State Warriors",
@@ -351,7 +351,7 @@
       "drawOdds": null
     },
     {
-      "id": 39,
+      "id": "39",
       "sport": "American Football",
       "homeTeam": "Miami Dolphins",
       "awayTeam": "Buffalo Bills",
@@ -360,7 +360,7 @@
       "drawOdds": null
     },
     {
-      "id": 40,
+      "id": "40",
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "AC Milan",
@@ -369,16 +369,16 @@
       "drawOdds": 4.28
     },
     {
-      "id": 41,
+      "id": "41",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "Pakistan",
       "homeOdds": 2.79,
-      "awayOdds": 2.0,
+      "awayOdds": 2,
       "drawOdds": null
     },
     {
-      "id": 42,
+      "id": "42",
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "Real Madrid",
@@ -387,7 +387,7 @@
       "drawOdds": 3.16
     },
     {
-      "id": 43,
+      "id": "43",
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Barcelona",
@@ -396,7 +396,7 @@
       "drawOdds": 3.95
     },
     {
-      "id": 44,
+      "id": "44",
       "sport": "Soccer",
       "homeTeam": "AC Milan",
       "awayTeam": "Juventus",
@@ -405,7 +405,7 @@
       "drawOdds": 3.13
     },
     {
-      "id": 45,
+      "id": "45",
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "New Zealand",
@@ -414,7 +414,7 @@
       "drawOdds": null
     },
     {
-      "id": 46,
+      "id": "46",
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Manchester United",
@@ -423,7 +423,7 @@
       "drawOdds": 4.19
     },
     {
-      "id": 47,
+      "id": "47",
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Phoenix Suns",
@@ -432,7 +432,7 @@
       "drawOdds": null
     },
     {
-      "id": 48,
+      "id": "48",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "West Indies",
@@ -441,7 +441,7 @@
       "drawOdds": null
     },
     {
-      "id": 49,
+      "id": "49",
       "sport": "Tennis",
       "homeTeam": "Elena Rybakina",
       "awayTeam": "Ons Jabeur",
@@ -450,7 +450,7 @@
       "drawOdds": null
     },
     {
-      "id": 50,
+      "id": "50",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "New Zealand",
@@ -459,7 +459,7 @@
       "drawOdds": null
     },
     {
-      "id": 51,
+      "id": "51",
       "sport": "Tennis",
       "homeTeam": "Elena Rybakina",
       "awayTeam": "Iga Swiatek",
@@ -468,7 +468,7 @@
       "drawOdds": null
     },
     {
-      "id": 52,
+      "id": "52",
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Los Angeles Lakers",
@@ -477,7 +477,7 @@
       "drawOdds": null
     },
     {
-      "id": 53,
+      "id": "53",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Phoenix Suns",
@@ -486,7 +486,7 @@
       "drawOdds": null
     },
     {
-      "id": 54,
+      "id": "54",
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "India",
@@ -495,7 +495,7 @@
       "drawOdds": null
     },
     {
-      "id": 55,
+      "id": "55",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Miami Heat",
@@ -504,7 +504,7 @@
       "drawOdds": null
     },
     {
-      "id": 56,
+      "id": "56",
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "England",
@@ -513,7 +513,7 @@
       "drawOdds": null
     },
     {
-      "id": 57,
+      "id": "57",
       "sport": "American Football",
       "homeTeam": "Buffalo Bills",
       "awayTeam": "Cincinnati Bengals",
@@ -522,7 +522,7 @@
       "drawOdds": null
     },
     {
-      "id": 58,
+      "id": "58",
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Chicago Bulls",
@@ -531,7 +531,7 @@
       "drawOdds": null
     },
     {
-      "id": 59,
+      "id": "59",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Chicago Bulls",
@@ -540,7 +540,7 @@
       "drawOdds": null
     },
     {
-      "id": 60,
+      "id": "60",
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "Pakistan",
@@ -549,7 +549,7 @@
       "drawOdds": null
     },
     {
-      "id": 61,
+      "id": "61",
       "sport": "Basketball",
       "homeTeam": "Milwaukee Bucks",
       "awayTeam": "Miami Heat",
@@ -558,7 +558,7 @@
       "drawOdds": null
     },
     {
-      "id": 62,
+      "id": "62",
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Golden State Warriors",
@@ -567,16 +567,16 @@
       "drawOdds": null
     },
     {
-      "id": 63,
+      "id": "63",
       "sport": "Cricket",
       "homeTeam": "India",
       "awayTeam": "West Indies",
       "homeOdds": 2.78,
-      "awayOdds": 3.0,
+      "awayOdds": 3,
       "drawOdds": null
     },
     {
-      "id": 64,
+      "id": "64",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Miami Heat",
@@ -585,7 +585,7 @@
       "drawOdds": null
     },
     {
-      "id": 65,
+      "id": "65",
       "sport": "Tennis",
       "homeTeam": "Novak Djokovic",
       "awayTeam": "Aryna Sabalenka",
@@ -594,7 +594,7 @@
       "drawOdds": null
     },
     {
-      "id": 66,
+      "id": "66",
       "sport": "Tennis",
       "homeTeam": "Roger Federer",
       "awayTeam": "Carlos Alcaraz",
@@ -603,16 +603,16 @@
       "drawOdds": null
     },
     {
-      "id": 67,
+      "id": "67",
       "sport": "Basketball",
       "homeTeam": "Milwaukee Bucks",
       "awayTeam": "Brooklyn Nets",
-      "homeOdds": 2.0,
+      "homeOdds": 2,
       "awayOdds": 1.85,
       "drawOdds": null
     },
     {
-      "id": 68,
+      "id": "68",
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "South Africa",
@@ -621,7 +621,7 @@
       "drawOdds": null
     },
     {
-      "id": 69,
+      "id": "69",
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Arsenal",
@@ -630,7 +630,7 @@
       "drawOdds": 4.11
     },
     {
-      "id": 70,
+      "id": "70",
       "sport": "Cricket",
       "homeTeam": "Sri Lanka",
       "awayTeam": "West Indies",
@@ -639,7 +639,7 @@
       "drawOdds": null
     },
     {
-      "id": 71,
+      "id": "71",
       "sport": "Cricket",
       "homeTeam": "Sri Lanka",
       "awayTeam": "India",
@@ -648,7 +648,7 @@
       "drawOdds": null
     },
     {
-      "id": 72,
+      "id": "72",
       "sport": "American Football",
       "homeTeam": "Dallas Cowboys",
       "awayTeam": "Buffalo Bills",
@@ -657,7 +657,7 @@
       "drawOdds": null
     },
     {
-      "id": 73,
+      "id": "73",
       "sport": "American Football",
       "homeTeam": "Philadelphia Eagles",
       "awayTeam": "Cincinnati Bengals",
@@ -666,7 +666,7 @@
       "drawOdds": null
     },
     {
-      "id": 74,
+      "id": "74",
       "sport": "Soccer",
       "homeTeam": "Barcelona",
       "awayTeam": "Chelsea",
@@ -675,7 +675,7 @@
       "drawOdds": 4.29
     },
     {
-      "id": 75,
+      "id": "75",
       "sport": "Tennis",
       "homeTeam": "Rafael Nadal",
       "awayTeam": "Iga Swiatek",
@@ -684,7 +684,7 @@
       "drawOdds": null
     },
     {
-      "id": 76,
+      "id": "76",
       "sport": "Soccer",
       "homeTeam": "Chelsea",
       "awayTeam": "Real Madrid",
@@ -693,7 +693,7 @@
       "drawOdds": 2.83
     },
     {
-      "id": 77,
+      "id": "77",
       "sport": "Soccer",
       "homeTeam": "Barcelona",
       "awayTeam": "PSG",
@@ -702,7 +702,7 @@
       "drawOdds": 2.54
     },
     {
-      "id": 78,
+      "id": "78",
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "Sri Lanka",
@@ -711,7 +711,7 @@
       "drawOdds": null
     },
     {
-      "id": 79,
+      "id": "79",
       "sport": "Tennis",
       "homeTeam": "Roger Federer",
       "awayTeam": "Elena Rybakina",
@@ -720,7 +720,7 @@
       "drawOdds": null
     },
     {
-      "id": 80,
+      "id": "80",
       "sport": "American Football",
       "homeTeam": "Philadelphia Eagles",
       "awayTeam": "Buffalo Bills",
@@ -729,7 +729,7 @@
       "drawOdds": null
     },
     {
-      "id": 81,
+      "id": "81",
       "sport": "Basketball",
       "homeTeam": "Milwaukee Bucks",
       "awayTeam": "Brooklyn Nets",
@@ -738,7 +738,7 @@
       "drawOdds": null
     },
     {
-      "id": 82,
+      "id": "82",
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Miami Dolphins",
@@ -747,7 +747,7 @@
       "drawOdds": null
     },
     {
-      "id": 83,
+      "id": "83",
       "sport": "Basketball",
       "homeTeam": "Los Angeles Lakers",
       "awayTeam": "Golden State Warriors",
@@ -756,7 +756,7 @@
       "drawOdds": null
     },
     {
-      "id": 84,
+      "id": "84",
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "Bayern Munich",
@@ -765,7 +765,7 @@
       "drawOdds": 3.68
     },
     {
-      "id": 85,
+      "id": "85",
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "Chelsea",
@@ -774,7 +774,7 @@
       "drawOdds": 2.58
     },
     {
-      "id": 86,
+      "id": "86",
       "sport": "Basketball",
       "homeTeam": "Milwaukee Bucks",
       "awayTeam": "Boston Celtics",
@@ -783,7 +783,7 @@
       "drawOdds": null
     },
     {
-      "id": 87,
+      "id": "87",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "West Indies",
@@ -792,7 +792,7 @@
       "drawOdds": null
     },
     {
-      "id": 88,
+      "id": "88",
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Philadelphia Eagles",
@@ -801,7 +801,7 @@
       "drawOdds": null
     },
     {
-      "id": 89,
+      "id": "89",
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "New York Giants",
@@ -810,7 +810,7 @@
       "drawOdds": null
     },
     {
-      "id": 90,
+      "id": "90",
       "sport": "Tennis",
       "homeTeam": "Roger Federer",
       "awayTeam": "Aryna Sabalenka",
@@ -819,7 +819,7 @@
       "drawOdds": null
     },
     {
-      "id": 91,
+      "id": "91",
       "sport": "American Football",
       "homeTeam": "Miami Dolphins",
       "awayTeam": "Philadelphia Eagles",
@@ -828,16 +828,16 @@
       "drawOdds": null
     },
     {
-      "id": 92,
+      "id": "92",
       "sport": "Cricket",
       "homeTeam": "England",
       "awayTeam": "West Indies",
       "homeOdds": 1.68,
-      "awayOdds": 2.0,
+      "awayOdds": 2,
       "drawOdds": null
     },
     {
-      "id": 93,
+      "id": "93",
       "sport": "Tennis",
       "homeTeam": "Aryna Sabalenka",
       "awayTeam": "Roger Federer",
@@ -846,7 +846,7 @@
       "drawOdds": null
     },
     {
-      "id": 94,
+      "id": "94",
       "sport": "Basketball",
       "homeTeam": "Miami Heat",
       "awayTeam": "Chicago Bulls",
@@ -855,7 +855,7 @@
       "drawOdds": null
     },
     {
-      "id": 95,
+      "id": "95",
       "sport": "Tennis",
       "homeTeam": "Elena Rybakina",
       "awayTeam": "Iga Swiatek",
@@ -864,7 +864,7 @@
       "drawOdds": null
     },
     {
-      "id": 96,
+      "id": "96",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "West Indies",
@@ -873,7 +873,7 @@
       "drawOdds": null
     },
     {
-      "id": 97,
+      "id": "97",
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "Chelsea",
@@ -882,7 +882,7 @@
       "drawOdds": 4.16
     },
     {
-      "id": 98,
+      "id": "98",
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Milwaukee Bucks",
@@ -891,7 +891,7 @@
       "drawOdds": null
     },
     {
-      "id": 99,
+      "id": "99",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "New Zealand",
@@ -900,7 +900,7 @@
       "drawOdds": null
     },
     {
-      "id": 100,
+      "id": "100",
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "San Francisco 49ers",
@@ -909,7 +909,7 @@
       "drawOdds": null
     },
     {
-      "id": 101,
+      "id": "101",
       "sport": "Basketball",
       "homeTeam": "Los Angeles Lakers",
       "awayTeam": "Golden State Warriors",
@@ -918,16 +918,16 @@
       "drawOdds": null
     },
     {
-      "id": 102,
+      "id": "102",
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "Chelsea",
       "homeOdds": 1.64,
-      "awayOdds": 3.0,
+      "awayOdds": 3,
       "drawOdds": 4.28
     },
     {
-      "id": 103,
+      "id": "103",
       "sport": "Tennis",
       "homeTeam": "Iga Swiatek",
       "awayTeam": "Roger Federer",
@@ -936,7 +936,7 @@
       "drawOdds": null
     },
     {
-      "id": 104,
+      "id": "104",
       "sport": "Cricket",
       "homeTeam": "Sri Lanka",
       "awayTeam": "New Zealand",
@@ -945,7 +945,7 @@
       "drawOdds": null
     },
     {
-      "id": 105,
+      "id": "105",
       "sport": "Soccer",
       "homeTeam": "Liverpool",
       "awayTeam": "Juventus",
@@ -954,16 +954,16 @@
       "drawOdds": 2.99
     },
     {
-      "id": 106,
+      "id": "106",
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Philadelphia Eagles",
       "homeOdds": 2.08,
-      "awayOdds": 2.0,
+      "awayOdds": 2,
       "drawOdds": null
     },
     {
-      "id": 107,
+      "id": "107",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
@@ -972,7 +972,7 @@
       "drawOdds": null
     },
     {
-      "id": 108,
+      "id": "108",
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Miami Heat",
@@ -981,7 +981,7 @@
       "drawOdds": null
     },
     {
-      "id": 109,
+      "id": "109",
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Brooklyn Nets",
@@ -990,7 +990,7 @@
       "drawOdds": null
     },
     {
-      "id": 110,
+      "id": "110",
       "sport": "Tennis",
       "homeTeam": "Carlos Alcaraz",
       "awayTeam": "Iga Swiatek",
@@ -999,7 +999,7 @@
       "drawOdds": null
     },
     {
-      "id": 111,
+      "id": "111",
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Los Angeles Lakers",
@@ -1008,7 +1008,7 @@
       "drawOdds": null
     },
     {
-      "id": 112,
+      "id": "112",
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Barcelona",
@@ -1017,7 +1017,7 @@
       "drawOdds": 3.9
     },
     {
-      "id": 113,
+      "id": "113",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Phoenix Suns",
@@ -1026,7 +1026,7 @@
       "drawOdds": null
     },
     {
-      "id": 114,
+      "id": "114",
       "sport": "American Football",
       "homeTeam": "Kansas City Chiefs",
       "awayTeam": "San Francisco 49ers",
@@ -1035,7 +1035,7 @@
       "drawOdds": null
     },
     {
-      "id": 115,
+      "id": "115",
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Golden State Warriors",
@@ -1044,7 +1044,7 @@
       "drawOdds": null
     },
     {
-      "id": 116,
+      "id": "116",
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "Pakistan",
@@ -1053,7 +1053,7 @@
       "drawOdds": null
     },
     {
-      "id": 117,
+      "id": "117",
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "AC Milan",
@@ -1062,7 +1062,7 @@
       "drawOdds": 3.1
     },
     {
-      "id": 118,
+      "id": "118",
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Phoenix Suns",
@@ -1071,7 +1071,7 @@
       "drawOdds": null
     },
     {
-      "id": 119,
+      "id": "119",
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Phoenix Suns",
@@ -1080,7 +1080,7 @@
       "drawOdds": null
     },
     {
-      "id": 120,
+      "id": "120",
       "sport": "Tennis",
       "homeTeam": "Novak Djokovic",
       "awayTeam": "Ons Jabeur",
@@ -1089,7 +1089,7 @@
       "drawOdds": null
     },
     {
-      "id": 121,
+      "id": "121",
       "sport": "American Football",
       "homeTeam": "Buffalo Bills",
       "awayTeam": "Miami Dolphins",
@@ -1098,7 +1098,7 @@
       "drawOdds": null
     },
     {
-      "id": 122,
+      "id": "122",
       "sport": "Soccer",
       "homeTeam": "Real Madrid",
       "awayTeam": "AC Milan",
@@ -1107,7 +1107,7 @@
       "drawOdds": 2.63
     },
     {
-      "id": 123,
+      "id": "123",
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Chicago Bulls",
@@ -1116,7 +1116,7 @@
       "drawOdds": null
     },
     {
-      "id": 124,
+      "id": "124",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Phoenix Suns",
@@ -1125,7 +1125,7 @@
       "drawOdds": null
     },
     {
-      "id": 125,
+      "id": "125",
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Miami Dolphins",
@@ -1134,7 +1134,7 @@
       "drawOdds": null
     },
     {
-      "id": 126,
+      "id": "126",
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "South Africa",
@@ -1143,7 +1143,7 @@
       "drawOdds": null
     },
     {
-      "id": 127,
+      "id": "127",
       "sport": "Soccer",
       "homeTeam": "Chelsea",
       "awayTeam": "Juventus",
@@ -1152,7 +1152,7 @@
       "drawOdds": 3.17
     },
     {
-      "id": 128,
+      "id": "128",
       "sport": "Basketball",
       "homeTeam": "Brooklyn Nets",
       "awayTeam": "Phoenix Suns",
@@ -1161,7 +1161,7 @@
       "drawOdds": null
     },
     {
-      "id": 129,
+      "id": "129",
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Milwaukee Bucks",
@@ -1170,7 +1170,7 @@
       "drawOdds": null
     },
     {
-      "id": 130,
+      "id": "130",
       "sport": "Tennis",
       "homeTeam": "Carlos Alcaraz",
       "awayTeam": "Aryna Sabalenka",
@@ -1179,7 +1179,7 @@
       "drawOdds": null
     },
     {
-      "id": 131,
+      "id": "131",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
@@ -1188,7 +1188,7 @@
       "drawOdds": null
     },
     {
-      "id": 132,
+      "id": "132",
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Golden State Warriors",
@@ -1197,7 +1197,7 @@
       "drawOdds": null
     },
     {
-      "id": 133,
+      "id": "133",
       "sport": "Tennis",
       "homeTeam": "Aryna Sabalenka",
       "awayTeam": "Roger Federer",
@@ -1206,7 +1206,7 @@
       "drawOdds": null
     },
     {
-      "id": 134,
+      "id": "134",
       "sport": "Tennis",
       "homeTeam": "Aryna Sabalenka",
       "awayTeam": "Rafael Nadal",
@@ -1215,7 +1215,7 @@
       "drawOdds": null
     },
     {
-      "id": 135,
+      "id": "135",
       "sport": "Soccer",
       "homeTeam": "Real Madrid",
       "awayTeam": "Manchester United",
@@ -1224,7 +1224,7 @@
       "drawOdds": 2.79
     },
     {
-      "id": 136,
+      "id": "136",
       "sport": "Tennis",
       "homeTeam": "Aryna Sabalenka",
       "awayTeam": "Carlos Alcaraz",
@@ -1233,7 +1233,7 @@
       "drawOdds": null
     },
     {
-      "id": 137,
+      "id": "137",
       "sport": "Soccer",
       "homeTeam": "Real Madrid",
       "awayTeam": "Barcelona",
@@ -1242,7 +1242,7 @@
       "drawOdds": 4.35
     },
     {
-      "id": 138,
+      "id": "138",
       "sport": "Tennis",
       "homeTeam": "Ons Jabeur",
       "awayTeam": "Rafael Nadal",
@@ -1251,7 +1251,7 @@
       "drawOdds": null
     },
     {
-      "id": 139,
+      "id": "139",
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Miami Dolphins",
@@ -1260,7 +1260,7 @@
       "drawOdds": null
     },
     {
-      "id": 140,
+      "id": "140",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "Pakistan",
@@ -1269,7 +1269,7 @@
       "drawOdds": null
     },
     {
-      "id": 141,
+      "id": "141",
       "sport": "Basketball",
       "homeTeam": "Miami Heat",
       "awayTeam": "Boston Celtics",
@@ -1278,7 +1278,7 @@
       "drawOdds": null
     },
     {
-      "id": 142,
+      "id": "142",
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Bayern Munich",
@@ -1287,7 +1287,7 @@
       "drawOdds": 4.11
     },
     {
-      "id": 143,
+      "id": "143",
       "sport": "Basketball",
       "homeTeam": "Chicago Bulls",
       "awayTeam": "Miami Heat",
@@ -1296,7 +1296,7 @@
       "drawOdds": null
     },
     {
-      "id": 144,
+      "id": "144",
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "Bayern Munich",
@@ -1305,7 +1305,7 @@
       "drawOdds": 3.67
     },
     {
-      "id": 145,
+      "id": "145",
       "sport": "Soccer",
       "homeTeam": "Arsenal",
       "awayTeam": "AC Milan",
@@ -1314,7 +1314,7 @@
       "drawOdds": 3.14
     },
     {
-      "id": 146,
+      "id": "146",
       "sport": "Basketball",
       "homeTeam": "Boston Celtics",
       "awayTeam": "Los Angeles Lakers",
@@ -1323,7 +1323,7 @@
       "drawOdds": null
     },
     {
-      "id": 147,
+      "id": "147",
       "sport": "Tennis",
       "homeTeam": "Aryna Sabalenka",
       "awayTeam": "Iga Swiatek",
@@ -1332,7 +1332,7 @@
       "drawOdds": null
     },
     {
-      "id": 148,
+      "id": "148",
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Dallas Cowboys",
@@ -1341,7 +1341,7 @@
       "drawOdds": null
     },
     {
-      "id": 149,
+      "id": "149",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "Sri Lanka",
@@ -1350,7 +1350,7 @@
       "drawOdds": null
     },
     {
-      "id": 150,
+      "id": "150",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "India",
@@ -1359,7 +1359,7 @@
       "drawOdds": null
     },
     {
-      "id": 151,
+      "id": "151",
       "sport": "Cricket",
       "homeTeam": "India",
       "awayTeam": "New Zealand",
@@ -1368,7 +1368,7 @@
       "drawOdds": null
     },
     {
-      "id": 152,
+      "id": "152",
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Los Angeles Lakers",
@@ -1377,7 +1377,7 @@
       "drawOdds": null
     },
     {
-      "id": 153,
+      "id": "153",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Brooklyn Nets",
@@ -1386,7 +1386,7 @@
       "drawOdds": null
     },
     {
-      "id": 154,
+      "id": "154",
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "Real Madrid",
@@ -1395,7 +1395,7 @@
       "drawOdds": 4.22
     },
     {
-      "id": 155,
+      "id": "155",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
@@ -1404,7 +1404,7 @@
       "drawOdds": null
     },
     {
-      "id": 156,
+      "id": "156",
       "sport": "Tennis",
       "homeTeam": "Rafael Nadal",
       "awayTeam": "Ons Jabeur",
@@ -1413,7 +1413,7 @@
       "drawOdds": null
     },
     {
-      "id": 157,
+      "id": "157",
       "sport": "American Football",
       "homeTeam": "Cincinnati Bengals",
       "awayTeam": "Kansas City Chiefs",
@@ -1422,7 +1422,7 @@
       "drawOdds": null
     },
     {
-      "id": 158,
+      "id": "158",
       "sport": "American Football",
       "homeTeam": "Dallas Cowboys",
       "awayTeam": "Kansas City Chiefs",
@@ -1431,7 +1431,7 @@
       "drawOdds": null
     },
     {
-      "id": 159,
+      "id": "159",
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "Arsenal",
@@ -1440,7 +1440,7 @@
       "drawOdds": 4.41
     },
     {
-      "id": 160,
+      "id": "160",
       "sport": "Soccer",
       "homeTeam": "Liverpool",
       "awayTeam": "Juventus",
@@ -1449,7 +1449,7 @@
       "drawOdds": 4.2
     },
     {
-      "id": 161,
+      "id": "161",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "India",
@@ -1458,7 +1458,7 @@
       "drawOdds": null
     },
     {
-      "id": 162,
+      "id": "162",
       "sport": "Basketball",
       "homeTeam": "Los Angeles Lakers",
       "awayTeam": "Milwaukee Bucks",
@@ -1467,7 +1467,7 @@
       "drawOdds": null
     },
     {
-      "id": 163,
+      "id": "163",
       "sport": "Tennis",
       "homeTeam": "Elena Rybakina",
       "awayTeam": "Novak Djokovic",
@@ -1476,7 +1476,7 @@
       "drawOdds": null
     },
     {
-      "id": 164,
+      "id": "164",
       "sport": "Tennis",
       "homeTeam": "Elena Rybakina",
       "awayTeam": "Aryna Sabalenka",
@@ -1485,7 +1485,7 @@
       "drawOdds": null
     },
     {
-      "id": 165,
+      "id": "165",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "Sri Lanka",
@@ -1494,7 +1494,7 @@
       "drawOdds": null
     },
     {
-      "id": 166,
+      "id": "166",
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "India",
@@ -1503,7 +1503,7 @@
       "drawOdds": null
     },
     {
-      "id": 167,
+      "id": "167",
       "sport": "Cricket",
       "homeTeam": "West Indies",
       "awayTeam": "Sri Lanka",
@@ -1512,7 +1512,7 @@
       "drawOdds": null
     },
     {
-      "id": 168,
+      "id": "168",
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Manchester United",
@@ -1521,16 +1521,16 @@
       "drawOdds": 3.3
     },
     {
-      "id": 169,
+      "id": "169",
       "sport": "Soccer",
       "homeTeam": "Juventus",
       "awayTeam": "AC Milan",
       "homeOdds": 2.05,
-      "awayOdds": 2.0,
+      "awayOdds": 2,
       "drawOdds": 2.69
     },
     {
-      "id": 170,
+      "id": "170",
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "Australia",
@@ -1539,7 +1539,7 @@
       "drawOdds": null
     },
     {
-      "id": 171,
+      "id": "171",
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "England",
@@ -1548,7 +1548,7 @@
       "drawOdds": null
     },
     {
-      "id": 172,
+      "id": "172",
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "Arsenal",
@@ -1557,7 +1557,7 @@
       "drawOdds": 4.13
     },
     {
-      "id": 173,
+      "id": "173",
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Chicago Bulls",
@@ -1566,7 +1566,7 @@
       "drawOdds": null
     },
     {
-      "id": 174,
+      "id": "174",
       "sport": "American Football",
       "homeTeam": "Philadelphia Eagles",
       "awayTeam": "New York Giants",
@@ -1575,7 +1575,7 @@
       "drawOdds": null
     },
     {
-      "id": 175,
+      "id": "175",
       "sport": "Tennis",
       "homeTeam": "Ons Jabeur",
       "awayTeam": "Rafael Nadal",
@@ -1584,7 +1584,7 @@
       "drawOdds": null
     },
     {
-      "id": 176,
+      "id": "176",
       "sport": "Soccer",
       "homeTeam": "AC Milan",
       "awayTeam": "Chelsea",
@@ -1593,7 +1593,7 @@
       "drawOdds": 4.43
     },
     {
-      "id": 177,
+      "id": "177",
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Buffalo Bills",
@@ -1602,7 +1602,7 @@
       "drawOdds": null
     },
     {
-      "id": 178,
+      "id": "178",
       "sport": "Tennis",
       "homeTeam": "Aryna Sabalenka",
       "awayTeam": "Novak Djokovic",
@@ -1611,7 +1611,7 @@
       "drawOdds": null
     },
     {
-      "id": 179,
+      "id": "179",
       "sport": "American Football",
       "homeTeam": "Miami Dolphins",
       "awayTeam": "Kansas City Chiefs",
@@ -1620,7 +1620,7 @@
       "drawOdds": null
     },
     {
-      "id": 180,
+      "id": "180",
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Cincinnati Bengals",
@@ -1629,7 +1629,7 @@
       "drawOdds": null
     },
     {
-      "id": 181,
+      "id": "181",
       "sport": "Basketball",
       "homeTeam": "Phoenix Suns",
       "awayTeam": "Los Angeles Lakers",
@@ -1638,7 +1638,7 @@
       "drawOdds": null
     },
     {
-      "id": 182,
+      "id": "182",
       "sport": "Soccer",
       "homeTeam": "PSG",
       "awayTeam": "Liverpool",
@@ -1647,7 +1647,7 @@
       "drawOdds": 3.61
     },
     {
-      "id": 183,
+      "id": "183",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "India",
@@ -1656,7 +1656,7 @@
       "drawOdds": null
     },
     {
-      "id": 184,
+      "id": "184",
       "sport": "Cricket",
       "homeTeam": "New Zealand",
       "awayTeam": "West Indies",
@@ -1665,7 +1665,7 @@
       "drawOdds": null
     },
     {
-      "id": 185,
+      "id": "185",
       "sport": "Tennis",
       "homeTeam": "Iga Swiatek",
       "awayTeam": "Roger Federer",
@@ -1674,7 +1674,7 @@
       "drawOdds": null
     },
     {
-      "id": 186,
+      "id": "186",
       "sport": "Tennis",
       "homeTeam": "Elena Rybakina",
       "awayTeam": "Roger Federer",
@@ -1683,7 +1683,7 @@
       "drawOdds": null
     },
     {
-      "id": 187,
+      "id": "187",
       "sport": "Tennis",
       "homeTeam": "Novak Djokovic",
       "awayTeam": "Iga Swiatek",
@@ -1692,7 +1692,7 @@
       "drawOdds": null
     },
     {
-      "id": 188,
+      "id": "188",
       "sport": "Tennis",
       "homeTeam": "Rafael Nadal",
       "awayTeam": "Iga Swiatek",
@@ -1701,7 +1701,7 @@
       "drawOdds": null
     },
     {
-      "id": 189,
+      "id": "189",
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "Real Madrid",
@@ -1710,7 +1710,7 @@
       "drawOdds": 2.67
     },
     {
-      "id": 190,
+      "id": "190",
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "Sri Lanka",
@@ -1719,7 +1719,7 @@
       "drawOdds": null
     },
     {
-      "id": 191,
+      "id": "191",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
@@ -1728,7 +1728,7 @@
       "drawOdds": null
     },
     {
-      "id": 192,
+      "id": "192",
       "sport": "Soccer",
       "homeTeam": "Bayern Munich",
       "awayTeam": "Juventus",
@@ -1737,7 +1737,7 @@
       "drawOdds": 3.26
     },
     {
-      "id": 193,
+      "id": "193",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "New Zealand",
@@ -1746,7 +1746,7 @@
       "drawOdds": null
     },
     {
-      "id": 194,
+      "id": "194",
       "sport": "Cricket",
       "homeTeam": "Pakistan",
       "awayTeam": "England",
@@ -1755,7 +1755,7 @@
       "drawOdds": null
     },
     {
-      "id": 195,
+      "id": "195",
       "sport": "American Football",
       "homeTeam": "San Francisco 49ers",
       "awayTeam": "Kansas City Chiefs",
@@ -1764,7 +1764,7 @@
       "drawOdds": null
     },
     {
-      "id": 196,
+      "id": "196",
       "sport": "Cricket",
       "homeTeam": "Australia",
       "awayTeam": "Sri Lanka",
@@ -1773,7 +1773,7 @@
       "drawOdds": null
     },
     {
-      "id": 197,
+      "id": "197",
       "sport": "Soccer",
       "homeTeam": "Manchester United",
       "awayTeam": "Juventus",
@@ -1782,7 +1782,7 @@
       "drawOdds": 3.65
     },
     {
-      "id": 198,
+      "id": "198",
       "sport": "Basketball",
       "homeTeam": "Golden State Warriors",
       "awayTeam": "Milwaukee Bucks",
@@ -1791,7 +1791,7 @@
       "drawOdds": null
     },
     {
-      "id": 199,
+      "id": "199",
       "sport": "Cricket",
       "homeTeam": "South Africa",
       "awayTeam": "New Zealand",
@@ -1800,7 +1800,7 @@
       "drawOdds": null
     },
     {
-      "id": 200,
+      "id": "200",
       "sport": "Tennis",
       "homeTeam": "Novak Djokovic",
       "awayTeam": "Roger Federer",
