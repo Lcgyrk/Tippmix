@@ -1,16 +1,16 @@
-interface User {
+export interface User {
     id: number,
     name: string,
     email: string,
-    password: string
+    password: string,
+    credits?: number
 }
-interface Bet {
+export interface Bet {
     id: number,
     sport: string,
     homeTeam: string,
     awayTeam: string,
     homeOdds: number,
     awayOdds: number,
-    drawOdds: number
+    drawOdds?: number | null
 }
-
