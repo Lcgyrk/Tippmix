@@ -6,6 +6,13 @@
       "email": "admin@email.com",
       "password": "admin",
       "credits": 999999
+    },
+    {
+      "id": 2,
+      "name": "Lacigyerek",
+      "email": "asd@freemail.hu",
+      "password": "asd",
+      "credits": 100
     }
   ],
   "bets": [
