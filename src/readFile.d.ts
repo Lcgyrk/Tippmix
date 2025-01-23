@@ -14,3 +14,10 @@ declare interface Bet {
     awayOdds: number,
     drawOdds: number | null
 }
+
+
+
+
+
+
+
