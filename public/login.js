@@ -41,12 +41,16 @@ function findUser(userName, userPassword) {
 }
 function Registration() {
     return __awaiter(this, void 0, void 0, function* () {
+        yield getUsers();
         let id = users.length + 1;
         let name = registrationName.value;
         let email = registrationEmail.value;
         let password = registrationPassword.value;
         let credits = 100;
-        yield getUsers();
+        if (name === '' || email === '' || password === '') {
+            alert("Minden mezőt ki kell tölteni!");
+            return;
+        }
         if (users.find(user => user.name === name)) {
             alert("Ez a felhasználónév már foglalt!");
             return;
@@ -58,7 +62,6 @@ function Registration() {
             password: password,
             credits: credits
         };
-        users.push(user);
         console.log(users);
         try {
             const response = yield fetch("http://localhost:3000/users", {
@@ -70,6 +73,7 @@ function Registration() {
             });
             if (response.ok) {
                 const newUser = yield response.json();
+                users.push(user);
                 console.log("Sikeres regisztrálás", newUser);
                 alert('Sikeres regisztrálás');
             }

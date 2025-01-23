@@ -13,6 +13,27 @@
       "email": "asd@freemail.hu",
       "password": "asd",
       "credits": 100
+    },
+    {
+      "id": 3,
+      "name": "Józsika",
+      "email": "asd@freemail.hu",
+      "password": "asd",
+      "credits": 100
+    },
+    {
+      "id": 4,
+      "name": "as",
+      "email": "asd@freemail.hu",
+      "password": "asd",
+      "credits": 100
+    },
+    {
+      "id": 5,
+      "name": "adminasd",
+      "email": "asd@freemail.hu",
+      "password": "asd",
+      "credits": 100
     }
   ],
   "bets": [

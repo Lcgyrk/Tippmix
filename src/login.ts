@@ -46,14 +46,18 @@ function findUser(userName: string, userPassword: string) : boolean{
 
 
 async function Registration(){
+    await getUsers();
+
     let id = users.length + 1;
     let name = registrationName.value;
     let email = registrationEmail.value;
     let password = registrationPassword.value;
     let credits = 100;
 
-    await getUsers();
-
+    if (name === '' || email === '' || password === '') {
+        alert("Minden mezőt ki kell tölteni!");
+        return;
+    }
 
     if (users.find(user => user.name === name)) {
         alert("Ez a felhasználónév már foglalt!");
@@ -67,8 +71,6 @@ async function Registration(){
         password: password,
         credits: credits
     }
-
-    users.push(user);
     console.log(users);
     
     try {
@@ -82,6 +84,7 @@ async function Registration(){
 
         if (response.ok) {
             const newUser = await response.json();
+            users.push(user);
             console.log("Sikeres regisztrálás", newUser);
             alert('Sikeres regisztrálás');
         } else {
