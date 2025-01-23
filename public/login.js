@@ -12,15 +12,33 @@ let registrationName = document.getElementById("name");
 let registrationEmail = document.getElementById("email");
 let registrationPassword = document.getElementById("password");
 let users = [];
+let usersloaded = false;
 function getUsers() {
     return __awaiter(this, void 0, void 0, function* () {
+        if (usersloaded)
+            return;
         const response = yield fetch("http://localhost:3000/users");
         const data = yield response.json();
         users = data.map((user) => (Object.assign(Object.assign({}, user), { id: Number(user.id) })));
+        usersloaded = true;
         console.log(users);
     });
 }
-getUsers();
+function findUser(userName, userPassword) {
+    const foundUser = users.find(user => user.name === userName);
+    if (!foundUser) {
+        alert("Ilyen felhasználó nincs az adatbázisunkban!");
+        return false;
+    }
+    if (foundUser.password === userPassword) {
+        alert("Sikeres bejelentkezés!");
+        return true;
+    }
+    else {
+        alert("Hibás jelszó!");
+        return false;
+    }
+}
 function Registration() {
     return __awaiter(this, void 0, void 0, function* () {
         let id = users.length + 1;
@@ -28,6 +46,7 @@ function Registration() {
         let email = registrationEmail.value;
         let password = registrationPassword.value;
         let credits = 100;
+        yield getUsers();
         if (users.find(user => user.name === name)) {
             alert("Ez a felhasználónév már foglalt!");
             return;
@@ -50,7 +69,7 @@ function Registration() {
                 body: JSON.stringify(user),
             });
             if (response.ok) {
-                const newUser = yield response.json(); // The response will contain the created user with an id
+                const newUser = yield response.json();
                 console.log("Sikeres regisztrálás", newUser);
                 alert('Sikeres regisztrálás');
             }
@@ -64,4 +83,22 @@ function Registration() {
         }
     });
 }
-document.getElementById("register").addEventListener("click", Registration);
+const regButton = document.getElementById("register");
+if (regButton) {
+    regButton.addEventListener("click", Registration);
+}
+function Login() {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield getUsers();
+        let tryName = document.getElementById("name");
+        let tryPassword = document.getElementById("password");
+        let loginSuccess = yield findUser(tryName.value, tryPassword.value);
+        if (loginSuccess) {
+            window.location.href = "index.html";
+        }
+    });
+}
+const logButton = document.getElementById("login");
+if (logButton) {
+    logButton.addEventListener("click", Login);
+}

@@ -11,8 +11,9 @@ interface user {
 }
 
 let users: user[] = [];
-
-async function getUsers() {
+let usersloaded = false;
+async function getUsers(){
+    if (usersloaded) return;
 
     const response = await fetch("http://localhost:3000/users");
     const data = await response.json();
@@ -22,9 +23,26 @@ async function getUsers() {
         id: Number(user.id)
     }));
 
+    usersloaded = true;
     console.log(users);
 }
-getUsers();
+
+function findUser(userName: string, userPassword: string) : boolean{
+    const foundUser = users.find(user => user.name === userName);
+
+    if (!foundUser) {
+        alert("Ilyen felhasználó nincs az adatbázisunkban!");
+        return false;
+    }
+
+    if (foundUser.password === userPassword) {
+        alert("Sikeres bejelentkezés!");
+        return true;
+    } else {
+        alert("Hibás jelszó!");
+        return false;
+    }
+}
 
 
 async function Registration(){
@@ -33,6 +51,8 @@ async function Registration(){
     let email = registrationEmail.value;
     let password = registrationPassword.value;
     let credits = 100;
+
+    await getUsers();
 
 
     if (users.find(user => user.name === name)) {
@@ -61,7 +81,7 @@ async function Registration(){
         });
 
         if (response.ok) {
-            const newUser = await response.json();  // The response will contain the created user with an id
+            const newUser = await response.json();
             console.log("Sikeres regisztrálás", newUser);
             alert('Sikeres regisztrálás');
         } else {
@@ -73,4 +93,25 @@ async function Registration(){
     }
 }
 
-document.getElementById("register")!.addEventListener("click", Registration);
+const regButton = document.getElementById("register");
+if (regButton) {
+    regButton.addEventListener("click", Registration);
+}
+
+async function Login() {
+    await getUsers();
+
+    let tryName = document.getElementById("name") as HTMLInputElement;
+    let tryPassword = document.getElementById("password") as HTMLInputElement;
+
+    let loginSuccess = await findUser(tryName.value, tryPassword.value);
+
+    if (loginSuccess) {
+        window.location.href = "index.html";
+    }
+}
+
+const logButton = document.getElementById("login");
+if (logButton) {
+    logButton.addEventListener("click", Login);
+}
