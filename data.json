@@ -1,41 +1,26 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "admin",
       "email": "admin@email.com",
       "password": "admin",
       "credits": 999999
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Lacigyerek",
-      "email": "asd@freemail.hu",
-      "password": "asd",
-      "credits": 100
-    },
-    {
-      "id": 3,
-      "name": "Józsika",
-      "email": "asd@freemail.hu",
-      "password": "asd",
-      "credits": 100
-    },
-    {
-      "id": 4,
-      "name": "as",
-      "email": "asd@freemail.hu",
-      "password": "asd",
-      "credits": 100
-    },
-    {
-      "id": 5,
-      "name": "adminasd",
       "email": "asd@freemail.hu",
       "password": "asd",
       "credits": 100
     }
   ],
+  "currentUser": {
+    "id": 1,
+    "name": "admin",
+    "email": "admin@email.com",
+    "credits": 999999
+  },
   "bets": [
     {
       "id": "1",

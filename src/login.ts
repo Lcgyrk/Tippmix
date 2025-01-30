@@ -12,19 +12,38 @@ interface user {
 
 let users: user[] = [];
 let usersloaded = false;
+
+async function getUsersWithRetry(retries: number = 30, delay: number = 1000) {
+    let attempt = 0;
+    while (attempt < retries) {
+        await getUsers();
+        if (users.length > 0) {
+            return;
+        }
+        attempt++;
+        console.log(`Retry attempt ${attempt}`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    alert("Felhasználók betöltése nem sikerült.");
+}
+
 async function getUsers(){
     if (usersloaded) return;
 
-    const response = await fetch("http://localhost:3000/users");
-    const data = await response.json();
+    try {
+        const response = await fetch("http://localhost:3000/users");
+        const data = await response.json();
 
-    users = data.map((user: any) => ({
-        ...user,
-        id: Number(user.id)
-    }));
+        users = data.map((user: any) => ({
+            ...user,
+            id: Number(user.id)
+        }));
 
-    usersloaded = true;
-    console.log(users);
+        usersloaded = true;
+        console.log("Users loaded:", users);
+    } catch (error) {
+        console.error("Failed to fetch users:", error);
+    }
 }
 
 function findUser(userName: string, userPassword: string) : boolean{
@@ -46,7 +65,7 @@ function findUser(userName: string, userPassword: string) : boolean{
 
 
 async function Registration(){
-    await getUsers();
+    await getUsersWithRetry();
 
     let id = users.length + 1;
     let name = registrationName.value;
@@ -102,17 +121,59 @@ if (regButton) {
 }
 
 async function Login() {
-    await getUsers();
+    await getUsersWithRetry();
 
-    let tryName = document.getElementById("name") as HTMLInputElement;
-    let tryPassword = document.getElementById("password") as HTMLInputElement;
-
-    let loginSuccess = await findUser(tryName.value, tryPassword.value);
-
-    if (loginSuccess) {
-        window.location.href = "index.html";
+    if (users.length == 0) {
+        alert("Aszinkron hiba, kérlek próbáld újra");
+        return;
     }
-}
+
+    let tryName = (document.getElementById("name") as HTMLInputElement).value;
+    let tryPassword = (document.getElementById("password") as HTMLInputElement).value;
+
+    let foundUser = users.find(user => user.name === tryName && user.password === tryPassword);
+
+    if (!foundUser) {
+        alert("Hibás felhasználónév vagy jelszó!");
+        return;
+    }
+
+    if (foundUser) {
+        let currentUser: user = {
+            id: foundUser.id,
+            name: foundUser.name,
+            email: foundUser.email,
+            password: foundUser.password,
+            credits: foundUser.credits
+        }
+        try {
+            const response = await fetch("http://localhost:3000/currentUser", {
+                method: 'PUT',  // Use PATCH to update the currentUser field
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: foundUser.id,
+                    name: foundUser.name,
+                    email: foundUser.email,
+                    credits: foundUser.credits,
+                }),
+            });
+    
+            if (response.ok) {
+                alert("Sikeres bejelentkezés!");
+                window.location.href = "index.html";
+            } else {
+                alert("Nem sikerült beállítani a felhasználót.");
+            }
+        } catch (error) {
+            console.error("Hiba a felhasználó beállításánál:", error);
+            alert("asdfa");
+    }
+
+    alert("Sikeres bejelentkezés!");
+    window.location.href = "index.html";
+}}
 
 const logButton = document.getElementById("login");
 if (logButton) {
