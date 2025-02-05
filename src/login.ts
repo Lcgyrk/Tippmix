@@ -148,7 +148,7 @@ async function Login() {
         }
         try {
             const response = await fetch("http://localhost:3000/currentUser", {
-                method: 'PUT',  // Use PATCH to update the currentUser field
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -170,6 +170,8 @@ async function Login() {
             console.error("Hiba a felhasználó beállításánál:", error);
             alert("asdfa");
     }
+
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
     alert("Sikeres bejelentkezés!");
     window.location.href = "index.html";
