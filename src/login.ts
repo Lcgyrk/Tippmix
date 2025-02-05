@@ -146,16 +146,7 @@ async function Login() {
         credits: foundUser.credits
     };
 
-    try {
-        // Set currentUser in localStorage
-        await localStorage.setItem('currentUser', JSON.stringify(currentUser));
-    }
-    catch (error) {
-        console.error("Hiba a felhasználó beállításánál:", error);
-        alert("Sikertelen bejelentkezés.");
-    } finally {
-        window.location.href = "index.html";
-    }
+    
 }
 
 const logButton = document.getElementById("login");
