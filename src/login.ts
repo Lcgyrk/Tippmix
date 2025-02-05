@@ -138,44 +138,25 @@ async function Login() {
         return;
     }
 
-    if (foundUser) {
-        let currentUser: user = {
-            id: foundUser.id,
-            name: foundUser.name,
-            email: foundUser.email,
-            password: foundUser.password,
-            credits: foundUser.credits
-        }
-        try {
-            const response = await fetch("http://localhost:3000/currentUser", {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    id: foundUser.id,
-                    name: foundUser.name,
-                    email: foundUser.email,
-                    credits: foundUser.credits,
-                }),
-            });
-    
-            if (response.ok) {
-                alert("Sikeres bejelentkezés!");
-                window.location.href = "index.html";
-            } else {
-                alert("Nem sikerült beállítani a felhasználót.");
-            }
-        } catch (error) {
-            console.error("Hiba a felhasználó beállításánál:", error);
-            alert("asdfa");
+    let currentUser: user = {
+        id: foundUser.id,
+        name: foundUser.name,
+        email: foundUser.email,
+        password: foundUser.password,
+        credits: foundUser.credits
+    };
+
+    try {
+        // Set currentUser in localStorage
+        await localStorage.setItem('currentUser', JSON.stringify(currentUser));
     }
-
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-    alert("Sikeres bejelentkezés!");
-    window.location.href = "index.html";
-}}
+    catch (error) {
+        console.error("Hiba a felhasználó beállításánál:", error);
+        alert("Sikertelen bejelentkezés.");
+    } finally {
+        window.location.href = "index.html";
+    }
+}
 
 const logButton = document.getElementById("login");
 if (logButton) {
