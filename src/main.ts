@@ -96,4 +96,6 @@ function getRandomMatches<T extends {sport: string}>(array: T[], count: number, 
     return filteredArray.sort(() => Math.random() - 0.5).slice(0, count);
 }
 
+    
+
 console.log(allOdds);

@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,107 +7,92 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-function initializeMatchDisplay() {
-    let matches = [];
-    let userCredits = 100; // Starting credits
-    function fetchMatches() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const response = yield fetch('http://localhost:3000/bets');
-            matches = yield response.json();
+import { FetchBets } from "./readFile.js";
+const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+let allOdds = [];
+const footballBetting = document.getElementById('football-betting');
+footballBetting.addEventListener('click', () => {
+    if (!(footballBetting === null || footballBetting === void 0 ? void 0 : footballBetting.classList.contains("loaded"))) {
+        footballBetting === null || footballBetting === void 0 ? void 0 : footballBetting.classList.add('loaded');
+        GetMatches(5, 'soccer');
+    }
+});
+const basketballBetting = document.getElementById('basketball-betting');
+basketballBetting.addEventListener('click', () => {
+    if (!(basketballBetting === null || basketballBetting === void 0 ? void 0 : basketballBetting.classList.contains("loaded"))) {
+        basketballBetting === null || basketballBetting === void 0 ? void 0 : basketballBetting.classList.add('loaded');
+        GetMatches(5, 'basketball');
+    }
+});
+const cricketBetting = document.getElementById('cricket-betting');
+cricketBetting.addEventListener('click', () => {
+    if (!(cricketBetting === null || cricketBetting === void 0 ? void 0 : cricketBetting.classList.contains("loaded"))) {
+        cricketBetting === null || cricketBetting === void 0 ? void 0 : cricketBetting.classList.add('loaded');
+        GetMatches(5, 'cricket');
+    }
+});
+const americanFootballBetting = document.getElementById('americanFootball-betting');
+americanFootballBetting.addEventListener('click', () => {
+    if (!(americanFootballBetting === null || americanFootballBetting === void 0 ? void 0 : americanFootballBetting.classList.contains("loaded"))) {
+        americanFootballBetting === null || americanFootballBetting === void 0 ? void 0 : americanFootballBetting.classList.add('loaded');
+        GetMatches(5, 'american football');
+    }
+});
+const tennisBetting = document.getElementById('tennis-betting');
+tennisBetting.addEventListener('click', () => {
+    if (!(tennisBetting === null || tennisBetting === void 0 ? void 0 : tennisBetting.classList.contains("loaded"))) {
+        tennisBetting === null || tennisBetting === void 0 ? void 0 : tennisBetting.classList.add('loaded');
+        GetMatches(5, 'tennis');
+    }
+});
+function GetMatches(numberOfMatches, typeOfSport) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = yield FetchBets();
+        const matches = getRandomMatches(data, numberOfMatches, typeOfSport);
+        const matchesContainer = document.getElementById("matches-container");
+        matchesContainer.innerHTML = '';
+        matches.forEach((match) => {
+            matchesContainer.innerHTML += `
+        <div class="card-body">
+            <h5 class="card-title text-center">
+                <span class="fw-bold">${match.homeTeam}</span> vs <span class="fw-bold">${match.awayTeam}</span>
+            </h5>
+            <div class="d-flex justify-content-around mt-3">
+                <button id="${match.id}-${match.homeTeam}" class="btn btn-outline-primary match">${match.homeOdds}</button>
+                ${match.drawOdds !== null
+                ? `<button id="${match.id}-draw" class="btn btn-outline-secondary">${match.drawOdds}</button>`
+                : ``}
+                <button id="${match.id}-${match.awayTeam}" class="btn btn-outline-danger">${match.awayOdds}</button>
+            </div>
+            <div class="mt-3">
+                <label for="stake1" class="form-label">Stake Amount ($)</label>
+                <input type="number" class="form-control" id="stake1" placeholder="Enter your stake">
+            </div>
+            <button class="btn btn-success w-100 mt-3">Place Bet</button>
+        </div>
+    `;
         });
-    }
-    function placeBet(matchId, betType, amount, odds) {
-        if (amount > userCredits) {
-            alert('Not enough credits!');
-            return;
-        }
-        userCredits -= amount;
-        updateCreditsDisplay();
-        const result = Math.floor(Math.random() * 3) + 1;
-        const betResult = {
-            1: 'home',
-            2: 'draw',
-            3: 'away'
-        }[result];
-        setTimeout(() => {
-            if (betType === betResult) {
-                const winnings = amount * odds;
-                userCredits += winnings;
-                alert(`You won! Earnings: ${winnings} credits`);
-            }
-            else {
-                alert('Better luck next time!');
-            }
-            updateCreditsDisplay();
-        }, 1000);
-    }
-    function updateCreditsDisplay() {
-        const creditsElement = document.querySelector('.user-credits');
-        if (creditsElement) {
-            creditsElement.textContent = `Credits: ${userCredits}`;
-        }
-    }
-    function renderMatch(match) {
-        const container = document.querySelector('.matches-container');
-        const matchElement = document.createElement('div');
-        matchElement.className = 'match-card';
-        const betInput = document.createElement('input');
-        betInput.type = 'number';
-        betInput.className = 'bet-amount';
-        betInput.placeholder = 'Bet amount';
-        matchElement.innerHTML = `
-            <div class="match-header">
-                <span class="match-id">#${match.id}</span>
-            </div>
-            <div class="teams">
-                <span class="home-team">${match.homeTeam}</span>
-                <span class="vs">vs</span>
-                <span class="away-team">${match.awayTeam}</span>
-            </div>
-            <div class="odds">
-                <button class="odd-btn home" data-odd="${match.homeOdds}">
-                    ${match.homeOdds}
-                </button>
-                <button class="odd-btn draw" data-odd="${match.drawOdds}">
-                    ${match.drawOdds}
-                </button>
-                <button class="odd-btn away" data-odd="${match.awayOdds}">
-                    ${match.awayOdds}
-                </button>
-            </div>
-        `;
-        matchElement.appendChild(betInput);
-        const buttons = matchElement.querySelectorAll('.odd-btn');
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const amount = parseInt(betInput.value);
-                const odds = parseFloat(button.getAttribute('data-odd') || '0');
-                const betType = button.classList.contains('home') ? 'home' :
-                    button.classList.contains('draw') ? 'draw' : 'away';
-                placeBet(match.id, betType, amount, odds);
+        const matchButtons = document.querySelectorAll('.match');
+        matchButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const target = event.target;
+                if (button.classList.contains("btn-primary")) {
+                    allOdds.splice(allOdds.indexOf(Number(target.innerText)), 1);
+                    button.classList.remove("btn-primary");
+                    button.classList.add("btn-outline-primary");
+                }
+                else {
+                    allOdds.push(Number(target.innerText));
+                    button.classList.remove("btn-outline-primary");
+                    button.classList.add("btn-primary");
+                }
+                console.log(allOdds);
             });
         });
-        container === null || container === void 0 ? void 0 : container.appendChild(matchElement);
-    }
-    function initializeDisplay() {
-        const container = document.createElement('div');
-        container.className = 'matches-container';
-        const creditsDisplay = document.createElement('div');
-        creditsDisplay.className = 'user-credits';
-        creditsDisplay.textContent = `Credits: ${userCredits}`;
-        document.body.appendChild(creditsDisplay);
-        document.body.appendChild(container);
-    }
-    function loadMatches() {
-        matches.forEach(match => renderMatch(match));
-    }
-    function init() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield fetchMatches();
-            initializeDisplay();
-            loadMatches();
-        });
-    }
-    init();
+    });
 }
-initializeMatchDisplay();
+function getRandomMatches(array, count, typeOfSport) {
+    const filteredArray = array.filter(item => (item.sport).toLowerCase() == (typeOfSport).toLocaleLowerCase());
+    return filteredArray.sort(() => Math.random() - 0.5).slice(0, count);
+}
+console.log(allOdds);
