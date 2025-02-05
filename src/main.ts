@@ -1,4 +1,6 @@
 import { FetchBets } from "./readFile.js";
+const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+
 
 let allOdds: number[] = [];
 const footballBetting = document.getElementById('football-betting');
