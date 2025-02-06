@@ -17,6 +17,8 @@ class WebShop {
     private updateBalanceDisplay(): void {
         const balanceElement = document.getElementById("userBalance");
         if (balanceElement) {
+            console.log(this.balance);
+            
             balanceElement.innerHTML = this.balance.toString();
         }
     }
