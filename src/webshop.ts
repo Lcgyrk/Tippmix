@@ -35,7 +35,7 @@ class WebShop {
 
     public buyItem(item: string): void {
         if (!this.inventory[item]) {
-            alert(`Item "${item}" not found in the store.`);
+            alert(`Ez a tétel "${item}" nem található meg a webshopba.`);
             return;
         }
 
@@ -44,13 +44,52 @@ class WebShop {
         if (this.balance >= price) {
             this.balance -= price;
             this.updateBalanceDisplay();
-            alert(`Successfully purchased ${item} for ${price} Ft. Remaining balance: ${this.balance} Ft`);
+            alert(`${item} sikeresen megvéve ${price} Ft. frissített egyenleg: ${this.balance} Ft`);
         } else {
-            alert(`Insufficient funds to buy ${item}. Your balance is ${this.balance} Ft, but the item costs ${price} Ft.`);
+            alert(`Nem megfelelő egyenleg a ${item} megvásárlására. Az egyenlege ${this.balance} Ft, de ez a tétel ${price} Ft.`);
         }
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     new WebShop(682357236423423);
+});
+
+
+
+//ez majd a main.ts-be megy
+document.addEventListener("DOMContentLoaded", () => {
+    const stakeInput = document.getElementById("stake1") as HTMLInputElement;
+    const placeBetButton = document.querySelector(".btn-success") as HTMLButtonElement;
+
+    placeBetButton.addEventListener("click", () => {
+        const stakeValue = parseFloat(stakeInput.value);
+        
+        if (isNaN(stakeValue) || stakeValue <= 0) {
+            alert("Helyes összeget írjon be legyenszíves.");
+            return;
+        }
+
+        const betConfirmed = confirm(` Feltenni kívánt összeg: ${stakeValue}FT. Biztos felteszi?`);
+        
+        if (betConfirmed) {
+            alert("Fogadás sikeresen megtéve!");
+            stakeInput.value = "";
+            
+        }
+        
+        const WinOrLose = Math.random()
+        let DidWin:any = false;
+        if(WinOrLose >= 0 && WinOrLose <= 0.4){
+            DidWin = true;
+        }
+        else if(WinOrLose >= 0.4 && WinOrLose <= 0.8){
+            DidWin = false;
+        }
+        else{
+            DidWin = null; //döntetlen
+        }
+
+
+    });
 });
