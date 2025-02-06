@@ -179,7 +179,7 @@ async function Login() {
 const passwordInput = document.getElementById("password") as HTMLInputElement;
 const eye = document.getElementById("eye");
 if (eye){
-    eye.addEventListener("mousedown", () => {
+    eye.addEventListener("click", () => {
         if (passwordInput.type == "password") passwordInput.type = "text";
         else if (passwordInput.type == "text") passwordInput.type = "password";
     });
