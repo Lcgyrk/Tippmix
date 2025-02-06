@@ -13,15 +13,35 @@ let registrationEmail = document.getElementById("email");
 let registrationPassword = document.getElementById("password");
 let users = [];
 let usersloaded = false;
+function getUsersWithRetry() {
+    return __awaiter(this, arguments, void 0, function* (retries = 30, delay = 1000) {
+        let attempt = 0;
+        while (attempt < retries) {
+            yield getUsers();
+            if (users.length > 0) {
+                return;
+            }
+            attempt++;
+            console.log(`Retry attempt ${attempt}`);
+            yield new Promise(resolve => setTimeout(resolve, delay));
+        }
+        alert("Felhasználók betöltése nem sikerült.");
+    });
+}
 function getUsers() {
     return __awaiter(this, void 0, void 0, function* () {
         if (usersloaded)
             return;
-        const response = yield fetch("http://localhost:3000/users");
-        const data = yield response.json();
-        users = data.map((user) => (Object.assign(Object.assign({}, user), { id: Number(user.id) })));
-        usersloaded = true;
-        console.log(users);
+        try {
+            const response = yield fetch("http://localhost:3000/users");
+            const data = yield response.json();
+            users = data.map((user) => (Object.assign(Object.assign({}, user), { id: Number(user.id) })));
+            usersloaded = true;
+            console.log("Users loaded:", users);
+        }
+        catch (error) {
+            console.error("Failed to fetch users:", error);
+        }
     });
 }
 function findUser(userName, userPassword) {
@@ -41,7 +61,7 @@ function findUser(userName, userPassword) {
 }
 function Registration() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield getUsers();
+        yield getUsersWithRetry();
         let id = users.length + 1;
         let name = registrationName.value;
         let email = registrationEmail.value;
@@ -93,11 +113,34 @@ if (regButton) {
 }
 function Login() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield getUsers();
-        let tryName = document.getElementById("name");
-        let tryPassword = document.getElementById("password");
-        let loginSuccess = yield findUser(tryName.value, tryPassword.value);
-        if (loginSuccess) {
+        yield getUsersWithRetry();
+        if (users.length == 0) {
+            alert("Aszinkron hiba, kérlek próbáld újra");
+            return;
+        }
+        let tryName = document.getElementById("name").value;
+        let tryPassword = document.getElementById("password").value;
+        let foundUser = users.find(user => user.name === tryName && user.password === tryPassword);
+        if (!foundUser) {
+            alert("Hibás felhasználónév vagy jelszó!");
+            return;
+        }
+        let currentUser = {
+            id: foundUser.id,
+            name: foundUser.name,
+            email: foundUser.email,
+            password: foundUser.password,
+            credits: foundUser.credits
+        };
+        try {
+            // Set currentUser in localStorage
+            yield localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        }
+        catch (error) {
+            console.error("Hiba a felhasználó beállításánál:", error);
+            alert("Sikertelen bejelentkezés.");
+        }
+        finally {
             window.location.href = "index.html";
         }
     });
