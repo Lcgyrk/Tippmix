@@ -146,7 +146,11 @@ async function Login() {
         credits: foundUser.credits
     };
 
-    
+    try {
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    } catch (error) {
+        console.log("Hiba a bejelentkezett felhasználó frissítésével");
+    } finally {return};
 }
 
 const logButton = document.getElementById("login");
