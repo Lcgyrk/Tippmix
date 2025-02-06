@@ -147,15 +147,10 @@ async function Login() {
     };
 
     try {
-        // Set currentUser in localStorage
-        await localStorage.setItem('currentUser', JSON.stringify(currentUser));
-    }
-    catch (error) {
-        console.error("Hiba a felhasználó beállításánál:", error);
-        alert("Sikertelen bejelentkezés.");
-    } finally {
-        window.location.href = "index.html";
-    }
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    } catch (error) {
+        console.log("Hiba a bejelentkezett felhasználó frissítésével");
+    } finally {return};
 }
 
 const logButton = document.getElementById("login");
