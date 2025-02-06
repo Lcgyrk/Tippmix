@@ -17,13 +17,36 @@ function getUsers() {
     return __awaiter(this, void 0, void 0, function* () {
         if (usersloaded)
             return;
-        const response = yield fetch("http://localhost:3000/users");
-        const data = yield response.json();
-        users = data.map((user) => (Object.assign(Object.assign({}, user), { id: Number(user.id) })));
-        usersloaded = true;
-        console.log(users);
+        try {
+            const response = yield fetch("http://localhost:3000/users");
+            const data = yield response.json();
+            users = data.map((user) => (Object.assign(Object.assign({}, user), { id: Number(user.id) })));
+            usersloaded = true;
+            console.log("Users loaded:", users);
+        }
+        catch (error) {
+            console.error("Failed to fetch users:", error);
+        }
     });
 }
+function getUsersWithRetry() {
+    return __awaiter(this, arguments, void 0, function* (retries = 30, delay = 1000) {
+        let attempt = 0;
+        while (attempt < retries) {
+            yield getUsers();
+            if (users.length > 0) {
+                return;
+            }
+            attempt++;
+            console.log(`Retry attempt ${attempt}`);
+            yield new Promise(resolve => setTimeout(resolve, delay));
+        }
+        alert("Felhasználók betöltése nem sikerült.");
+    });
+}
+window.addEventListener("DOMContentLoaded", () => {
+    getUsersWithRetry();
+});
 function findUser(userName, userPassword) {
     const foundUser = users.find(user => user.name === userName);
     if (!foundUser) {
@@ -39,9 +62,13 @@ function findUser(userName, userPassword) {
         return false;
     }
 }
+const regButton = document.getElementById("register");
+if (regButton) {
+    regButton.addEventListener("click", Registration);
+}
 function Registration() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield getUsers();
+        event === null || event === void 0 ? void 0 : event.preventDefault();
         let id = users.length + 1;
         let name = registrationName.value;
         let email = registrationEmail.value;
@@ -53,6 +80,17 @@ function Registration() {
         }
         if (users.find(user => user.name === name)) {
             alert("Ez a felhasználónév már foglalt!");
+            return;
+        }
+        let containsNumber = /\d/.test(password);
+        let containsUppercase = /[A-Z]/.test(password);
+        let requirements = ["Jelszó követelmények:",
+            "\tlegalább 5 karakter hosszú",
+            "\ttartalmaz legalább 1 számot",
+            "\ttartalmaz legalább egy nagy betűt"];
+        let message = requirements.join("\n");
+        if (password.length <= 5 || !containsNumber || !containsUppercase) {
+            alert(message);
             return;
         }
         let user = {
@@ -87,22 +125,48 @@ function Registration() {
         }
     });
 }
-const regButton = document.getElementById("register");
-if (regButton) {
-    regButton.addEventListener("click", Registration);
-}
-function Login() {
-    return __awaiter(this, void 0, void 0, function* () {
-        yield getUsers();
-        let tryName = document.getElementById("name");
-        let tryPassword = document.getElementById("password");
-        let loginSuccess = yield findUser(tryName.value, tryPassword.value);
-        if (loginSuccess) {
-            window.location.href = "index.html";
-        }
-    });
-}
 const logButton = document.getElementById("login");
 if (logButton) {
     logButton.addEventListener("click", Login);
+}
+function Login() {
+    return __awaiter(this, void 0, void 0, function* () {
+        event === null || event === void 0 ? void 0 : event.preventDefault();
+        if (users.length == 0) {
+            alert("Aszinkron hiba, kérlek próbáld újra");
+            return;
+        }
+        let tryName = document.getElementById("name").value;
+        let tryPassword = document.getElementById("password").value;
+        let foundUser = users.find(user => user.name === tryName && user.password === tryPassword);
+        if (!foundUser) {
+            alert("Hibás felhasználónév vagy jelszó!");
+            return;
+        }
+        let currentUser = {
+            id: foundUser.id,
+            name: foundUser.name,
+            email: foundUser.email,
+            password: foundUser.password,
+            credits: foundUser.credits
+        };
+        try {
+            localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        }
+        catch (error) {
+            console.log("Hiba a bejelentkezett felhasználó frissítésével");
+        }
+        ;
+        window.location.href = "./index.html";
+    });
+}
+const passwordInput = document.getElementById("password");
+const eye = document.getElementById("eye");
+if (eye) {
+    eye.addEventListener("click", () => {
+        if (passwordInput.type == "password")
+            passwordInput.type = "text";
+        else if (passwordInput.type == "text")
+            passwordInput.type = "password";
+    });
 }
