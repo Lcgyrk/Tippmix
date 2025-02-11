@@ -119,34 +119,36 @@ async function displayMatches(sport: string) {
 
     filteredArray.forEach((match) => {
         matchesContainer!.innerHTML += `
-        <div class="card-body">
-            <h5 class="card-title text-center">
-                <span class="fw-bold">${match.homeTeam}</span> vs 
-                <span class="fw-bold">${match.awayTeam}</span>
-            </h5>
-            <div class="d-flex justify-content-around mt-3">
-                <button id="${match.id}-${match.homeTeam}" class="btn home">${
-            match.homeOdds
-        }</button>
-                ${
-                    match.drawOdds !== null
-                        ? `<button id="${match.id}-draw" class="btn draw">${match.drawOdds}</button>`
-                        : ``
-                }
-                <button id="${match.id}-${match.awayTeam}" class="btn away">${
-            match.awayOdds
-        }</button>
+            <div class="card-body">
+                <h5 class="card-title text-center">
+                    <span class="fw-bold">${match.homeTeam}</span> vs
+                    <span class="fw-bold">${match.awayTeam}</span>
+                </h5>
+                <div class="d-flex justify-content-around mt-3">
+                    <button id="${match.id}-${
+            match.homeTeam
+        }" class="btn home">${match.homeOdds}</button>
+                    ${
+                        match.drawOdds !== null
+                            ? `<button id="${match.id}-draw" class="btn draw">${match.drawOdds}</button>`
+                            : ``
+                    }
+                    <button id="${match.id}-${
+            match.awayTeam
+        }" class="btn away">${match.awayOdds}</button>
+                </div>
+                
             </div>
-            <div class="mt-3">
-                <label for="stake1" class="form-label">Stake Amount ($)</label>
-                <input type="number" class="form-control" id="stake1" placeholder="Enter your stake">
-            </div>
-            <button class="btn btn-success w-100 mt-3" type="button">Place Bet</button>
-        </div>
-    `;
+        `;
     });
     pushBetsToLocalStorage();
 }
+
+// <div class="mt-3">
+//     <label for="stake1" class="form-label">Stake Amount ($)</label>
+//     <input type="number" class="form-control" id="stake1" placeholder="Enter your stake">
+// </div>
+// <button class="btn btn-success w-100 mt-3" type="button">Place Bet</button>
 
 const footballBetting = document.getElementById("football-betting");
 footballBetting!.addEventListener("click", () => {
