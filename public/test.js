@@ -70,6 +70,8 @@ function displayMatches(sport) {
     `;
         });
         const matchButtons = document.querySelectorAll(".match");
+        const placeBetButton = matchesContainer.querySelector(`button.btn-success`);
+        const stakeInput = matchesContainer.querySelector(`input#stake1`);
         matchButtons.forEach((button) => {
             button.addEventListener("click", (event) => {
                 const target = event.target;
@@ -85,10 +87,29 @@ function displayMatches(sport) {
                 }
                 console.log(allOdds);
             });
+            placeBetButton.addEventListener("click", () => {
+                const stake = parseFloat(stakeInput.value);
+                const selectedButtons = matchesContainer.querySelectorAll(".btn-primary");
+                selectedButtons.forEach(button => {
+                    const buttonElement = button;
+                    const [matchId, team] = buttonElement.id.split("-");
+                    const odds = parseFloat(buttonElement.textContent || "0");
+                    placeBet(matchId, team, stake, odds);
+                });
+                // Reset selection
+                stakeInput.value = "";
+                selectedButtons.forEach(button => {
+                    button.classList.remove("btn-primary");
+                    button.classList.add("btn-outline-primary");
+                });
+                allOdds = [];
+            });
         });
     });
 }
 let allOdds = [];
+let userBalance = 10000; // Starting balance
+let placedBets = [];
 const footballBetting = document.getElementById("football-betting");
 footballBetting.addEventListener("click", () => {
     const matches = getRandomMatches(10, "soccer");
@@ -129,3 +150,43 @@ tennisBetting.addEventListener("click", () => {
     }
     displayMatches("tennis");
 });
+// Add this function to handle bet placement
+function placeBet(matchId, selectedTeam, stake, odds) {
+    if (stake <= 0) {
+        alert("Please enter a valid stake amount");
+        return;
+    }
+    if (stake > userBalance) {
+        alert("Insufficient balance");
+        return;
+    }
+    userBalance -= stake;
+    updateBalanceDisplay();
+    const bet = {
+        matchId,
+        selectedTeam,
+        stake,
+        odds
+    };
+    placedBets.push(bet);
+    // Simulate match result after 5 seconds
+    setTimeout(() => {
+        const didWin = Math.random() > 0.5;
+        if (didWin) {
+            const winnings = stake * odds;
+            userBalance += winnings;
+            alert(`Congratulations! You won ${winnings.toFixed(2)}$`);
+        }
+        else {
+            alert("Better luck next time!");
+        }
+        updateBalanceDisplay();
+    }, 5000);
+}
+// Add this function to update balance display
+function updateBalanceDisplay() {
+    const balanceElement = document.getElementById("balance");
+    if (balanceElement) {
+        balanceElement.textContent = `Balance: ${userBalance.toFixed(2)}$`;
+    }
+}

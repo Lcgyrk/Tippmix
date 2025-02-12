@@ -125,43 +125,23 @@ function Login() {
             alert("Hibás felhasználónév vagy jelszó!");
             return;
         }
-        if (foundUser) {
-            let currentUser = {
-                id: foundUser.id,
-                name: foundUser.name,
-                email: foundUser.email,
-                password: foundUser.password,
-                credits: foundUser.credits
-            };
-            try {
-                const response = yield fetch("http://localhost:3000/currentUser", {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        id: foundUser.id,
-                        name: foundUser.name,
-                        email: foundUser.email,
-                        credits: foundUser.credits,
-                    }),
-                });
-                if (response.ok) {
-                    alert("Sikeres bejelentkezés!");
-                    window.location.href = "index.html";
-                }
-                else {
-                    alert("Nem sikerült beállítani a felhasználót.");
-                }
-            }
-            catch (error) {
-                console.error("Hiba a felhasználó beállításánál:", error);
-                alert("asdfa");
-            }
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            alert("Sikeres bejelentkezés!");
-            window.location.href = "index.html";
+        let currentUser = {
+            id: foundUser.id,
+            name: foundUser.name,
+            email: foundUser.email,
+            password: foundUser.password,
+            credits: foundUser.credits
+        };
+        try {
+            localStorage.setItem("currentUser", JSON.stringify(currentUser));
         }
+        catch (error) {
+            console.log("Hiba a bejelentkezett felhasználó frissítésével");
+        }
+        finally {
+            return;
+        }
+        ;
     });
 }
 const logButton = document.getElementById("login");

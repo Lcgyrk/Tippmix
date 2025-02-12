@@ -15,3 +15,11 @@ export function FetchBets() {
         return yield response.json();
     });
 }
+export function FetchCurrentMatches() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch("http://localhost:3000/currentMatches");
+        if (!response.ok)
+            throw new Error(response.statusText);
+        return yield response.json();
+    });
+}
