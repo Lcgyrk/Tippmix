@@ -13,6 +13,20 @@ interface user {
 let users: user[] = [];
 let usersloaded = false;
 
+async function getUsersWithRetry(retries: number = 30, delay: number = 1000) {
+    let attempt = 0;
+    while (attempt < retries) {
+        await getUsers();
+        if (users.length > 0) {
+            return;
+        }
+        attempt++;
+        console.log(`Retry attempt ${attempt}`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    alert("Felhasználók betöltése nem sikerült.");
+}
+
 async function getUsers(){
     if (usersloaded) return;
 
@@ -32,24 +46,6 @@ async function getUsers(){
     }
 }
 
-async function getUsersWithRetry(retries: number = 30, delay: number = 1000) {
-    let attempt = 0;
-    while (attempt < retries) {
-        await getUsers();
-        if (users.length > 0) {
-            return;
-        }
-        attempt++;
-        console.log(`Retry attempt ${attempt}`);
-        await new Promise(resolve => setTimeout(resolve, delay));
-    }
-    alert("Felhasználók betöltése nem sikerült.");
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-    getUsersWithRetry();
-});
-
 function findUser(userName: string, userPassword: string) : boolean{
     const foundUser = users.find(user => user.name === userName);
 
@@ -67,13 +63,9 @@ function findUser(userName: string, userPassword: string) : boolean{
     }
 }
 
-const regButton = document.getElementById("register");
-if (regButton) {
-    regButton.addEventListener("click", Registration);
-}
 
 async function Registration(){
-    event?.preventDefault();
+    await getUsersWithRetry();
 
     let id = users.length + 1;
     let name = registrationName.value;
@@ -89,20 +81,6 @@ async function Registration(){
     if (users.find(user => user.name === name)) {
         alert("Ez a felhasználónév már foglalt!");
         return;
-    }
-
-    let containsNumber = /\d/.test(password);
-    let containsUppercase = /[A-Z]/.test(password)
-
-    let requirements = ["Jelszó követelmények:",
-                        "\tlegalább 5 karakter hosszú",
-                        "\ttartalmaz legalább 1 számot",
-                        "\ttartalmaz legalább egy nagy betűt"]
-    let message = requirements.join("\n");
-
-    if (password.length <= 5 || !containsNumber || !containsUppercase){
-        alert(message);
-        return
     }
 
     let user = {
@@ -137,13 +115,13 @@ async function Registration(){
     }
 }
 
-const logButton = document.getElementById("login");
-if (logButton) {
-    logButton.addEventListener("click", Login);
+const regButton = document.getElementById("register");
+if (regButton) {
+    regButton.addEventListener("click", Registration);
 }
 
 async function Login() {
-    event?.preventDefault();
+    await getUsersWithRetry();
 
     if (users.length == 0) {
         alert("Aszinkron hiba, kérlek próbáld újra");
@@ -172,15 +150,10 @@ async function Login() {
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
     } catch (error) {
         console.log("Hiba a bejelentkezett felhasználó frissítésével");
-    };
-    window.location.href = "./index.html";
+    } finally {return};
 }
 
-const passwordInput = document.getElementById("password") as HTMLInputElement;
-const eye = document.getElementById("eye");
-if (eye){
-    eye.addEventListener("click", () => {
-        if (passwordInput.type == "password") passwordInput.type = "text";
-        else if (passwordInput.type == "text") passwordInput.type = "password";
-    });
+const logButton = document.getElementById("login");
+if (logButton) {
+    logButton.addEventListener("click", Login);
 }

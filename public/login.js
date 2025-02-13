@@ -13,6 +13,21 @@ let registrationEmail = document.getElementById("email");
 let registrationPassword = document.getElementById("password");
 let users = [];
 let usersloaded = false;
+function getUsersWithRetry() {
+    return __awaiter(this, arguments, void 0, function* (retries = 30, delay = 1000) {
+        let attempt = 0;
+        while (attempt < retries) {
+            yield getUsers();
+            if (users.length > 0) {
+                return;
+            }
+            attempt++;
+            console.log(`Retry attempt ${attempt}`);
+            yield new Promise(resolve => setTimeout(resolve, delay));
+        }
+        alert("Felhasználók betöltése nem sikerült.");
+    });
+}
 function getUsers() {
     return __awaiter(this, void 0, void 0, function* () {
         if (usersloaded)
@@ -29,24 +44,6 @@ function getUsers() {
         }
     });
 }
-function getUsersWithRetry() {
-    return __awaiter(this, arguments, void 0, function* (retries = 30, delay = 1000) {
-        let attempt = 0;
-        while (attempt < retries) {
-            yield getUsers();
-            if (users.length > 0) {
-                return;
-            }
-            attempt++;
-            console.log(`Retry attempt ${attempt}`);
-            yield new Promise(resolve => setTimeout(resolve, delay));
-        }
-        alert("Felhasználók betöltése nem sikerült.");
-    });
-}
-window.addEventListener("DOMContentLoaded", () => {
-    getUsersWithRetry();
-});
 function findUser(userName, userPassword) {
     const foundUser = users.find(user => user.name === userName);
     if (!foundUser) {
@@ -62,13 +59,9 @@ function findUser(userName, userPassword) {
         return false;
     }
 }
-const regButton = document.getElementById("register");
-if (regButton) {
-    regButton.addEventListener("click", Registration);
-}
 function Registration() {
     return __awaiter(this, void 0, void 0, function* () {
-        event === null || event === void 0 ? void 0 : event.preventDefault();
+        yield getUsersWithRetry();
         let id = users.length + 1;
         let name = registrationName.value;
         let email = registrationEmail.value;
@@ -80,17 +73,6 @@ function Registration() {
         }
         if (users.find(user => user.name === name)) {
             alert("Ez a felhasználónév már foglalt!");
-            return;
-        }
-        let containsNumber = /\d/.test(password);
-        let containsUppercase = /[A-Z]/.test(password);
-        let requirements = ["Jelszó követelmények:",
-            "\tlegalább 5 karakter hosszú",
-            "\ttartalmaz legalább 1 számot",
-            "\ttartalmaz legalább egy nagy betűt"];
-        let message = requirements.join("\n");
-        if (password.length <= 5 || !containsNumber || !containsUppercase) {
-            alert(message);
             return;
         }
         let user = {
@@ -125,13 +107,13 @@ function Registration() {
         }
     });
 }
-const logButton = document.getElementById("login");
-if (logButton) {
-    logButton.addEventListener("click", Login);
+const regButton = document.getElementById("register");
+if (regButton) {
+    regButton.addEventListener("click", Registration);
 }
 function Login() {
     return __awaiter(this, void 0, void 0, function* () {
-        event === null || event === void 0 ? void 0 : event.preventDefault();
+        yield getUsersWithRetry();
         if (users.length == 0) {
             alert("Aszinkron hiba, kérlek próbáld újra");
             return;
@@ -156,17 +138,13 @@ function Login() {
         catch (error) {
             console.log("Hiba a bejelentkezett felhasználó frissítésével");
         }
+        finally {
+            return;
+        }
         ;
-        window.location.href = "./index.html";
     });
 }
-const passwordInput = document.getElementById("password");
-const eye = document.getElementById("eye");
-if (eye) {
-    eye.addEventListener("click", () => {
-        if (passwordInput.type == "password")
-            passwordInput.type = "text";
-        else if (passwordInput.type == "text")
-            passwordInput.type = "password";
-    });
+const logButton = document.getElementById("login");
+if (logButton) {
+    logButton.addEventListener("click", Login);
 }
