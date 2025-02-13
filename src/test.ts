@@ -205,7 +205,10 @@ function placeBet(matchId: string, selectedTeam: string, stake: number, odds: nu
 // Add this function to update balance display
 function updateBalanceDisplay() {
     const balanceElement = document.getElementById("balance");
+    console.log(userBalance);
+    
     if (balanceElement) {
-        balanceElement.textContent = `Balance: ${userBalance.toFixed(2)}$`;
-    }
+        balanceElement.innerHTML = userBalance.toFixed(2)};
 }
+
+updateBalanceDisplay();
