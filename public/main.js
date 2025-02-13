@@ -69,26 +69,15 @@ function displayMatches(sport) {
         </div>
     `;
         });
-        const matchButtons = document.querySelectorAll(".match");
-        matchButtons.forEach((button) => {
-            button.addEventListener("click", (event) => {
-                const target = event.target;
-                if (button.classList.contains("btn-primary")) {
-                    allOdds.splice(allOdds.indexOf(Number(target.innerText)), 1);
-                    button.classList.remove("btn-primary");
-                    button.classList.add("btn-outline-primary");
-                }
-                else {
-                    allOdds.push(Number(target.innerText));
-                    button.classList.remove("btn-outline-primary");
-                    button.classList.add("btn-primary");
-                }
-                console.log(allOdds);
-            });
-        });
+        pushBetsToLocalStorage();
     });
 }
-let allOdds = [];
+let loggedUserString = localStorage.getItem("currentUser");
+if (loggedUserString !== null && loggedUserString !== undefined) {
+    const loggedUser = JSON.parse(loggedUserString);
+    const loginButton = document.getElementById("loginButton");
+    loginButton.innerText = `${loggedUser.name}`;
+}
 const footballBetting = document.getElementById("football-betting");
 footballBetting.addEventListener("click", () => {
     const matches = getRandomMatches(10, "soccer");

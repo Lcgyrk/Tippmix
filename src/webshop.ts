@@ -1,3 +1,4 @@
+import { userBalance } from "./test";
 class WebShop {
     private balance: number;
     private inventory: { [key: string]: number };
@@ -15,7 +16,7 @@ class WebShop {
     }
 
     private updateBalanceDisplay(): void {
-        const balanceElement = document.getElementById("userBalance");
+        const balanceElement = document.getElementById("userCredits");
         if (balanceElement) {
             console.log(this.balance);
             
@@ -54,44 +55,5 @@ class WebShop {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    new WebShop(682357236423423);
-});
-
-
-
-//ez majd a main.ts-be megy
-document.addEventListener("DOMContentLoaded", () => {
-    const stakeInput = document.getElementById("stake1") as HTMLInputElement;
-    const placeBetButton = document.querySelector(".btn-success") as HTMLButtonElement;
-
-    placeBetButton.addEventListener("click", () => {
-        const stakeValue = parseFloat(stakeInput.value);
-        
-        if (isNaN(stakeValue) || stakeValue <= 0) {
-            alert("Helyes összeget írjon be legyenszíves.");
-            return;
-        }
-
-        const betConfirmed = confirm(` Feltenni kívánt összeg: ${stakeValue}FT. Biztos felteszi?`);
-        
-        if (betConfirmed) {
-            alert("Fogadás sikeresen megtéve!");
-            stakeInput.value = "";
-            
-        }
-        
-        const WinOrLose = Math.random()
-        let DidWin:any = false;
-        if(WinOrLose >= 0 && WinOrLose <= 0.4){
-            DidWin = true;
-        }
-        else if(WinOrLose >= 0.4 && WinOrLose <= 0.8){
-            DidWin = false;
-        }
-        else{
-            DidWin = null; //döntetlen
-        }
-
-
-    });
+    new WebShop(userBalance);
 });
