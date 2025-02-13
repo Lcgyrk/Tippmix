@@ -21,7 +21,6 @@
         "email": "admin@email.com",
         "credits": 999999
     },
-    "currentMatches": [],
     "bets": [
         {
             "id": "1",
@@ -1823,5 +1822,6 @@
             "awayOdds": 1.68,
             "drawOdds": null
         }
-    ]
+    ],
+    "currentMatches": []
 }
