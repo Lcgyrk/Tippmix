@@ -1,4 +1,4 @@
-import { FetchBets, FetchCurrentMatches, Bet } from "./readFile.js";
+import { FetchBets, FetchCurrentMatches, Bet, User} from "./readFile.js";
 //localStorage.clear();
 
 let selectedMatches: string[] = JSON.parse(
@@ -143,12 +143,12 @@ async function displayMatches(sport: string) {
     });
     pushBetsToLocalStorage();
 }
-
-// <div class="mt-3">
-//     <label for="stake1" class="form-label">Stake Amount ($)</label>
-//     <input type="number" class="form-control" id="stake1" placeholder="Enter your stake">
-// </div>
-// <button class="btn btn-success w-100 mt-3" type="button">Place Bet</button>
+let loggedUserString = localStorage.getItem("currentUser");
+if (loggedUserString !== null && loggedUserString !== undefined){
+    const loggedUser: User = JSON.parse(loggedUserString);
+    const loginButton = document.getElementById("loginButton");
+    loginButton!.innerText = `${loggedUser.name}`;
+}
 
 const footballBetting = document.getElementById("football-betting");
 footballBetting!.addEventListener("click", () => {
