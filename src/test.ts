@@ -115,7 +115,7 @@ async function displayMatches(sport: string) {
     });
 }
 let allOdds: number[] = [];
-let userBalance = 10000; // Starting balance
+let userBalance = 1000; // Starting balance
 let placedBets: PlacedBet[] = [];
 const footballBetting = document.getElementById("football-betting");
 footballBetting!.addEventListener("click", () => {
@@ -211,4 +211,5 @@ function updateBalanceDisplay() {
         balanceElement.innerHTML = userBalance.toFixed(2)};
 }
 
+export {userBalance};
 updateBalanceDisplay();
