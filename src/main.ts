@@ -1,41 +1,62 @@
-import { FetchBets, FetchCurrentMatches, Bet, User } from "./readFile.js";
-//localStorage.clear();
-let selectedMatches: string[] = JSON.parse(
-    localStorage.getItem("selectedMatches") || "[]"
-);
-let selectedOdds: number[] = JSON.parse(
-    localStorage.getItem("selectedOdds") || "[]"
-);
-async function getRandomMatches(
-    count: number,
-    typeOfSport: string
-): Promise<Bet[]> {
+import { FetchBets, Bet, User } from "./readFile.js";
+import { displayBets } from "./betting.js";
+
+async function getRandomMatches(count: number): Promise<Bet[]> {
     const data = await FetchBets();
-    const filteredArray = data.filter(
-        (item) => item.sport.toLowerCase() == typeOfSport.toLocaleLowerCase()
+    let filteredArray = data.filter(
+        (item) => item.sport.toLowerCase() == "soccer"
     );
-    const wantedArray = filteredArray
+    let correctNumber = filteredArray
         .sort(() => Math.random() - 0.5)
         .slice(0, count);
+    let wantedArray = correctNumber;
+    filteredArray = data.filter(
+        (item) => item.sport.toLowerCase() == "basketball"
+    );
+    correctNumber = filteredArray
+        .sort(() => Math.random() - 0.5)
+        .slice(0, count);
+    correctNumber.forEach((match) => {
+        wantedArray.push(match);
+    });
+    filteredArray = data.filter((item) => item.sport.toLowerCase() == "tennis");
+    correctNumber = filteredArray
+        .sort(() => Math.random() - 0.5)
+        .slice(0, count);
+    correctNumber.forEach((match) => {
+        wantedArray.push(match);
+    });
+    filteredArray = data.filter(
+        (item) => item.sport.toLowerCase() == "cricket"
+    );
+    correctNumber = filteredArray
+        .sort(() => Math.random() - 0.5)
+        .slice(0, count);
+    correctNumber.forEach((match) => {
+        wantedArray.push(match);
+    });
+    filteredArray = data.filter(
+        (item) => item.sport.toLowerCase() == "american football"
+    );
+    correctNumber = filteredArray
+        .sort(() => Math.random() - 0.5)
+        .slice(0, count);
+    correctNumber.forEach((match) => {
+        wantedArray.push(match);
+    });
     return wantedArray;
 }
-async function sendMatchesToServer(matches: Promise<Bet[]>, sport: string) {
-    for (const match of await matches) {
-        await fetch("http://localhost:3000/currentMatches", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(match),
-        });
+async function sendMatchesToServer(matches: Promise<Bet[]>) {
+    const matchesString = localStorage.getItem("matches");
+    let localMatches: Bet[] = [];
+    if (matchesString !== null && matchesString !== undefined) {
+        localMatches = JSON.parse(matchesString);
     }
-    if (sport == "soccer") localStorage.setItem("soccerMatches", "true");
-    if (sport == "basketball")
-        localStorage.setItem("basketballMatches", "true");
-    if (sport == "cricket") localStorage.setItem("cricketMatches", "true");
-    if (sport == "american football")
-        localStorage.setItem("americanFootballMatches", "true");
-    if (sport == "tennis") localStorage.setItem("tennisMatches", "true");
+    for (const match of await matches) {
+        localMatches.push(match);
+    }
+    localStorage.setItem("matches", JSON.stringify(localMatches));
+    displayMatches("soccer");
 }
 function pushBetsToLocalStorage() {
     const homeButtons = document.querySelectorAll<HTMLButtonElement>(".home");
@@ -44,8 +65,9 @@ function pushBetsToLocalStorage() {
     displayButtons(homeButtons, "primary");
     displayButtons(drawButtons, "secondary");
     displayButtons(awayButtons, "danger");
+    displayBets();
     const buttons: NodeListOf<HTMLButtonElement> =
-        document.querySelectorAll(".btn");
+        document.querySelectorAll(".matchButton");
     buttons.forEach((button) => {
         const buttonId = button.id;
         const oddValue = Number(button.innerText);
@@ -69,6 +91,7 @@ function pushBetsToLocalStorage() {
             displayButtons(homeButtons, "primary");
             displayButtons(drawButtons, "secondary");
             displayButtons(awayButtons, "danger");
+            displayBets();
         });
     });
 }
@@ -106,7 +129,8 @@ function displayButtons(buttons: NodeListOf<HTMLButtonElement>, color: string) {
     });
 }
 async function displayMatches(sport: string) {
-    const data = await FetchCurrentMatches();
+    const matches = localStorage.getItem("matches");
+    let data: Bet[] = JSON.parse(matches!);
     const filteredArray = data.filter(
         (item) => item.sport.toLowerCase() === sport.toLowerCase()
     );
@@ -121,54 +145,75 @@ async function displayMatches(sport: string) {
                 <span class="fw-bold">${match.awayTeam}</span>
             </h5>
             <div class="d-flex justify-content-around mt-3">
-            <button id="${match.id}-${match.homeTeam}" class="btn home">${
-            match.homeOdds
-        }</button>
+            <button id="${match.id}-${
+            match.homeTeam
+        }" class="btn home matchButton">${match.homeOdds}</button>
                 ${
                     match.drawOdds !== null
-                        ? `<button id="${match.id}-draw" class="btn draw">${match.drawOdds}</button>`
+                        ? `<button id="${match.id}-draw" class="btn draw matchButton">${match.drawOdds}</button>`
                         : ``
                 }
-                <button id="${match.id}-${match.awayTeam}" class="btn away">${
-            match.awayOdds
-        }</button>
+                <button id="${match.id}-${
+            match.awayTeam
+        }" class="btn away matchButton">${match.awayOdds}</button>
             </div>
     `;
     });
     pushBetsToLocalStorage();
 }
+const clearButton = document.getElementById("clearButton");
+clearButton!.addEventListener("click", () => {
+    localStorage.removeItem("selectedOdds");
+    localStorage.removeItem("selectedMatches");
+    localStorage.removeItem("matches");
+    // localStorage.clear();
+    selectedMatches = [];
+    selectedOdds = [];
+    location.reload();
+});
+
+if (localStorage.getItem("matches") == null) {
+    const matches = getRandomMatches(5);
+    sendMatchesToServer(matches);
+}
+
+setTimeout(() => {
+    displayMatches("soccer");
+}, 50);
+
+let selectedMatches: string[] = JSON.parse(
+    localStorage.getItem("selectedMatches") || "[]"
+);
+let selectedOdds: number[] = JSON.parse(
+    localStorage.getItem("selectedOdds") || "[]"
+);
 
 let userString = localStorage.getItem("currentUser");
-if (userString !== null && userString !== undefined){
+if (userString !== null && userString !== undefined) {
     let user: User = JSON.parse(userString);
     const loginButton = document.getElementById("loginButton");
     loginButton!.innerText = `${user.name}`;
 }
 
+const bettingIcon = document.getElementById("icon");
 const footballBetting = document.getElementById("football-betting");
 footballBetting!.addEventListener("click", () => {
-    const matches = getRandomMatches(3, "soccer");
-    if (localStorage.getItem("soccerMatches") !== "true") {
-        sendMatchesToServer(matches, "soccer");
-    }
+    bettingIcon!.innerHTML = "";
+    bettingIcon!.className = "fas fa-futbol";
     displayMatches("soccer");
 });
 
 const basketballBetting = document.getElementById("basketball-betting");
 basketballBetting!.addEventListener("click", () => {
-    const matches = getRandomMatches(3, "basketball");
-    if (localStorage.getItem("basketballMatches") !== "true") {
-        sendMatchesToServer(matches, "basketball");
-    }
+    bettingIcon!.innerHTML = "";
+    bettingIcon!.className = "fas fa-basketball";
     displayMatches("basketball");
 });
 
 const cricketBetting = document.getElementById("cricket-betting");
 cricketBetting!.addEventListener("click", () => {
-    const matches = getRandomMatches(3, "cricket");
-    if (localStorage.getItem("cricketMatches") !== "true") {
-        sendMatchesToServer(matches, "cricket");
-    }
+    bettingIcon!.className = "";
+    bettingIcon!.innerHTML = `<img src="images/cricket_ball.svg" alt="" width="25px" style="vertical-align: top">`;
     displayMatches("cricket");
 });
 
@@ -176,18 +221,16 @@ const americanFootballBetting = document.getElementById(
     "americanFootball-betting"
 );
 americanFootballBetting!.addEventListener("click", () => {
-    const matches = getRandomMatches(3, "american football");
-    if (localStorage.getItem("americanFootballMatches") !== "true") {
-        sendMatchesToServer(matches, "american football");
-    }
+    bettingIcon!.innerHTML = "";
+    bettingIcon!.className = "fas fa-football-ball";
     displayMatches("american football");
 });
 
 const tennisBetting = document.getElementById("tennis-betting");
 tennisBetting!.addEventListener("click", () => {
-    const matches = getRandomMatches(3, "tennis");
-    if (localStorage.getItem("tennisMatches") !== "true") {
-        sendMatchesToServer(matches, "tennis");
-    }
+    bettingIcon!.className = "";
+    bettingIcon!.innerHTML = `<img src="images/tennis.svg" alt="" width="25px" style="vertical-align: top">`;
     displayMatches("tennis");
 });
+
+export { selectedMatches, selectedOdds };

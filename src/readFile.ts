@@ -14,7 +14,6 @@ export interface Bet {
     awayOdds: number;
     drawOdds: number | null;
 }
-
 export async function FetchBets(): Promise<Bet[]> {
     const response = await fetch("http://localhost:3000/bets");
     if (!response.ok) throw new Error(response.statusText);
