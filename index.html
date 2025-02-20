@@ -21,13 +21,15 @@
                     <li class="nav-item"><a href="#" class="nav-link" id="football-betting">Football</a></li>
                     <li class="nav-item"><a href="#" class="nav-link" id="basketball-betting">Basketball</a></li>
                     <li class="nav-item"><a href="#" class="nav-link" id="cricket-betting">Cricket</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link" id="americanFootball-betting">American Football</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" id="americanFootball-betting">American
+                            Football</a></li>
                     <li class="nav-item"><a href="#" class="nav-link" id="tennis-betting">Tennis</a></li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-coins"></i> Credits: <span
                                 id="balance">0</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="./webshop.html" id="shopTab"><i class="fas fa-shop"></i> Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./webshop.html" id="shopTab"><i
+                                class="fas fa-shop"></i> Shop</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" id="cartButton">
                             <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)
@@ -40,15 +42,14 @@
             </div>
         </div>
     </nav>
-
     <!-- Betting Section -->
     <div id="bettingSection" class="container mt-4">
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-lg-center">
 
-            <div class="col-md-8">
+            <div class="col-md-7 col-xl-8">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0"><i class="fas fa-futbol"></i> Available Matches</h5>
+                        <h5 class="mb-0"><i class="fas fa-futbol" id="icon"></i> Available Matches</h5>
                     </div>
                     <div id="matches-container">
 
@@ -58,8 +59,24 @@
         </div>
     </div>
 
-    
+    <!-- Betting Slip Panel in Bottom Right Corner -->
+    <div class="position-fixed bottom-0 end-0 m-3 bg-white shadow-lg p-3 rounded col-4 col-xl-2">
+        <h5 class="text-center">Your Bets</h5>
+        <ul id="bet-list" class="list-group mb-2"></ul>
+        <div class="d-flex justify-content-between align-items-center mt-3 p-3 border rounded bg-light">
+            <strong>Total Odds:</strong> <span id="total-odds">-</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-2 p-3 border rounded bg-light">
+            <strong>Expected Winnings:</strong> <span id="expected-winnings">-</span>
+        </div>
+        <div class="input-group">
+            <input type="text" id="bet-amount" class="form-control" placeholder="Enter your bet amount">
+            <button class="btn btn-success" id="place-bet">Place Bet</button>
+        </div>
+    </div>
 
+
+    <button class="btn btn-danger" id="clearButton">Clear Matches</button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="./public/main.js"></script>
 </body>
