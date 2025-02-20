@@ -15,12 +15,6 @@
             "credits": 100
         }
     ],
-    "currentUser": {
-        "id": 1,
-        "name": "admin",
-        "email": "admin@email.com",
-        "credits": 999999
-    },
     "bets": [
         {
             "id": "1",
