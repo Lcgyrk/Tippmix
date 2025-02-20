@@ -1,71 +1,9 @@
+import { users , User} from "./readFile.js";
 let registrationName = document.getElementById("name") as HTMLInputElement;
 let registrationEmail = document.getElementById("email") as HTMLInputElement;
 let registrationPassword = document.getElementById("password") as HTMLInputElement;
 
-interface user {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
-    credits: number;
-}
 
-let users: user[] = [];
-let usersloaded = false;
-
-async function getUsers(){
-    if (usersloaded) return;
-
-    try {
-        const response = await fetch("http://localhost:3000/users");
-        const data = await response.json();
-
-        users = data.map((user: any) => ({
-            ...user,
-            id: Number(user.id)
-        }));
-
-        usersloaded = true;
-        console.log("Users loaded:", users);
-    } catch (error) {
-        console.error("Failed to fetch users:", error);
-    }
-}
-
-async function getUsersWithRetry(retries: number = 30, delay: number = 1000) {
-    let attempt = 0;
-    while (attempt < retries) {
-        await getUsers();
-        if (users.length > 0) {
-            return;
-        }
-        attempt++;
-        console.log(`Retry attempt ${attempt}`);
-        await new Promise(resolve => setTimeout(resolve, delay));
-    }
-    alert("Felhasználók betöltése nem sikerült.");
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-    getUsersWithRetry();
-});
-
-function findUser(userName: string, userPassword: string) : boolean{
-    const foundUser = users.find(user => user.name === userName);
-
-    if (!foundUser) {
-        alert("Ilyen felhasználó nincs az adatbázisunkban!");
-        return false;
-    }
-
-    if (foundUser.password === userPassword) {
-        alert("Sikeres bejelentkezés!");
-        return true;
-    } else {
-        alert("Hibás jelszó!");
-        return false;
-    }
-}
 
 const regButton = document.getElementById("register");
 if (regButton) {
@@ -160,7 +98,7 @@ async function Login() {
         return;
     }
 
-    let currentUser: user = {
+    let currentUser: User = {
         id: foundUser.id,
         name: foundUser.name,
         email: foundUser.email,

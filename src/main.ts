@@ -195,10 +195,10 @@ let selectedOdds: number[] = JSON.parse(
     localStorage.getItem("selectedOdds") || "[]"
 );
 
+const loginButton = document.getElementById("loginButton");
 let userString = localStorage.getItem("currentUser");
 if (userString !== null && userString !== undefined) {
     let user: User = JSON.parse(userString);
-    const loginButton = document.getElementById("loginButton");
     loginButton!.innerText = `${user.name}`;
 }
 
@@ -239,5 +239,13 @@ tennisBetting!.addEventListener("click", () => {
     bettingIcon!.innerHTML = `<img src="images/tennis.svg" alt="" width="25px" style="vertical-align: top">`;
     displayMatches("tennis");
 });
+
+const deleteCurrentUserFromLocalStorage = document.getElementById("clearCurrentUser");
+deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
+localStorage.removeItem("currentUser");
+console.log(localStorage.getItem("currentUser"));
+loginButton!.innerText = "Login";
+});
+
 
 export { selectedMatches, selectedOdds };
