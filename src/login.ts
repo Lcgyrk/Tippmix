@@ -3,35 +3,6 @@ let registrationName = document.getElementById("name") as HTMLInputElement;
 let registrationEmail = document.getElementById("email") as HTMLInputElement;
 let registrationPassword = document.getElementById("password") as HTMLInputElement;
 
-// interface user {
-//     id: number;
-//     name: string;
-//     email: string;
-//     password: string;
-//     credits: number;
-// }
-
-
-
-
-
-// function findUser(userName: string, userPassword: string) : boolean{
-//     const foundUser = users.find(user => user.name === userName);
-
-//     if (!foundUser) {
-//         alert("Ilyen felhasználó nincs az adatbázisunkban!");
-//         return false;
-//     }
-
-//     if (foundUser.password === userPassword) {
-//         alert("Sikeres bejelentkezés!");
-//         return true;
-//     } else {
-//         alert("Hibás jelszó!");
-//         return false;
-//     }
-// }
-
 const regButton = document.getElementById("register");
 if (regButton) {
     regButton.addEventListener("click", Registration);
