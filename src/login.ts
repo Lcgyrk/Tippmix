@@ -118,7 +118,13 @@ const passwordInput = document.getElementById("password") as HTMLInputElement;
 const eye = document.getElementById("eye");
 if (eye){
     eye.addEventListener("mousedown", () => {
-        if (passwordInput.type == "password") passwordInput.type = "text";
-        else if (passwordInput.type == "text") passwordInput.type = "password";
+        if (passwordInput.type == "password") {
+            passwordInput.type = "text";
+            eye.innerHTML = `<i class="fa-solid fa-eye-slash text-primary"></i>`
+        }
+        else if (passwordInput.type == "text") {
+            passwordInput.type = "password";
+            eye.innerHTML = `<i class="fa-solid fa-eye text-primary"></i>`
+        }
     });
 }
