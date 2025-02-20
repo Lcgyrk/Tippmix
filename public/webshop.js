@@ -1,4 +1,3 @@
-"use strict";
 class WebShop {
     constructor(initialBalance) {
         this.balance = initialBalance;
@@ -12,7 +11,7 @@ class WebShop {
         this.setupEventListeners();
     }
     updateBalanceDisplay() {
-        const balanceElement = document.getElementById("userBalance");
+        const balanceElement = document.getElementById("userCredits");
         if (balanceElement) {
             console.log(this.balance);
             balanceElement.innerHTML = this.balance.toString();
@@ -47,33 +46,5 @@ class WebShop {
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
-    new WebShop(682357236423423);
 });
-//ez majd a main.ts-be megy
-document.addEventListener("DOMContentLoaded", () => {
-    const stakeInput = document.getElementById("stake1");
-    const placeBetButton = document.querySelector(".btn-success");
-    placeBetButton.addEventListener("click", () => {
-        const stakeValue = parseFloat(stakeInput.value);
-        if (isNaN(stakeValue) || stakeValue <= 0) {
-            alert("Helyes összeget írjon be legyenszíves.");
-            return;
-        }
-        const betConfirmed = confirm(` Feltenni kívánt összeg: ${stakeValue}FT. Biztos felteszi?`);
-        if (betConfirmed) {
-            alert("Fogadás sikeresen megtéve!");
-            stakeInput.value = "";
-        }
-        const WinOrLose = Math.random();
-        let DidWin = false;
-        if (WinOrLose >= 0 && WinOrLose <= 0.4) {
-            DidWin = true;
-        }
-        else if (WinOrLose >= 0.4 && WinOrLose <= 0.8) {
-            DidWin = false;
-        }
-        else {
-            DidWin = null; //döntetlen
-        }
-    });
-});
+export {};

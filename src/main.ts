@@ -1,6 +1,6 @@
 import { FetchBets, Bet, User } from "./readFile.js";
-import { displayBets } from "./betting.js";
-//localStorage.clear();
+import { displayBets, handleBetPlacement } from "./betting.js";
+
 async function getRandomMatches(count: number): Promise<Bet[]> {
     const data = await FetchBets();
     let filteredArray = data.filter(
@@ -95,6 +95,13 @@ function pushBetsToLocalStorage() {
         });
     });
 }
+
+const BetButton = document.getElementById("place-bet");
+BetButton!.addEventListener("click", () => {
+    handleBetPlacement();
+    }
+);
+
 function checkDoubleBetOnMatch() {
     if (selectedMatches.length < 2) return null;
     const lastIdNumber =

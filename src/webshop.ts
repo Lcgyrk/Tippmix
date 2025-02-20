@@ -1,4 +1,4 @@
-import { userBalance } from "./test";
+import { User } from "./readFile";
 class WebShop {
     private balance: number;
     private inventory: { [key: string]: number };
@@ -55,5 +55,5 @@ class WebShop {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    new WebShop(userBalance);
+    
 });
