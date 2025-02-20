@@ -244,7 +244,7 @@ const deleteCurrentUserFromLocalStorage = document.getElementById("clearCurrentU
 deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
 localStorage.removeItem("currentUser");
 console.log(localStorage.getItem("currentUser"));
-loginButton!.innerText = "Login";
+loginButton!.innerHTML = `<i class="fas fa-user"></i> Login`;
 });
 
 
