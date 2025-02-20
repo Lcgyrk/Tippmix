@@ -1,6 +1,6 @@
 import { FetchBets, Bet, User } from "./readFile.js";
 import { displayBets } from "./betting.js";
-
+//localStorage.clear();
 async function getRandomMatches(count: number): Promise<Bet[]> {
     const data = await FetchBets();
     let filteredArray = data.filter(
