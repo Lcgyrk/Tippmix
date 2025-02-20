@@ -1,13 +1,4 @@
-interface user {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
-    credits: number;
-}
-
-let users1: user[] = [];
-let usersloadedForAdmin = false;
+import { users } from "./readFile.js";
 
 const seeUsers = document.getElementById("userControl") as HTMLButtonElement;
 seeUsers.addEventListener("click", () => {

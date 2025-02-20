@@ -1,7 +1,9 @@
-import { users } from "./readFile.js";
+import { users , User} from "./readFile.js";
 let registrationName = document.getElementById("name") as HTMLInputElement;
 let registrationEmail = document.getElementById("email") as HTMLInputElement;
 let registrationPassword = document.getElementById("password") as HTMLInputElement;
+
+
 
 const regButton = document.getElementById("register");
 if (regButton) {
@@ -96,7 +98,7 @@ async function Login() {
         return;
     }
 
-    let currentUser: user = {
+    let currentUser: User = {
         id: foundUser.id,
         name: foundUser.name,
         email: foundUser.email,
