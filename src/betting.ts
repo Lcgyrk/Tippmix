@@ -80,23 +80,20 @@ export function handleBetPlacement() {
             const matchParts = match.split("-");
             const matchId = matchParts[0];
             const matchName = matchParts[1];
-            
-            // Get the button elements for this match
-            const homeButton = document.querySelector(`button[data-match-id="${matchId}"][data-bet="Home"]`);
-            const drawButton = document.querySelector(`button[data-match-id="${matchId}"][data-bet="Draw"]`);
-            const awayButton = document.querySelector(`button[data-match-id="${matchId}"][data-bet="Away"]`);
-            
-            let selectedBet = "";
-            
-            // Check which button has outline-success class
-            if (homeButton?.classList.contains('btn-outline')) {
-                selectedBet = "Home";
-            } else if (drawButton?.classList.contains('btn-outline')) {
-                selectedBet = "Draw";
-            } else if (awayButton?.classList.contains('btn-outline')) {
-                selectedBet = "Away";
-            }
+    // Update this section in handleBetPlacement function
+    const homeButton = document.querySelector(`#${matchId}-home`);
+    const drawButton = document.querySelector(`#${matchId}-draw`);
+    const awayButton = document.querySelector(`#${matchId}-away`);
 
+    let selectedBet = "";
+
+    if (homeButton?.classList.contains('btn-outline-success')) {
+        selectedBet = "Home";
+    } else if (drawButton?.classList.contains('btn-outline-success')) {
+        selectedBet = "Draw";
+    } else if (awayButton?.classList.contains('btn-outline-success')) {
+        selectedBet = "Away";
+    }
             const matchOdds = selectedOdds[index];
             
             // Generate match result

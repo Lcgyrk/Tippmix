@@ -2,48 +2,18 @@ import { FetchBets, Bet, User } from "./readFile.js";
 import { displayBets, handleBetPlacement } from "./betting.js";
 
 async function getRandomMatches(count: number): Promise<Bet[]> {
+    const sports = ["soccer", "basketball", "tennis", "cricket", "american football"];
     const data = await FetchBets();
-    let filteredArray = data.filter(
-        (item) => item.sport.toLowerCase() == "soccer"
-    );
-    let correctNumber = filteredArray
-        .sort(() => Math.random() - 0.5)
-        .slice(0, count);
-    let wantedArray = correctNumber;
-    filteredArray = data.filter(
-        (item) => item.sport.toLowerCase() == "basketball"
-    );
-    correctNumber = filteredArray
-        .sort(() => Math.random() - 0.5)
-        .slice(0, count);
-    correctNumber.forEach((match) => {
-        wantedArray.push(match);
+    const wantedArray: Bet[] = [];
+    
+    sports.forEach(sport => {
+        const filteredArray = data.filter(item => item.sport.toLowerCase() === sport);
+        const randomMatches = filteredArray
+            .sort(() => Math.random() - 0.5)
+            .slice(0, count);
+        wantedArray.push(...randomMatches);
     });
-    filteredArray = data.filter((item) => item.sport.toLowerCase() == "tennis");
-    correctNumber = filteredArray
-        .sort(() => Math.random() - 0.5)
-        .slice(0, count);
-    correctNumber.forEach((match) => {
-        wantedArray.push(match);
-    });
-    filteredArray = data.filter(
-        (item) => item.sport.toLowerCase() == "cricket"
-    );
-    correctNumber = filteredArray
-        .sort(() => Math.random() - 0.5)
-        .slice(0, count);
-    correctNumber.forEach((match) => {
-        wantedArray.push(match);
-    });
-    filteredArray = data.filter(
-        (item) => item.sport.toLowerCase() == "american football"
-    );
-    correctNumber = filteredArray
-        .sort(() => Math.random() - 0.5)
-        .slice(0, count);
-    correctNumber.forEach((match) => {
-        wantedArray.push(match);
-    });
+
     return wantedArray;
 }
 async function sendMatchesToServer(matches: Promise<Bet[]>) {

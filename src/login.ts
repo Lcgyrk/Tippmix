@@ -1,130 +1,120 @@
-import { users , User} from "./readFile.js";
-let registrationName = document.getElementById("name") as HTMLInputElement;
-let registrationEmail = document.getElementById("email") as HTMLInputElement;
-let registrationPassword = document.getElementById("password") as HTMLInputElement;
+import { users, User } from "./readFile.js";
 
+// DOM elements
+const elements = {
+    name: document.getElementById("name") as HTMLInputElement,
+    email: document.getElementById("email") as HTMLInputElement,
+    password: document.getElementById("password") as HTMLInputElement,
+    regButton: document.getElementById("register"),
+    logButton: document.getElementById("login"),
+    eye: document.getElementById("eye")
+} as const;
 
+// Password validation constants
+const PASSWORD_REQUIREMENTS = {
+    minLength: 5,
+    pattern: {
+      number: /\d/,
+      uppercase: /[A-Z]/
+    },
+    message: [
+      "Jelszó követelmények:",
+      "\tlegalább 5 karakter hosszú",
+      "\ttartalmaz legalább 1 számot",
+      "\ttartalmaz legalább egy nagy betűt"
+    ].join("\n")
+};
 
-const regButton = document.getElementById("register");
-if (regButton) {
-    regButton.addEventListener("click", Registration);
-}
+// Event listeners
+elements.regButton?.addEventListener("click", handleRegistration);
+elements.logButton?.addEventListener("click", handleLogin);
+elements.eye?.addEventListener("mousedown", togglePasswordVisibility);
 
-async function Registration(){
-    event?.preventDefault();
+async function handleRegistration(event: Event) {
+    event.preventDefault();
+  
+    const newUser = {
+      id: users.length + 1,
+      name: elements.name.value,
+      email: elements.email.value,
+      password: elements.password.value,
+      credits: 100
+    };
 
-    let id = users.length + 1;
-    let name = registrationName.value;
-    let email = registrationEmail.value;
-    let password = registrationPassword.value;
-    let credits = 100;
+    if (!validateRegistrationInput(newUser)) return;
 
-    if (name === '' || email === '' || password === '') {
-        alert("Minden mezőt ki kell tölteni!");
-        return;
-    }
-
-    if (users.find(user => user.name === name)) {
-        alert("Ez a felhasználónév már foglalt!");
-        return;
-    }
-
-    let containsNumber = /\d/.test(password);
-    let containsUppercase = /[A-Z]/.test(password)
-
-    let requirements = ["Jelszó követelmények:",
-                        "\tlegalább 5 karakter hosszú",
-                        "\ttartalmaz legalább 1 számot",
-                        "\ttartalmaz legalább egy nagy betűt"]
-    let message = requirements.join("\n");
-
-    if (password.length <= 5 || !containsNumber || !containsUppercase){
-        alert(message);
-        return
-    }
-
-    let user = {
-        id: id,
-        name: name,
-        email: email,
-        password: password,
-        credits: credits
-    }
-    console.log(users);
-    
     try {
-        const response = await fetch("http://localhost:3000/users", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-        });
+      const response = await fetch("http://localhost:3000/users", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser)
+      });
 
-        if (response.ok) {
-            const newUser = await response.json();
-            users.push(user);
-            console.log("Sikeres regisztrálás", newUser);
-            alert('Sikeres regisztrálás');
-        } else {
-            alert('Sikertelen regisztrálás. Próbálja újra!');
-        }
+      if (response.ok) {
+        const registeredUser = await response.json();
+        users.push(newUser);
+        alert('Sikeres regisztrálás');
+      } else {
+        throw new Error('Registration failed');
+      }
     } catch (error) {
-        console.error('Sikertelen regisztrálás.', error);
-        alert('Sikertelen regisztrálás.');
+      console.error('Sikertelen regisztrálás.', error);
+      alert('Sikertelen regisztrálás.');
     }
 }
 
-const logButton = document.getElementById("login");
-if (logButton) {
-    logButton.addEventListener("click", Login);
-}
-
-async function Login() {
-    event?.preventDefault();
-
-    if (users.length == 0) {
-        alert("Aszinkron hiba, kérlek próbáld újra");
-        return;
+function validateRegistrationInput(user: Omit<User, 'credits'>): boolean {
+    if (!user.name || !user.email || !user.password) {
+      alert("Minden mezőt ki kell tölteni!");
+      return false;
     }
 
-    let tryName = (document.getElementById("name") as HTMLInputElement).value;
-    let tryPassword = (document.getElementById("password") as HTMLInputElement).value;
+    if (users.find(u => u.name === user.name)) {
+      alert("Ez a felhasználónév már foglalt!");
+      return false;
+    }
 
-    let foundUser = users.find(user => user.name === tryName && user.password === tryPassword);
+    const isValidPassword = 
+      user.password.length > PASSWORD_REQUIREMENTS.minLength &&
+      PASSWORD_REQUIREMENTS.pattern.number.test(user.password) &&
+      PASSWORD_REQUIREMENTS.pattern.uppercase.test(user.password);
+
+    if (!isValidPassword) {
+      alert(PASSWORD_REQUIREMENTS.message);
+      return false;
+    }
+
+    return true;
+}
+
+async function handleLogin(event: Event) {
+    event.preventDefault();
+
+    if (!users.length) {
+      alert("Aszinkron hiba, kérlek próbáld újra");
+      return;
+    }
+
+    const foundUser = users.find(user => 
+      user.name === elements.name.value && 
+      user.password === elements.password.value
+    );
 
     if (!foundUser) {
-        alert("Hibás felhasználónév vagy jelszó!");
-        return;
+      alert("Hibás felhasználónév vagy jelszó!");
+      return;
     }
 
-    let currentUser: User = {
-        id: foundUser.id,
-        name: foundUser.name,
-        email: foundUser.email,
-        password: foundUser.password,
-        credits: foundUser.credits
-    };
-
     try {
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      localStorage.setItem("currentUser", JSON.stringify(foundUser));
+      window.location.href = "./index.html";
     } catch (error) {
-        console.log("Hiba a bejelentkezett felhasználó frissítésével");
-    };
-    window.location.href = "./index.html";
+      console.error("Hiba a bejelentkezett felhasználó frissítésével", error);
+    }
 }
 
-const passwordInput = document.getElementById("password") as HTMLInputElement;
-const eye = document.getElementById("eye");
-if (eye){
-    eye.addEventListener("mousedown", () => {
-        if (passwordInput.type == "password") {
-            passwordInput.type = "text";
-            eye.innerHTML = `<i class="fa-solid fa-eye-slash text-primary"></i>`
-        }
-        else if (passwordInput.type == "text") {
-            passwordInput.type = "password";
-            eye.innerHTML = `<i class="fa-solid fa-eye text-primary"></i>`
-        }
-    });
+function togglePasswordVisibility() {
+    const isPassword = elements.password.type === "password";
+    elements.password.type = isPassword ? "text" : "password";
+    elements.eye!.innerHTML = `<i class="fa-solid fa-eye${isPassword ? '-slash' : ''} text-primary"></i>`;
 }
