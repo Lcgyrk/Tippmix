@@ -1,13 +1,21 @@
 import { FetchBets, Bet, User } from "./readFile.js";
-import { displayBets, handleBetPlacement } from "./betting.js";
+import { displayBets, placingBet } from "./betting.js";
 
 async function getRandomMatches(count: number): Promise<Bet[]> {
-    const sports = ["soccer", "basketball", "tennis", "cricket", "american football"];
+    const sports = [
+        "soccer",
+        "basketball",
+        "tennis",
+        "cricket",
+        "american football",
+    ];
     const data = await FetchBets();
     const wantedArray: Bet[] = [];
-    
-    sports.forEach(sport => {
-        const filteredArray = data.filter(item => item.sport.toLowerCase() === sport);
+
+    sports.forEach((sport) => {
+        const filteredArray = data.filter(
+            (item) => item.sport.toLowerCase() === sport
+        );
         const randomMatches = filteredArray
             .sort(() => Math.random() - 0.5)
             .slice(0, count);
@@ -68,9 +76,8 @@ function pushBetsToLocalStorage() {
 
 const BetButton = document.getElementById("place-bet");
 BetButton!.addEventListener("click", () => {
-    handleBetPlacement();
-    }
-);
+    placingBet();
+});
 
 function checkDoubleBetOnMatch() {
     if (selectedMatches.length < 2) return null;
@@ -210,12 +217,12 @@ tennisBetting!.addEventListener("click", () => {
     displayMatches("tennis");
 });
 
-const deleteCurrentUserFromLocalStorage = document.getElementById("clearCurrentUser");
+const deleteCurrentUserFromLocalStorage =
+    document.getElementById("clearCurrentUser");
 deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
-localStorage.removeItem("currentUser");
-console.log(localStorage.getItem("currentUser"));
-loginButton!.innerHTML = `<i class="fas fa-user"></i> Login`;
+    localStorage.removeItem("currentUser");
+    console.log(localStorage.getItem("currentUser"));
+    loginButton!.innerHTML = `<i class="fas fa-user"></i> Login`;
 });
-
 
 export { selectedMatches, selectedOdds };

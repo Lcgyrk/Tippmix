@@ -42,97 +42,25 @@ export function displayBets() {
     }
 }
 
-export function handleBetPlacement() {
-    const betAmount = parseFloat((document.getElementById("bet-amount") as HTMLInputElement).value);
-    const userBalanceElement = document.getElementById("balance");
-    
-    if (selectedMatches.length === 0) {
-        alert("Select at least one match to place a bet!");
-        return;
-    }
+function simulateMatch(odds: number) {
+    const chance = (1 / odds) * 100;
+    const result = Math.random() * 100;
+    console.log(`esely: ${chance}`);
+    console.log(`random eredmeny: ${result}`);
+    if (result <= chance) return true;
+    else return false;
+}
 
-    if (!betAmount || betAmount <= 0) {
-        alert("Please enter a valid bet amount!");
-        return;
-    }
-
-    const currentBalance = parseInt(userBalanceElement?.innerHTML || "0");
-    
-    if (betAmount > currentBalance) {
-        alert("Insufficient balance to place this bet!");
-        return;
-    }
-
-    const betPerMatch = betAmount / selectedMatches.length;
-    const newBalance = currentBalance - betAmount;
-    
-    if (userBalanceElement) {
-        userBalanceElement.innerHTML = newBalance.toString();
-    }
-
-    alert("Bets placed! Matches are in progress...");
-    
-    setTimeout(() => {
-        let totalWinnings = 0;
-        let results: string[] = [];
-
-        selectedMatches.forEach((match, index) => {
-            const matchParts = match.split("-");
-            const matchId = matchParts[0];
-            const matchName = matchParts[1];
-    // Update this section in handleBetPlacement function
-    const homeButton = document.querySelector(`#${matchId}-home`);
-    const drawButton = document.querySelector(`#${matchId}-draw`);
-    const awayButton = document.querySelector(`#${matchId}-away`);
-
-    let selectedBet = "";
-
-    if (homeButton?.classList.contains('btn-outline-success')) {
-        selectedBet = "Home";
-    } else if (drawButton?.classList.contains('btn-outline-success')) {
-        selectedBet = "Draw";
-    } else if (awayButton?.classList.contains('btn-outline-success')) {
-        selectedBet = "Away";
-    }
-            const matchOdds = selectedOdds[index];
-            
-            // Generate match result
-            const randomNumber = Math.random();
-            let matchOutcome;
-            
-            if (randomNumber < 0.4) {
-                matchOutcome = "Home";
-            } else if (randomNumber < 0.7) {
-                matchOutcome = "Draw";
-            } else {
-                matchOutcome = "Away";
-            }
-            
-            const won = selectedBet === matchOutcome;
-
-            if (won) {
-                const matchWinnings = betPerMatch * matchOdds;
-                totalWinnings += matchWinnings;
-                results.push(`${matchName}: ${matchOutcome} - WON (${matchWinnings.toFixed(2)})`);
-            } else {
-                results.push(`${matchName}: ${matchOutcome} - LOST (You bet: ${selectedBet})`);
-            }
-        });
-
-        alert(`Match Results:\n${results.join('\n')}`);
-
-        if (totalWinnings > 0) {
-            const finalBalance = parseInt(userBalanceElement?.innerHTML || "0") + totalWinnings;
-            if (userBalanceElement) {
-                userBalanceElement.innerHTML = finalBalance.toString();
-            }
-            alert(`Total Winnings: ${totalWinnings.toFixed(2)}`);
+export function placingBet() {
+    for (let index = 0; index < selectedOdds.length; index++) {
+        const odds = selectedOdds[index];
+        const match = selectedMatches[index];
+        const result = simulateMatch(odds);
+        if (!result) {
+            document.getElementById("modalButton")!.click();
+            document.querySelector(
+                ".modal-body-losing"
+            )!.innerHTML = `Vesztettél!\n${match.split("-")[1]} veszített!`;
         }
-
-        selectedMatches.length = 0;
-        selectedOdds.length = 0;
-        (document.getElementById("bet-amount") as HTMLInputElement).value = "";
-        displayBets();
-
-    }, 2000);
+    }
 }
