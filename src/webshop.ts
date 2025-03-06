@@ -2,42 +2,60 @@ import { User } from "./readFile";
 
 class WebShop {
     private balance: number;
-    private inventory: { [key: string]: number };
+    private inventory: { [key: string]: { price: number, image: string } };
     private user: User;
 
     constructor(user: User) {
         this.user = user;
         this.balance = user.credits;
         this.inventory = {
-            "Gaming Console": 150000,
-            "Smartphone": 200000,
-            "Smart TV": 300000,
-            "Fólia": 1500
+            "Konzol": { price: 150000, image: "images/szutyokconsole.jpg" },
+            "Kompúter": { price: 200000, image: "images/puposmocsok.png" },
+            "Televízor": { price: 300000, image: "images/undirítómocsok.jpg" },
+            "Fólia": { price: 1500, image: "images/haztartasi-folia-45-cm-x-300-m.jpg" },
+            "Gyufa": { price: 5000, image: "images/gyufa.png" },
+            "Klaviatúra": { price: 65000, image: "images/hardverapró.png" },
+            "Ülőalkalmatosság": { price: 120000, image: "images/büdösszék.png" },
         };
+        console.log(user);
+        
         this.updateBalanceDisplay();
-        this.setupEventListeners();
+        this.displayInventory();
     }
 
+    private displayInventory(): void {
+        const shopContainer = document.querySelector(".product-grid") as HTMLElement;
+        if (shopContainer) {
+            shopContainer.innerHTML = '';
+            for (const itemName in this.inventory) {
+                const itemData = this.inventory[itemName];
+                const productCard = document.createElement('div');
+                console.log(itemData.image);
+                
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${itemData.image}" alt="${itemName}">
+                    <h3>${itemName}</h3>
+                    <p>${itemData.price} Ft</p>
+                    <button class="buy-button">Vásárlás</button>
+                `;
+                
+                const buyButton = productCard.querySelector('.buy-button');
+                buyButton?.addEventListener('click', () => {
+                    this.buyItem(itemName);
+                });
+                
+                shopContainer.appendChild(productCard);
+            }
+        }
+    }
     private updateBalanceDisplay(): void {
         const balanceElement = document.getElementById("userCredits");
         if (balanceElement) {
             this.user.credits = this.balance;
             balanceElement.innerHTML = this.balance.toString();
-            // Save updated user data
             localStorage.setItem('currentUser', JSON.stringify(this.user));
         }
-    }
-
-    private setupEventListeners(): void {
-        document.querySelectorAll(".buy-button").forEach(button => {
-            button.addEventListener("click", (event) => {
-                const productCard = (event.target as HTMLElement).closest(".product-card");
-                if (productCard) {
-                    const productName = productCard.querySelector("h3")?.textContent?.trim() || "";
-                    this.buyItem(productName);
-                }
-            });
-        });
     }
 
     public buyItem(item: string): void {
@@ -46,7 +64,7 @@ class WebShop {
             return;
         }
 
-        const price = this.inventory[item];
+        const price = this.inventory[item].price;
 
         if (this.balance >= price) {
             this.balance -= price;
@@ -60,10 +78,10 @@ class WebShop {
 
 document.addEventListener("DOMContentLoaded", () => {
     const currentUserData = localStorage.getItem('currentUser');
+    console.log(currentUserData);
+    
     if (currentUserData) {
         const user = JSON.parse(currentUserData) as User;
         new WebShop(user);
     }
 });
-
-export { WebShop };
