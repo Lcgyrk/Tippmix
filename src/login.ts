@@ -108,6 +108,7 @@ async function handleLogin(event: Event) {
     try {
       localStorage.setItem("currentUser", JSON.stringify(foundUser));
       window.location.href = "./index.html";
+      elements.logButton
     } catch (error) {
       console.error("Hiba a bejelentkezett felhasználó frissítésével", error);
     }

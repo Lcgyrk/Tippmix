@@ -1,6 +1,20 @@
 import { FetchBets, Bet, User } from "./readFile.js";
 import { displayBets, placingBet } from "./betting.js";
 
+
+window.onload = function() {
+    getUserCredits();
+}
+
+export function getUserCredits(){
+    const balance = document.getElementById("balance");
+    if (localStorage.getItem("currentUser") != null){
+        const currentUser: User = JSON.parse(localStorage.getItem("currentUser")!);
+        balance!.innerHTML = `${currentUser.credits}`;
+    }
+    else balance!.innerHTML = '0';
+}
+
 async function getRandomMatches(count: number): Promise<Bet[]> {
     const sports = [
         "soccer",
@@ -223,6 +237,7 @@ deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
     localStorage.removeItem("currentUser");
     console.log(localStorage.getItem("currentUser"));
     loginButton!.innerHTML = `<i class="fas fa-user"></i> Login`;
+    getUserCredits();
 });
 
 export { selectedMatches, selectedOdds };

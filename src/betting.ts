@@ -1,4 +1,7 @@
-import { selectedMatches, selectedOdds } from "./main.js";
+import { selectedMatches, selectedOdds, getUserCredits} from "./main.js";
+import {User} from "./readFile.js";
+
+//localStorage.clear();
 
 export function displayBets() {
     let betAmountInput = document.getElementById(
@@ -52,15 +55,25 @@ function simulateMatch(odds: number) {
 }
 
 export function placingBet() {
-    for (let index = 0; index < selectedOdds.length; index++) {
-        const odds = selectedOdds[index];
-        const match = selectedMatches[index];
-        const result = simulateMatch(odds);
-        if (!result) {
-            document.getElementById("modalButton")!.click();
-            document.querySelector(
-                ".modal-body-losing"
-            )!.innerHTML = `Vesztettél!\n${match.split("-")[1]} veszített!`;
+    const user: User = JSON.parse(localStorage.getItem('currentUser')!);
+    let betAmountInput = document.getElementById(
+        "bet-amount"
+    ) as HTMLInputElement;
+    let betAmount = parseFloat(betAmountInput.value);
+    if (betAmount <= user.credits) {
+        user.credits -= betAmount;
+        for (let index = 0; index < selectedOdds.length; index++) {
+            const odds = selectedOdds[index];
+            const match = selectedMatches[index];
+            const result = simulateMatch(odds);
+            if (!result) {
+                document.getElementById("modalButton")!.click();
+                document.querySelector(
+                    ".modal-body-losing"
+                )!.innerHTML = `Vesztettél!\n${match.split("-")[1]} veszített!`;
+                getUserCredits();
+            }
         }
     }
+    
 }
