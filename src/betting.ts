@@ -1,5 +1,6 @@
-import { selectedMatches, selectedOdds, getUserCredits} from "./main.js";
-import {User} from "./readFile.js";
+import { selectedMatches, selectedOdds } from "./main.js";
+import { User } from "./readFile.js";
+import { users, currentUser } from "./main.js";
 
 //localStorage.clear();
 
@@ -55,13 +56,12 @@ function simulateMatch(odds: number) {
 }
 
 export function placingBet() {
-    const user: User = JSON.parse(localStorage.getItem('currentUser')!);
     let betAmountInput = document.getElementById(
         "bet-amount"
     ) as HTMLInputElement;
     let betAmount = parseFloat(betAmountInput.value);
-    if (betAmount <= user.credits) {
-        user.credits -= betAmount;
+    if (betAmount <= currentUser.credits) {
+        currentUser.credits -= betAmount;
         for (let index = 0; index < selectedOdds.length; index++) {
             const odds = selectedOdds[index];
             const match = selectedMatches[index];
@@ -71,9 +71,7 @@ export function placingBet() {
                 document.querySelector(
                     ".modal-body-losing"
                 )!.innerHTML = `Vesztettél!\n${match.split("-")[1]} veszített!`;
-                getUserCredits();
             }
         }
     }
-    
 }

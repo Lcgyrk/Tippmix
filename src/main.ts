@@ -1,19 +1,29 @@
-import { FetchBets, Bet, User } from "./readFile.js";
+import { FetchBets, Bet } from "./readFile.js";
 import { displayBets, placingBet } from "./betting.js";
-
-
-window.onload = function() {
-    getUserCredits();
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+    credits: number;
 }
-
-export function getUserCredits(){
-    const balance = document.getElementById("balance");
-    if (localStorage.getItem("currentUser") != null){
-        const currentUser: User = JSON.parse(localStorage.getItem("currentUser")!);
-        balance!.innerHTML = `${currentUser.credits}`;
+//localStorage.clear();
+let users: User[];
+if (localStorage.getItem("Users") == null)
+    users = JSON.parse(localStorage.getItem("allUsers")!);
+else users = JSON.parse(localStorage.getItem("Users")!);
+users.forEach((user) => {
+    if (user.credits == null) {
+        if (user.name == "admin") user.credits = 9999999;
+        else user.credits = 1000;
     }
-    else balance!.innerHTML = '0';
-}
+});
+localStorage.setItem("Users", JSON.stringify(users));
+let currentUser: User;
+if (localStorage.getItem("currentUser") != null)
+    currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+console.log(users);
+console.log(currentUser!);
 
 async function getRandomMatches(count: number): Promise<Bet[]> {
     const sports = [
@@ -237,7 +247,7 @@ deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
     localStorage.removeItem("currentUser");
     console.log(localStorage.getItem("currentUser"));
     loginButton!.innerHTML = `<i class="fas fa-user"></i> Login`;
-    getUserCredits();
+    // getUserCredits();
 });
 
-export { selectedMatches, selectedOdds };
+export { selectedMatches, selectedOdds, users, currentUser };

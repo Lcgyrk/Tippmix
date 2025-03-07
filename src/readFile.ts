@@ -2,8 +2,7 @@ export interface User {
     id: number;
     name: string;
     email: string;
-    password: string
-    credits: number;
+    password: string;
 }
 
 export interface Bet {
@@ -25,8 +24,7 @@ export async function FetchBets(): Promise<Bet[]> {
     return await response.json();
 }
 
-async function FetchUsers(){
-
+async function FetchUsers() {
     if (usersloaded) return;
 
     try {
@@ -35,14 +33,16 @@ async function FetchUsers(){
 
         users = data.map((user: any) => ({
             ...user,
-            id: Number(user.id)
+            id: Number(user.id),
         }));
 
         usersloaded = true;
         console.log("Users loaded:", users);
+        localStorage.setItem("allUsers", JSON.stringify(users));
     } catch (error) {
         console.error("Failed to fetch users:", error);
     }
 }
 FetchUsers();
-export {users}
+
+export { users };

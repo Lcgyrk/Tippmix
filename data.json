@@ -4,15 +4,13 @@
             "id": "1",
             "name": "admin",
             "email": "admin@email.com",
-            "password": "admin",
-            "credits": 999999
+            "password": "admin"
         },
         {
             "id": "2",
             "name": "Lacigyerek",
             "email": "asd@freemail.hu",
-            "password": "asd",
-            "credits": 100
+            "password": "asd"
         }
     ],
     "bets": [
