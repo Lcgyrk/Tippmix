@@ -8,42 +8,49 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { FetchBets } from "./readFile.js";
-import { displayBets, handleBetPlacement } from "./betting.js";
+import { displayBets, placingBet } from "./betting.js";
+//localStorage.clear();
+let users;
+if (localStorage.getItem("Users") == null)
+    users = JSON.parse(localStorage.getItem("allUsers"));
+else
+    users = JSON.parse(localStorage.getItem("Users"));
+users.forEach((user) => {
+    if (user.credits == null) {
+        if (user.name == "admin")
+            user.credits = 9999999;
+        else
+            user.credits = 1000;
+    }
+});
+const balance = document.getElementById("balance");
+localStorage.setItem("Users", JSON.stringify(users));
+let currentUser;
+if (localStorage.getItem("currentUser") != null) {
+    currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    balance.innerHTML = `${currentUser.credits}`;
+}
+else
+    balance.innerHTML = "0";
+console.log(users);
+console.log(currentUser);
 function getRandomMatches(count) {
     return __awaiter(this, void 0, void 0, function* () {
+        const sports = [
+            "soccer",
+            "basketball",
+            "tennis",
+            "cricket",
+            "american football",
+        ];
         const data = yield FetchBets();
-        let filteredArray = data.filter((item) => item.sport.toLowerCase() == "soccer");
-        let correctNumber = filteredArray
-            .sort(() => Math.random() - 0.5)
-            .slice(0, count);
-        let wantedArray = correctNumber;
-        filteredArray = data.filter((item) => item.sport.toLowerCase() == "basketball");
-        correctNumber = filteredArray
-            .sort(() => Math.random() - 0.5)
-            .slice(0, count);
-        correctNumber.forEach((match) => {
-            wantedArray.push(match);
-        });
-        filteredArray = data.filter((item) => item.sport.toLowerCase() == "tennis");
-        correctNumber = filteredArray
-            .sort(() => Math.random() - 0.5)
-            .slice(0, count);
-        correctNumber.forEach((match) => {
-            wantedArray.push(match);
-        });
-        filteredArray = data.filter((item) => item.sport.toLowerCase() == "cricket");
-        correctNumber = filteredArray
-            .sort(() => Math.random() - 0.5)
-            .slice(0, count);
-        correctNumber.forEach((match) => {
-            wantedArray.push(match);
-        });
-        filteredArray = data.filter((item) => item.sport.toLowerCase() == "american football");
-        correctNumber = filteredArray
-            .sort(() => Math.random() - 0.5)
-            .slice(0, count);
-        correctNumber.forEach((match) => {
-            wantedArray.push(match);
+        const wantedArray = [];
+        sports.forEach((sport) => {
+            const filteredArray = data.filter((item) => item.sport.toLowerCase() === sport);
+            const randomMatches = filteredArray
+                .sort(() => Math.random() - 0.5)
+                .slice(0, count);
+            wantedArray.push(...randomMatches);
         });
         return wantedArray;
     });
@@ -96,10 +103,6 @@ function pushBetsToLocalStorage() {
         });
     });
 }
-const BetButton = document.getElementById("place-bet");
-BetButton.addEventListener("click", () => {
-    handleBetPlacement();
-});
 function checkDoubleBetOnMatch() {
     if (selectedMatches.length < 2)
         return null;
@@ -155,16 +158,36 @@ function displayMatches(sport) {
         pushBetsToLocalStorage();
     });
 }
-const clearButton = document.getElementById("clearButton");
-clearButton.addEventListener("click", () => {
-    localStorage.removeItem("selectedOdds");
-    localStorage.removeItem("selectedMatches");
-    localStorage.removeItem("matches");
-    // localStorage.clear();
-    selectedMatches = [];
-    selectedOdds = [];
-    location.reload();
+const BetButton = document.getElementById("place-bet");
+BetButton.addEventListener("click", () => {
+    const simulationWindow = document.getElementById("simulating-window");
+    simulationWindow.classList.remove("d-none");
+    setTimeout(() => {
+        simulationWindow.classList.add("d-none"), placingBet();
+    }, 2000);
+    // setTimeout(placingBet, 2000);
+    // placingBet();
+    const modalClose = document.getElementById("modalClose");
+    modalClose.addEventListener("click", () => {
+        localStorage.removeItem("selectedOdds");
+        localStorage.removeItem("selectedMatches");
+        localStorage.removeItem("matches");
+        // localStorage.clear();
+        selectedMatches = [];
+        selectedOdds = [];
+        location.reload();
+    });
 });
+// const clearButton = document.getElementById("clearButton");
+// clearButton!.addEventListener("click", () => {
+//     localStorage.removeItem("selectedOdds");
+//     localStorage.removeItem("selectedMatches");
+//     localStorage.removeItem("matches");
+//     // localStorage.clear();
+//     selectedMatches = [];
+//     selectedOdds = [];
+//     location.reload();
+// });
 if (localStorage.getItem("matches") == null) {
     const matches = getRandomMatches(5);
     sendMatchesToServer(matches);
@@ -174,10 +197,10 @@ setTimeout(() => {
 }, 50);
 let selectedMatches = JSON.parse(localStorage.getItem("selectedMatches") || "[]");
 let selectedOdds = JSON.parse(localStorage.getItem("selectedOdds") || "[]");
+const loginButton = document.getElementById("loginButton");
 let userString = localStorage.getItem("currentUser");
 if (userString !== null && userString !== undefined) {
     let user = JSON.parse(userString);
-    const loginButton = document.getElementById("loginButton");
     loginButton.innerText = `${user.name}`;
 }
 const bettingIcon = document.getElementById("icon");
@@ -211,4 +234,12 @@ tennisBetting.addEventListener("click", () => {
     bettingIcon.innerHTML = `<img src="images/tennis.svg" alt="" width="25px" style="vertical-align: top">`;
     displayMatches("tennis");
 });
-export { selectedMatches, selectedOdds };
+const deleteCurrentUserFromLocalStorage = document.getElementById("clearCurrentUser");
+deleteCurrentUserFromLocalStorage.addEventListener("click", () => {
+    localStorage.removeItem("currentUser");
+    console.log(localStorage.getItem("currentUser"));
+    loginButton.innerHTML = `<i class="fas fa-user"></i> Login`;
+    balance.innerHTML = "0";
+    console.log(localStorage.getItem("Users"));
+});
+export { selectedMatches, selectedOdds, users, currentUser };

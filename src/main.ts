@@ -18,10 +18,13 @@ users.forEach((user) => {
         else user.credits = 1000;
     }
 });
+const balance = document.getElementById("balance");
 localStorage.setItem("Users", JSON.stringify(users));
 let currentUser: User;
-if (localStorage.getItem("currentUser") != null)
+if (localStorage.getItem("currentUser") != null) {
     currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+    balance!.innerHTML = `${currentUser!.credits}`;
+} else balance!.innerHTML = "0";
 console.log(users);
 console.log(currentUser!);
 
@@ -98,11 +101,6 @@ function pushBetsToLocalStorage() {
     });
 }
 
-const BetButton = document.getElementById("place-bet");
-BetButton!.addEventListener("click", () => {
-    placingBet();
-});
-
 function checkDoubleBetOnMatch() {
     if (selectedMatches.length < 2) return null;
     const lastIdNumber =
@@ -169,16 +167,40 @@ async function displayMatches(sport: string) {
     });
     pushBetsToLocalStorage();
 }
-const clearButton = document.getElementById("clearButton");
-clearButton!.addEventListener("click", () => {
-    localStorage.removeItem("selectedOdds");
-    localStorage.removeItem("selectedMatches");
-    localStorage.removeItem("matches");
-    // localStorage.clear();
-    selectedMatches = [];
-    selectedOdds = [];
-    location.reload();
+
+const BetButton = document.getElementById("place-bet");
+BetButton!.addEventListener("click", () => {
+    const simulationWindow = document.getElementById(
+        "simulating-window"
+    ) as HTMLDivElement;
+    simulationWindow.classList.remove("d-none");
+    setTimeout(() => {
+        simulationWindow.classList.add("d-none"), placingBet();
+    }, 2000);
+    // setTimeout(placingBet, 2000);
+    // placingBet();
+    const modalClose = document.getElementById("modalClose");
+    modalClose!.addEventListener("click", () => {
+        localStorage.removeItem("selectedOdds");
+        localStorage.removeItem("selectedMatches");
+        localStorage.removeItem("matches");
+        // localStorage.clear();
+        selectedMatches = [];
+        selectedOdds = [];
+        location.reload();
+    });
 });
+
+// const clearButton = document.getElementById("clearButton");
+// clearButton!.addEventListener("click", () => {
+//     localStorage.removeItem("selectedOdds");
+//     localStorage.removeItem("selectedMatches");
+//     localStorage.removeItem("matches");
+//     // localStorage.clear();
+//     selectedMatches = [];
+//     selectedOdds = [];
+//     location.reload();
+// });
 
 if (localStorage.getItem("matches") == null) {
     const matches = getRandomMatches(5);
@@ -247,7 +269,8 @@ deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
     localStorage.removeItem("currentUser");
     console.log(localStorage.getItem("currentUser"));
     loginButton!.innerHTML = `<i class="fas fa-user"></i> Login`;
-    // getUserCredits();
+    balance!.innerHTML = "0";
+    console.log(localStorage.getItem("Users"));
 });
 
 export { selectedMatches, selectedOdds, users, currentUser };

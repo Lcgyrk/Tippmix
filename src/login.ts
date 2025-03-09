@@ -98,10 +98,44 @@ function handleLogin(event: Event) {
     //         user.name === elements.name.value &&
     //         user.password === elements.password.value
     // );
-    const localeStorageUsers: User[] = JSON.parse(
+
+    interface UserWithCredits {
+        id: number;
+        name: string;
+        email: string;
+        password: string;
+        credits: number;
+    }
+
+    // let users: User[];
+    // if (localStorage.getItem("Users") == null)
+    //     users = JSON.parse(localStorage.getItem("allUsers")!);
+    // else users = JSON.parse(localStorage.getItem("Users")!);
+    // users.forEach((user) => {
+    //     if (user.credits == null) {
+    //         if (user.name == "admin") user.credits = 9999999;
+    //         else user.credits = 1000;
+    //     }
+    // });
+    const usersNoCredit: User[] = JSON.parse(localStorage.getItem("allUsers")!);
+    const localeStorageUsers: UserWithCredits[] = JSON.parse(
         localStorage.getItem("Users")!
     );
-    console.log(localeStorageUsers);
+    const exist = localeStorageUsers.find(
+        (user) => user.name == usersNoCredit[usersNoCredit.length - 1].name
+    );
+
+    if (!exist) {
+        const user: UserWithCredits = {
+            id: usersNoCredit[usersNoCredit.length - 1].id,
+            name: usersNoCredit[usersNoCredit.length - 1].name,
+            email: usersNoCredit[usersNoCredit.length - 1].email,
+            password: usersNoCredit[usersNoCredit.length - 1].password,
+            credits: 1000,
+        };
+        localeStorageUsers.push(user);
+        localStorage.setItem("Users", JSON.stringify(localeStorageUsers));
+    }
 
     const foundUser = localeStorageUsers.find(
         (user) =>

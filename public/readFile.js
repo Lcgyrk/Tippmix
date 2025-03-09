@@ -7,6 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+let users = [];
+let usersloaded = false;
 export function FetchBets() {
     return __awaiter(this, void 0, void 0, function* () {
         const response = yield fetch("http://localhost:3000/bets");
@@ -15,11 +17,22 @@ export function FetchBets() {
         return yield response.json();
     });
 }
-export function FetchCurrentMatches() {
+function FetchUsers() {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch("http://localhost:3000/currentMatches");
-        if (!response.ok)
-            throw new Error(response.statusText);
-        return yield response.json();
+        if (usersloaded)
+            return;
+        try {
+            const response = yield fetch("http://localhost:3000/users");
+            const data = yield response.json();
+            users = data.map((user) => (Object.assign(Object.assign({}, user), { id: Number(user.id) })));
+            usersloaded = true;
+            console.log("Users loaded:", users);
+            localStorage.setItem("allUsers", JSON.stringify(users));
+        }
+        catch (error) {
+            console.error("Failed to fetch users:", error);
+        }
     });
 }
+FetchUsers();
+export { users };

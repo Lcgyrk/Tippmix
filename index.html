@@ -7,6 +7,23 @@
     <title>Tippmix - Sports Betting & Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .loading-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body class="bg-light">
@@ -47,6 +64,16 @@
         </div>
     </nav>
     <!-- Betting Section -->
+    <!-- <div id="simulating-window" class="bg-light z-1 d-none">
+        <h1>Meccsek lejátszása...</h1>
+    </div> -->
+
+    <div id="simulating-window" class="loading-container z-1 d-none">
+        <div class="spinner-border text-primary " role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <h1 class="mt-3 fs-4">Meccsek lejátszása...</h1>
+    </div>
     <div id="bettingSection" class="container mt-4">
         <div class="row d-flex justify-content-lg-center">
 
@@ -55,9 +82,7 @@
                     <div class="card-header bg-primary text-white">
                         <h5 class="mb-0"><i class="fas fa-futbol" id="icon"></i> Available Matches</h5>
                     </div>
-                    <div id="matches-container">
-
-                    </div>
+                    <div id="matches-container"></div>
                 </div>
             </div>
         </div>
@@ -98,14 +123,15 @@
                         Vesztettél!
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vissza</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                            id="modalClose">Vissza</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <button class="btn btn-danger" id="clearButton">Clear Matches</button>
+    <!-- <button class="btn btn-danger" id="clearButton">Clear Matches</button> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="./public/main.js"></script>
 </body>

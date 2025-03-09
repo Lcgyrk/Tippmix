@@ -1,5 +1,4 @@
 import { selectedMatches, selectedOdds } from "./main.js";
-import { User } from "./readFile.js";
 import { users, currentUser } from "./main.js";
 
 //localStorage.clear();
@@ -56,22 +55,56 @@ function simulateMatch(odds: number) {
 }
 
 export function placingBet() {
+    const balance = document.getElementById("balance");
     let betAmountInput = document.getElementById(
         "bet-amount"
     ) as HTMLInputElement;
     let betAmount = parseFloat(betAmountInput.value);
     if (betAmount <= currentUser.credits) {
         currentUser.credits -= betAmount;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        users.forEach((user) => {
+            if (
+                user.name == currentUser.name &&
+                user.password == currentUser.password
+            )
+                user.credits = currentUser.credits;
+        });
+        localStorage.setItem("Users", JSON.stringify(users));
+        balance!.innerHTML = `${currentUser.credits}`;
+        console.log(localStorage.getItem("currentUser"));
+        console.log(localStorage.getItem("Users"));
+        let win = true;
         for (let index = 0; index < selectedOdds.length; index++) {
             const odds = selectedOdds[index];
             const match = selectedMatches[index];
             const result = simulateMatch(odds);
             if (!result) {
+                win = false;
                 document.getElementById("modalButton")!.click();
                 document.querySelector(
                     ".modal-body-losing"
                 )!.innerHTML = `Vesztettél!\n${match.split("-")[1]} veszített!`;
             }
+        }
+        if (win) {
+            const prize =
+                betAmount * selectedOdds.reduce((acc, num) => acc * num, 1);
+            currentUser.credits += prize;
+            users.forEach((user) => {
+                if (
+                    user.name == currentUser.name &&
+                    user.password == currentUser.password
+                )
+                    user.credits = currentUser.credits;
+            });
+            localStorage.setItem("currentUser", JSON.stringify(currentUser));
+            localStorage.setItem("Users", JSON.stringify(users));
+            balance!.innerHTML = `${currentUser.credits}`;
+            document.getElementById("modalButton")!.click();
+            document.querySelector(
+                ".modal-body-losing"
+            )!.innerHTML = `Nyertél!\nNyert összeg: ${prize}`;
         }
     }
 }
