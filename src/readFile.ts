@@ -43,6 +43,7 @@ async function FetchUsers() {
         console.error("Failed to fetch users:", error);
     }
 }
+
 FetchUsers();
 
 export { users };
