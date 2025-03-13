@@ -6,6 +6,7 @@ interface User {
     email: string;
     password: string;
     credits: number;
+    history: object
 }
 //localStorage.clear();
 let users: User[];
@@ -16,6 +17,12 @@ users.forEach((user) => {
     if (user.credits == null) {
         if (user.name == "admin") user.credits = 9999999;
         else user.credits = 1000;
+    }
+    if (user.history == null){
+        user.history = {
+            "profit": 0,
+            "totalBets": 0
+        }
     }
 });
 const balance = document.getElementById("balance");
@@ -271,6 +278,7 @@ deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
     loginButton!.innerHTML = `<i class="fas fa-user"></i> Login`;
     balance!.innerHTML = "0";
     console.log(localStorage.getItem("Users"));
+    window.location.reload();
 });
 
 export { selectedMatches, selectedOdds, users, currentUser };
@@ -290,8 +298,9 @@ function updateNavigation() {
     if (loginNavItem && currentUser.email) {
         loginNavItem.innerHTML = `
             <a class="nav-link" href="./user_profile.html">
-                <i class="fas fa-user"></i> Profile
+                <i class="fas fa-user"></i> ${currentUser.name ? currentUser.name : "Login"}
             </a>
         `;
+        console.log(currentUser.name);
     }
 }

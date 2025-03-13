@@ -31,13 +31,13 @@ function updateBettingStats() {
     }
 }
 
-function addCredits() {
+
     const addBalanceBtn = document.getElementById("addBalanceBtn") as HTMLButtonElement;
     const addBalanceInput = document.getElementById("addBalanceInput") as HTMLInputElement;
     
     addBalanceBtn?.addEventListener("click", () => {
         const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const users = JSON.parse(localStorage.getItem("Users") || "[]");
         
         const amount = Number(addBalanceInput.value) || 1000;
         currentUser.credits += amount;
@@ -48,7 +48,7 @@ function addCredits() {
         
         // Save back to localStorage
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
-        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("Users", JSON.stringify(users));
         
         // Update display
         const balanceDisplay = document.getElementById("userCredits");
@@ -60,7 +60,7 @@ function addCredits() {
         // Clear input
         addBalanceInput.value = "";
     });
-}
+
 
 document.addEventListener("DOMContentLoaded", () => {
     updateBettingStats();
