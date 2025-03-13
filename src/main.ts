@@ -6,7 +6,10 @@ interface User {
     email: string;
     password: string;
     credits: number;
-    history: object
+    history: {
+        profit: number;
+        totalBets: number;
+    }
 }
 //localStorage.clear();
 let users: User[];

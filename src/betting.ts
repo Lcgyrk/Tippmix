@@ -81,6 +81,10 @@ export function placingBet() {
             const result = simulateMatch(odds);
             if (!result) {
                 win = false;
+                currentUser.history.totalBets += 1;
+                currentUser.history.profit -= betAmount;
+                localStorage.setItem("currentUser", JSON.stringify(currentUser));
+                localStorage.setItem("Users", JSON.stringify(users));
                 document.getElementById("modalButton")!.click();
                 document.querySelector(
                     ".modal-body-losing"
@@ -88,6 +92,8 @@ export function placingBet() {
             }
         }
         if (win) {
+            currentUser.history.totalBets += 1;
+            currentUser.history.profit += betAmount;
             const prize =
                 betAmount * selectedOdds.reduce((acc, num) => acc * num, 1);
             currentUser.credits += prize;
