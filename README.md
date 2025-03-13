@@ -6,7 +6,7 @@ A weboldalon fogadni lehet különböző eseményekre, melyekkel pénzt és bón
 
 ## User típusok:
 - **Basic user**: tud fogadni, pénzt kiváltani, bónuszpontokat elkölteni
-- **Admin**: *minden, amit a basic user tud* + változtatni a szorzókat, eseményeket létrehozni/törölni
+- **Admin**: *minden, amit a basic user tud* + látja az összes adatot
 
 ## Funkciók:
 - eseményre fogadás
