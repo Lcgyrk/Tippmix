@@ -81,6 +81,12 @@ export function placingBet() {
             const result = simulateMatch(odds);
             if (!result) {
                 win = false;
+                users.forEach((user) => {
+                    if (user.name == currentUser.name && user.password == currentUser.password){
+                        user.history.profit -= betAmount;
+                        user.history.totalBets += 1;
+                    }
+                });
                 currentUser.history.totalBets += 1;
                 currentUser.history.profit -= betAmount;
                 localStorage.setItem("currentUser", JSON.stringify(currentUser));
@@ -103,6 +109,8 @@ export function placingBet() {
                     user.password == currentUser.password
                 )
                     user.credits = currentUser.credits;
+                    user.history.profit += prize;
+                    user.history.totalBets += 1;
             });
             localStorage.setItem("currentUser", JSON.stringify(currentUser));
             localStorage.setItem("Users", JSON.stringify(users));
