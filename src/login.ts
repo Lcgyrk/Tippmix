@@ -142,7 +142,6 @@ function handleLogin(event: Event) {
             user.name === elements.name.value &&
             user.password === elements.password.value
     );
-    console.log(foundUser);
     if (!foundUser) {
         alert("Hibás felhasználónév vagy jelszó!");
         return;
