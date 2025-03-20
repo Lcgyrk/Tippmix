@@ -19,7 +19,7 @@ function updateBettingStats() {
     
     // Calculate profit/loss
     const profitLossElement = document.getElementById("profitLoss");
-    profitLossElement!.innerHTML = `${currentUser.history.profit}`;
+    profitLossElement!.innerHTML = `${currentUser.history.profit.toFixed(2)}`;
     
     // Update betting history list
     const historyList = document.getElementById("bettingHistory");

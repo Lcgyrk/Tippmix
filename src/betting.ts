@@ -86,15 +86,23 @@ export function placingBet() {
                         user.history.profit -= betAmount;
                         user.history.totalBets += 1;
                     }
+                    localStorage.setItem("Users", JSON.stringify(users));
                 });
                 currentUser.history.totalBets += 1;
                 currentUser.history.profit -= betAmount;
                 localStorage.setItem("currentUser", JSON.stringify(currentUser));
                 localStorage.setItem("Users", JSON.stringify(users));
                 document.getElementById("modalButton")!.click();
-                document.querySelector(
-                    ".modal-body-losing"
-                )!.innerHTML = `Vesztettél!\n${match.split("-")[1]} veszített!`;
+                if (match.split("-")[1] == "draw"){
+                    document.querySelector(
+                        ".modal-body-losing"
+                    )!.innerHTML = `Vesztettél!\nNem lett döntetlen!`;
+                }
+                else{
+                    document.querySelector(
+                        ".modal-body-losing"
+                    )!.innerHTML = `Vesztettél!\n${match.split("-")[1]} veszített!`;
+                }
             }
         }
         if (win) {
