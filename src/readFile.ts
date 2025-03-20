@@ -37,7 +37,6 @@ async function FetchUsers() {
         }));
 
         usersloaded = true;
-        console.log("Users loaded:", users);
         localStorage.setItem("allUsers", JSON.stringify(users));
     } catch (error) {
         console.error("Failed to fetch users:", error);

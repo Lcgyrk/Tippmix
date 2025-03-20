@@ -297,8 +297,17 @@ document.addEventListener("DOMContentLoaded", () => {
 function updateNavigation() {
     const loginNavItem = document.querySelector('.nav-item:has(a[href="./login.html"])');
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
-    
+
     if (loginNavItem && currentUser.email) {
+        loginNavItem.innerHTML = `
+            <a class="nav-link" href="./admin_interface.html">
+                <i class="fas fa-user"></i> ${currentUser.name ? currentUser.name : "Login"}
+            </a>
+        `;
+        console.log(currentUser.name);
+    }
+    
+    else if (loginNavItem && currentUser.email) {
         loginNavItem.innerHTML = `
             <a class="nav-link" href="./user_profile.html">
                 <i class="fas fa-user"></i> ${currentUser.name ? currentUser.name : "Login"}

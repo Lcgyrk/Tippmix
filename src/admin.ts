@@ -135,3 +135,10 @@ searchButton.addEventListener("click", () => {
         showUsers(searchInput.value);
     }
 });
+
+const deleteCurrentUserFromLocalStorage =
+    document.getElementById("clearCurrentUser");
+deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
+    localStorage.removeItem("currentUser");
+    window.location.href = "index.html";
+});
