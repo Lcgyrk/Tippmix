@@ -201,17 +201,6 @@ BetButton!.addEventListener("click", () => {
     });
 });
 
-// const clearButton = document.getElementById("clearButton");
-// clearButton!.addEventListener("click", () => {
-//     localStorage.removeItem("selectedOdds");
-//     localStorage.removeItem("selectedMatches");
-//     localStorage.removeItem("matches");
-//     // localStorage.clear();
-//     selectedMatches = [];
-//     selectedOdds = [];
-//     location.reload();
-// });
-
 if (localStorage.getItem("matches") == null) {
     const matches = getRandomMatches(5);
     sendMatchesToServer(matches);

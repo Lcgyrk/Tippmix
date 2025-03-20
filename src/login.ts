@@ -51,6 +51,7 @@ async function handleRegistration(event: Event) {
 
         if (response.ok) {
             users.push(newUser);
+            window.location.href = "/login.html";
             alert("Sikeres regisztrálás");
         } else {
             throw new Error("Registration failed");
