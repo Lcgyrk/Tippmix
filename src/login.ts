@@ -1,6 +1,5 @@
 import { users, User } from "./readFile.js";
 
-// DOM elements
 const elements = {
     name: document.getElementById("name") as HTMLInputElement,
     email: document.getElementById("email") as HTMLInputElement,
@@ -10,7 +9,6 @@ const elements = {
     eye: document.getElementById("eye"),
 } as const;
 
-// Password validation constants
 const PASSWORD_REQUIREMENTS = {
     minLength: 5,
     pattern: {
@@ -25,7 +23,6 @@ const PASSWORD_REQUIREMENTS = {
     ].join("\n"),
 };
 
-// Event listeners
 elements.regButton?.addEventListener("click", handleRegistration);
 elements.logButton?.addEventListener("click", handleLogin);
 elements.eye?.addEventListener("mousedown", togglePasswordVisibility);
@@ -51,7 +48,6 @@ async function handleRegistration(event: Event) {
 
         if (response.ok) {
             users.push(newUser);
-            window.location.href = "/login.html";
             alert("Sikeres regisztrálás");
         } else {
             throw new Error("Registration failed");
