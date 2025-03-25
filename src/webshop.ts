@@ -156,17 +156,33 @@ class WebShop {
 
     
     private checkout(): void {
-        let totalCost = this.cart.reduce((sum, item) => sum + item.price, 0);
+        // Calculate total
+        let total = 0;
+        this.cart.forEach(item => {
+            total += item.price;
+        });
 
-        if (this.balance >= totalCost) {
-            this.balance -= totalCost;
-            this.cart = []; // Clear cart after purchase
-            this.updateBalanceDisplay();
-            this.updateCartDisplay();
-            alert(`Sikeres vásárlás! Új egyenleg: ${this.balance} Ft`);
-        } else {
-            alert("Nincs elég egyenleg a vásárláshoz.");
+        // Update balance
+        this.balance -= total;
+        this.updateBalanceDisplay();
+
+        // Update the user in the global users array
+        let users = JSON.parse(localStorage.getItem("Users") || "[]");
+        const userIndex = users.findIndex((u: any) => u.id === this.user.id);
+        if (userIndex !== -1) {
+            users[userIndex].credits = this.balance;
+            localStorage.setItem("Users", JSON.stringify(users));
         }
+
+        // Clear cart
+        this.cart = [];
+        this.updateCartDisplay();
+
+        // Close modal
+        const cartModal = bootstrap.Modal.getInstance(document.getElementById("cartModal") as HTMLElement);
+        cartModal?.hide();
+
+        alert(`Sikeres vásárlás! Összesen: ${total} Ft`);
     }
 
     private setupCart(): void {

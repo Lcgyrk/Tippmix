@@ -289,17 +289,18 @@
     <script src="/public/webshop.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {
-                id: 1,
-                name: "Guest",
-                email: "guest@example.com",
-                password: "",
-                credits: 100000,
-            };
-    
-            // Initialize WebShop
-            const shop = new WebShop(currentUser);
-        });
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+        // Frissítsd a bejelentkezés gombot
+        const loginButton = document.getElementById("loginButton");
+        if (loginButton && currentUser && currentUser.name !== "Guest") {
+            loginButton.innerHTML = `<i class="fas fa-user"></i> ${currentUser.name}`;
+            loginButton.href = "./user_profile.html"; // Feltételezve, hogy van profil oldal
+        }
+
+        // Initialize WebShop
+        const shop = new WebShop(currentUser);
+    });
     </script>
 </body>
 
