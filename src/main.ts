@@ -9,7 +9,7 @@ interface User {
     history: {
         profit: number;
         totalBets: number;
-    }
+    };
 }
 //localStorage.clear();
 let users: User[];
@@ -21,11 +21,11 @@ users.forEach((user) => {
         if (user.name == "admin") user.credits = 9999999;
         else user.credits = 1000;
     }
-    if (user.history == null){
+    if (user.history == null) {
         user.history = {
-            "profit": 0,
-            "totalBets": 0
-        }
+            profit: 0,
+            totalBets: 0,
+        };
     }
 });
 const balance = document.getElementById("balance");
@@ -33,6 +33,12 @@ localStorage.setItem("Users", JSON.stringify(users));
 let currentUser: User;
 if (localStorage.getItem("currentUser") != null) {
     currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+    currentUser = users.find(
+        (user) =>
+            user.name == currentUser.name &&
+            user.password == currentUser.password
+    )!;
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
     balance!.innerHTML = `${currentUser!.credits}`;
 } else balance!.innerHTML = "0";
 console.log(users);
@@ -275,31 +281,33 @@ deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
 
 export { selectedMatches, selectedOdds, users, currentUser };
 
-
 //iqaswhfhkdabgdhsbvgbgdhksbvgdhksbvfdshkdv
-
 
 document.addEventListener("DOMContentLoaded", () => {
     updateNavigation();
 });
 
 function updateNavigation() {
-    const loginNavItem = document.querySelector('.nav-item:has(a[href="./login.html"])');
+    const loginNavItem = document.querySelector(
+        '.nav-item:has(a[href="./login.html"])'
+    );
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
 
     if (loginNavItem && currentUser.name == "admin") {
         loginNavItem.innerHTML = `
             <a class="nav-link" href="./admin_interface.html">
-                <i class="fas fa-user"></i> ${currentUser.name ? currentUser.name : "Login"}
+                <i class="fas fa-user"></i> ${
+                    currentUser.name ? currentUser.name : "Login"
+                }
             </a>
         `;
         console.log(currentUser.name);
-    }
-    
-    else if (loginNavItem && currentUser.email) {
+    } else if (loginNavItem && currentUser.email) {
         loginNavItem.innerHTML = `
             <a class="nav-link" href="./user_profile.html">
-                <i class="fas fa-user"></i> ${currentUser.name ? currentUser.name : "Login"}
+                <i class="fas fa-user"></i> ${
+                    currentUser.name ? currentUser.name : "Login"
+                }
             </a>
         `;
         console.log(currentUser.name);
