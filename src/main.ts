@@ -193,7 +193,11 @@ if (!localStorage.getItem("currentUser")) BetButton!.disabled = true;
 BetButton!.addEventListener("click", () => {
     const betAmount = document.getElementById("bet-amount") as HTMLInputElement;
     const betAmountValue = Number(betAmount.value);
-    if (betAmountValue > currentUser.credits || betAmountValue <= 0) {
+    if (
+        betAmountValue > currentUser.credits ||
+        betAmountValue <= 0 ||
+        selectedMatches.length == 0
+    ) {
         alert("Incorrect bet placement");
         return;
     }
