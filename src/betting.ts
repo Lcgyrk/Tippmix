@@ -1,8 +1,6 @@
 import { selectedMatches, selectedOdds } from "./main.js";
 import { users, currentUser } from "./main.js";
 
-//localStorage.clear();
-
 export function displayBets() {
     let betAmountInput = document.getElementById(
         "bet-amount"
@@ -48,8 +46,6 @@ export function displayBets() {
 function simulateMatch(odds: number) {
     const chance = (1 / odds) * 100;
     const result = Math.random() * 100;
-    console.log(`esely: ${chance}`);
-    console.log(`random eredmeny: ${result}`);
     if (result <= chance) return true;
     else return false;
 }

@@ -95,3 +95,4 @@ addBalanceBtn?.addEventListener("click", () => {
     addBalanceInput.value = "";
 });
 updateBettingStats();
+console.log("jo");

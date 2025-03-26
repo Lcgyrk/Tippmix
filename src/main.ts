@@ -49,8 +49,6 @@ if (localStorage.getItem("currentUser") != null) {
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     balance!.innerHTML = `${currentUser!.credits}`;
 } else balance!.innerHTML = "0";
-console.log(users);
-console.log(currentUser!);
 
 async function getRandomMatches(count: number): Promise<Bet[]> {
     const sports = [
@@ -115,8 +113,6 @@ function pushBetsToLocalStorage() {
             );
             localStorage.setItem("selectedOdds", JSON.stringify(selectedOdds));
             checkDoubleBetOnMatch();
-            console.log(selectedMatches);
-            console.log(selectedOdds);
             displayButtons(homeButtons, "primary");
             displayButtons(drawButtons, "secondary");
             displayButtons(awayButtons, "danger");
@@ -192,8 +188,15 @@ async function displayMatches(sport: string) {
     pushBetsToLocalStorage();
 }
 
-const BetButton = document.getElementById("place-bet");
+const BetButton = document.getElementById("place-bet") as HTMLButtonElement;
+if (!localStorage.getItem("currentUser")) BetButton!.disabled = true;
 BetButton!.addEventListener("click", () => {
+    const betAmount = document.getElementById("bet-amount") as HTMLInputElement;
+    const betAmountValue = Number(betAmount.value);
+    if (betAmountValue > currentUser.credits || betAmountValue <= 0) {
+        alert("Incorrect bet placement");
+        return;
+    }
     const simulationWindow = document.getElementById(
         "simulating-window"
     ) as HTMLDivElement;
@@ -201,14 +204,11 @@ BetButton!.addEventListener("click", () => {
     setTimeout(() => {
         simulationWindow.classList.add("d-none"), placingBet();
     }, 2000);
-    // setTimeout(placingBet, 2000);
-    // placingBet();
     const modalClose = document.getElementById("modalClose");
     modalClose!.addEventListener("click", () => {
         localStorage.removeItem("selectedOdds");
         localStorage.removeItem("selectedMatches");
         localStorage.removeItem("matches");
-        // localStorage.clear();
         selectedMatches = [];
         selectedOdds = [];
         location.reload();
@@ -280,16 +280,14 @@ const deleteCurrentUserFromLocalStorage =
     document.getElementById("clearCurrentUser");
 deleteCurrentUserFromLocalStorage!.addEventListener("click", () => {
     localStorage.removeItem("currentUser");
-    console.log(localStorage.getItem("currentUser"));
     loginButton!.innerHTML = `<i class="fas fa-user"></i> Login`;
     balance!.innerHTML = "0";
-    console.log(localStorage.getItem("Users"));
     window.location.reload();
 });
 
 export { selectedMatches, selectedOdds, users, currentUser };
 
-//iqaswhfhkdabgdhsbvgbgdhksbvgdhksbvfdshkdv
+// ----------------------
 
 document.addEventListener("DOMContentLoaded", () => {
     updateNavigation();
@@ -309,7 +307,6 @@ function updateNavigation() {
                 }
             </a>
         `;
-        console.log(currentUser.name);
     } else if (loginNavItem && currentUser.email) {
         loginNavItem.innerHTML = `
             <a class="nav-link" href="./user_profile.html">
@@ -318,6 +315,5 @@ function updateNavigation() {
                 }
             </a>
         `;
-        console.log(currentUser.name);
     }
 }
