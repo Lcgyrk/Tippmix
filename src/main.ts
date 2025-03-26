@@ -1,5 +1,11 @@
 import { FetchBets, Bet } from "./readFile.js";
 import { displayBets, placingBet } from "./betting.js";
+export interface BetHistory {
+    result: string;
+    betAmount: number;
+    winAmount: number;
+    profit: number;
+}
 interface User {
     id: number;
     name: string;
@@ -9,6 +15,7 @@ interface User {
     history: {
         profit: number;
         totalBets: number;
+        betHistory: BetHistory[];
     };
 }
 //localStorage.clear();
@@ -25,6 +32,7 @@ users.forEach((user) => {
         user.history = {
             profit: 0,
             totalBets: 0,
+            betHistory: [],
         };
     }
 });

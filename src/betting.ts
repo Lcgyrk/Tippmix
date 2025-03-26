@@ -74,10 +74,19 @@ export function placingBet() {
 
             if (!result) {
                 win = false;
+                const prize =
+                    betAmount * selectedOdds.reduce((acc, num) => acc * num, 1);
 
                 // Handle loss
+                const newBet = {
+                    result: "Loss",
+                    betAmount: betAmount,
+                    winAmount: prize,
+                    profit: 0 - betAmount,
+                };
                 currentUser.history.totalBets += 1;
                 currentUser.history.profit -= betAmount;
+                currentUser.history.betHistory.push(newBet);
 
                 // Update the user in users array (only once)
                 const userIndex = users.findIndex(
@@ -125,10 +134,18 @@ export function placingBet() {
             const prize =
                 betAmount * selectedOdds.reduce((acc, num) => acc * num, 1);
 
+            const newBet = {
+                result: "Win",
+                betAmount: betAmount,
+                winAmount: prize,
+                profit: prize - betAmount,
+            };
+
             // Update currentUser for win
             currentUser.history.totalBets += 1;
             currentUser.history.profit += prize - betAmount; // Net profit
             currentUser.credits += prize;
+            currentUser.history.betHistory.push(newBet);
 
             // Update user in users array (only once)
             const userIndex = users.findIndex(

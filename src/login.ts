@@ -70,6 +70,11 @@ function validateRegistrationInput(user: Omit<User, "credits">): boolean {
         return false;
     }
 
+    if (user.name.trim() == "") {
+        alert("Helytelen felhasználónév!");
+        return false;
+    }
+
     const isValidPassword =
         user.password.length > PASSWORD_REQUIREMENTS.minLength &&
         PASSWORD_REQUIREMENTS.pattern.number.test(user.password) &&

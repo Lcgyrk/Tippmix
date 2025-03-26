@@ -37,18 +37,24 @@ function updateBettingStats() {
     // Update betting history list
     const historyList = document.getElementById("bettingHistory");
     if (historyList) {
-        historyList.innerHTML = userBets
-            .map(
-                (bet: any) => `
+        historyList.innerHTML = currentUser.history.betHistory.reverse().map(
+            (bet: any) => `
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                ${bet.matchName}
+                <span class="${
+                    bet.result == "Loss" ? "text-danger" : "text-success"
+                } fw-bold">${bet.result}</span>
+                <span class="badge bg-primary">${bet.betAmount.toFixed(
+                    2
+                )}</span>
+                <span class="badge bg-success">${bet.winAmount.toFixed(
+                    2
+                )}</span>
                 <span class="badge ${
                     bet.profit >= 0 ? "bg-success" : "bg-danger"
-                }">${bet.profit}</span>
+                }">${bet.profit.toFixed(2)}</span>
             </li>
         `
-            )
-            .join("");
+        );
     }
 }
 
