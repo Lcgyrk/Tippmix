@@ -18,7 +18,7 @@ else
 users.forEach((user) => {
     if (user.credits == null) {
         if (user.name == "admin")
-            user.credits = 9999999;
+            user.credits = 9999999999999;
         else
             user.credits = 1000;
     }

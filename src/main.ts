@@ -25,7 +25,7 @@ if (localStorage.getItem("Users") == null)
 else users = JSON.parse(localStorage.getItem("Users")!);
 users.forEach((user) => {
     if (user.credits == null) {
-        if (user.name == "admin") user.credits = 9999999;
+        if (user.name == "admin") user.credits = 9999999999999;
         else user.credits = 1000;
     }
     if (user.history == null) {
