@@ -8,9 +8,9 @@ function updateBettingStats() {
     const profileBalance = document.getElementById("profileBalance");
 
     if (balanceDisplay)
-        balanceDisplay.innerHTML = currentUser.credits.toString();
+        balanceDisplay.innerHTML = currentUser.credits.toFixed(2).toString();
     if (profileBalance)
-        profileBalance.innerHTML = `${currentUser.credits} credits`;
+        profileBalance.innerHTML = `${currentUser.credits.toFixed(2)} credits`;
 
     // Filter betting history for current user
     const userBets = bettingHistory.filter(
@@ -87,9 +87,9 @@ addBalanceBtn?.addEventListener("click", () => {
     const profileBalance = document.getElementById("profileBalance");
 
     if (balanceDisplay)
-        balanceDisplay.innerHTML = currentUser.credits.toString();
+        balanceDisplay.innerHTML = currentUser.credits.toFixed(2).toString();
     if (profileBalance)
-        profileBalance.innerHTML = `${currentUser.credits} credits`;
+        profileBalance.innerHTML = `${currentUser.credits.toFixed(2)} credits`;
 
     // Clear input
     addBalanceInput.value = "";

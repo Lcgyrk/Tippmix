@@ -47,7 +47,7 @@ if (localStorage.getItem("currentUser") != null) {
             user.password == currentUser.password
     )!;
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
-    balance!.innerHTML = `${currentUser!.credits}`;
+    balance!.innerHTML = `${currentUser!.credits.toFixed(2)}`;
 } else balance!.innerHTML = "0";
 
 async function getRandomMatches(count: number): Promise<Bet[]> {
