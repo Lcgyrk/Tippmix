@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var _a, _b, _c;
 import { users } from "./readFile.js";
-// DOM elements
 const elements = {
     name: document.getElementById("name"),
     email: document.getElementById("email"),
@@ -18,7 +17,6 @@ const elements = {
     logButton: document.getElementById("login"),
     eye: document.getElementById("eye"),
 };
-// Password validation constants
 const PASSWORD_REQUIREMENTS = {
     minLength: 5,
     pattern: {
@@ -32,7 +30,6 @@ const PASSWORD_REQUIREMENTS = {
         "\ttartalmaz legalább egy nagy betűt",
     ].join("\n"),
 };
-// Event listeners
 (_a = elements.regButton) === null || _a === void 0 ? void 0 : _a.addEventListener("click", handleRegistration);
 (_b = elements.logButton) === null || _b === void 0 ? void 0 : _b.addEventListener("click", handleLogin);
 (_c = elements.eye) === null || _c === void 0 ? void 0 : _c.addEventListener("mousedown", togglePasswordVisibility);
@@ -55,6 +52,7 @@ function handleRegistration(event) {
             });
             if (response.ok) {
                 users.push(newUser);
+                window.location.href = "login.html";
                 alert("Sikeres regisztrálás");
             }
             else {
@@ -74,6 +72,10 @@ function validateRegistrationInput(user) {
     }
     if (users.find((u) => u.name === user.name)) {
         alert("Ez a felhasználónév már foglalt!");
+        return false;
+    }
+    if (user.name.trim() == "") {
+        alert("Helytelen felhasználónév!");
         return false;
     }
     const isValidPassword = user.password.length > PASSWORD_REQUIREMENTS.minLength &&
@@ -113,7 +115,6 @@ function handleLogin(event) {
     }
     const foundUser = localeStorageUsers.find((user) => user.name === elements.name.value &&
         user.password === elements.password.value);
-    console.log(foundUser);
     if (!foundUser) {
         alert("Hibás felhasználónév vagy jelszó!");
         return;

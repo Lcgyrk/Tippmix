@@ -22,18 +22,26 @@ users.forEach((user) => {
         else
             user.credits = 1000;
     }
+    if (user.history == null) {
+        user.history = {
+            profit: 0,
+            totalBets: 0,
+            betHistory: [],
+        };
+    }
 });
 const balance = document.getElementById("balance");
 localStorage.setItem("Users", JSON.stringify(users));
 let currentUser;
 if (localStorage.getItem("currentUser") != null) {
     currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    currentUser = users.find((user) => user.name == currentUser.name &&
+        user.password == currentUser.password);
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
     balance.innerHTML = `${currentUser.credits}`;
 }
 else
     balance.innerHTML = "0";
-console.log(users);
-console.log(currentUser);
 function getRandomMatches(count) {
     return __awaiter(this, void 0, void 0, function* () {
         const sports = [
@@ -94,8 +102,6 @@ function pushBetsToLocalStorage() {
             localStorage.setItem("selectedMatches", JSON.stringify(selectedMatches));
             localStorage.setItem("selectedOdds", JSON.stringify(selectedOdds));
             checkDoubleBetOnMatch();
-            console.log(selectedMatches);
-            console.log(selectedOdds);
             displayButtons(homeButtons, "primary");
             displayButtons(drawButtons, "secondary");
             displayButtons(awayButtons, "danger");
@@ -159,35 +165,32 @@ function displayMatches(sport) {
     });
 }
 const BetButton = document.getElementById("place-bet");
+if (!localStorage.getItem("currentUser"))
+    BetButton.disabled = true;
 BetButton.addEventListener("click", () => {
+    const betAmount = document.getElementById("bet-amount");
+    const betAmountValue = Number(betAmount.value);
+    if (betAmountValue > currentUser.credits ||
+        betAmountValue <= 0 ||
+        selectedMatches.length == 0) {
+        alert("Incorrect bet placement");
+        return;
+    }
     const simulationWindow = document.getElementById("simulating-window");
     simulationWindow.classList.remove("d-none");
     setTimeout(() => {
         simulationWindow.classList.add("d-none"), placingBet();
     }, 2000);
-    // setTimeout(placingBet, 2000);
-    // placingBet();
     const modalClose = document.getElementById("modalClose");
     modalClose.addEventListener("click", () => {
         localStorage.removeItem("selectedOdds");
         localStorage.removeItem("selectedMatches");
         localStorage.removeItem("matches");
-        // localStorage.clear();
         selectedMatches = [];
         selectedOdds = [];
         location.reload();
     });
 });
-// const clearButton = document.getElementById("clearButton");
-// clearButton!.addEventListener("click", () => {
-//     localStorage.removeItem("selectedOdds");
-//     localStorage.removeItem("selectedMatches");
-//     localStorage.removeItem("matches");
-//     // localStorage.clear();
-//     selectedMatches = [];
-//     selectedOdds = [];
-//     location.reload();
-// });
 if (localStorage.getItem("matches") == null) {
     const matches = getRandomMatches(5);
     sendMatchesToServer(matches);
@@ -237,9 +240,30 @@ tennisBetting.addEventListener("click", () => {
 const deleteCurrentUserFromLocalStorage = document.getElementById("clearCurrentUser");
 deleteCurrentUserFromLocalStorage.addEventListener("click", () => {
     localStorage.removeItem("currentUser");
-    console.log(localStorage.getItem("currentUser"));
     loginButton.innerHTML = `<i class="fas fa-user"></i> Login`;
     balance.innerHTML = "0";
-    console.log(localStorage.getItem("Users"));
+    window.location.reload();
 });
 export { selectedMatches, selectedOdds, users, currentUser };
+// ----------------------
+document.addEventListener("DOMContentLoaded", () => {
+    updateNavigation();
+});
+function updateNavigation() {
+    const loginNavItem = document.querySelector('.nav-item:has(a[href="./login.html"])');
+    const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
+    if (loginNavItem && currentUser.name == "admin") {
+        loginNavItem.innerHTML = `
+            <a class="nav-link" href="./admin_interface.html">
+                <i class="fas fa-user"></i> ${currentUser.name ? currentUser.name : "Login"}
+            </a>
+        `;
+    }
+    else if (loginNavItem && currentUser.email) {
+        loginNavItem.innerHTML = `
+            <a class="nav-link" href="./user_profile.html">
+                <i class="fas fa-user"></i> ${currentUser.name ? currentUser.name : "Login"}
+            </a>
+        `;
+    }
+}

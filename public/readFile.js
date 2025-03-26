@@ -26,7 +26,6 @@ function FetchUsers() {
             const data = yield response.json();
             users = data.map((user) => (Object.assign(Object.assign({}, user), { id: Number(user.id) })));
             usersloaded = true;
-            console.log("Users loaded:", users);
             localStorage.setItem("allUsers", JSON.stringify(users));
         }
         catch (error) {
